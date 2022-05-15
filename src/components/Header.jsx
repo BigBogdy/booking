@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
@@ -108,22 +108,24 @@ const Header = () => {
       >
         <Container>
           <Toolbar disableGutters style={{ justifyContent: 'center' }}>
-            <Typography className={styles.logos}>
-              <img
-                style={{ marginRight: 12.5 }}
-                src="../img/Logo.svg"
-                alt="Logo"
-              />
-              <img
-                className={styles.toxin}
-                src="../img/TOXIN.svg"
-                alt="toxin"
-              />
-            </Typography>
+            <Link to="/">
+              <Typography className={styles.logos}>
+                <img
+                  style={{ marginRight: 12.5 }}
+                  src="../img/Logo.svg"
+                  alt="Logo"
+                />
+                <img
+                  className={styles.toxin}
+                  src="../img/TOXIN.svg"
+                  alt="toxin"
+                />
+              </Typography>
+            </Link>
 
             <Hidden mdDown>
               {navigationLinks.map((item) => (
-                <Link
+                <div
                   key={item.id}
                   className={styles.link}
                   variant="button"
@@ -131,7 +133,7 @@ const Header = () => {
                   href={item.href}
                 >
                   {item.name}
-                </Link>
+                </div>
               ))}
             </Hidden>
             <Button
@@ -181,14 +183,14 @@ const Header = () => {
           <List>
             {navigationLinks.map((item) => (
               <ListItem key={item.id}>
-                <Link
+                <div
                   className={styles.link}
                   variant="button"
                   underline="none"
                   href={item.href}
                 >
                   {item.name}
-                </Link>
+                </div>
               </ListItem>
             ))}
           </List>

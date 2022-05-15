@@ -5,7 +5,6 @@ import {
   Box,
   Container,
   Divider,
-  Hidden,
   IconButton,
   InputAdornment,
   Link,
@@ -143,7 +142,7 @@ const Footer = () => {
     <>
       <Box>
         <Container maxWidth="xl">
-          <Box className={styles.content} style={{}}>
+          <Box className={styles.content}>
             <Box className={styles.sloganBox}>
               <Typography className={styles.logos}>
                 <img

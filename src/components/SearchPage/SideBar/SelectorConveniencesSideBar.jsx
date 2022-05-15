@@ -6,10 +6,10 @@ import classNames from 'classnames';
 import { Box, Card, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const guestList = [
-  { id: 1, name: 'Adults' },
-  { id: 2, name: 'Kids' },
-  { id: 3, name: 'Infants' },
+const conveniencesList = [
+  { id: 1, name: 'Bedrooms' },
+  { id: 2, name: 'Beds' },
+  { id: 3, name: 'Bathrooms' },
 ];
 
 const useStyles = makeStyles((theme) => {
@@ -27,10 +27,10 @@ const useStyles = makeStyles((theme) => {
     select: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
 
-      borderRadius: '4px 4px 0px 0px',
-      height: 44,
+      borderRadius: '4px',
+      height: 46,
       padding: '0px 0px 0px 15px',
-      width: 340,
+      width: 249,
       [theme.breakpoints.down('xs')]: {
         width: 310,
       },
@@ -40,9 +40,9 @@ const useStyles = makeStyles((theme) => {
       borderRadius: '0px 0px 4px 4px',
       boxShadow: '0px 10px 20px rgba(31, 32, 65, 0.05)',
       height: 159,
-      margin: '45px 0px 0px 0px',
+      margin: '43px 0px 0px 0px',
       position: 'absolute',
-      width: 355,
+      width: 264,
       zIndex: 3,
       [theme.breakpoints.down('xs')]: {
         width: 330,
@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Selector = () => {
+const SelectorConveniencesSideBar = () => {
   const styles = useStyles();
 
   const [open, setOpen] = useState(true);
@@ -130,15 +130,9 @@ const Selector = () => {
 
   return (
     <div>
-      <Typography
-        style={{ marginLeft: 10, marginBottom: 5 }}
-        className={styles.label}
-      >
-        Guests
-      </Typography>
       <Box
         style={{
-          justifyContent: 'center',
+          justifyContent: 'start',
           display: 'flex',
           marginBottom: 33.44,
         }}
@@ -158,9 +152,7 @@ const Selector = () => {
             }}
             onClick={handleClick}
           >
-            {numberOfGuests === 0
-              ? 'How many guests'
-              : adultsCount + kidsCount + infantsCount + ' guests'}
+            {adultsCount + kidsCount + infantsCount + ' guests'}
           </Typography>
           <IconButton onClick={handleClick} style={{ width: 40, height: 40 }}>
             <ExpandMoreIcon />
@@ -170,7 +162,7 @@ const Selector = () => {
           <Card className={styles.cardGuests}>
             <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Box style={{ marginTop: 13 }}>
-                {guestList.map((item) => (
+                {conveniencesList.map((item) => (
                   <Typography
                     className={classNames(styles.list, styles.label)}
                     key={item.id}
@@ -293,4 +285,4 @@ const Selector = () => {
   );
 };
 
-export default Selector;
+export default SelectorConveniencesSideBar;

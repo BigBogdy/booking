@@ -47,6 +47,12 @@ const DatesPicker = () => {
   const [endDate, setEndDate] = useState(new Date());
   const styles = useStyles();
 
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: 'selection',
+  };
+
   return (
     <>
       <Box

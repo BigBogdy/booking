@@ -1,4 +1,4 @@
-import React, { useState, useHistory } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Card, Typography } from '@material-ui/core';
 import { Container } from '@material-ui/core';
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Main = () => {
+const Main = (props) => {
   const styles = useStyles();
   return (
     <>
@@ -94,6 +94,9 @@ const Main = () => {
             <Selector />
             <Box style={{ display: 'flex', justifyContent: 'center' }}>
               <Button
+                onClick={() => {
+                  props.history.push('/search');
+                }}
                 className={styles.btn}
                 style={{
                   color: '#FFFFFF',
