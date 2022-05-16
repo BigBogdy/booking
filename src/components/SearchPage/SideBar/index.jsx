@@ -1,24 +1,25 @@
-import { Box, Checkbox, Typography } from '@material-ui/core';
-import React from 'react';
+import { Box, Checkbox, IconButton, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import DatesPickerSideBar from './DatePickerSideBar';
 import SelectorSideBar from './SelectorGuestsSideBar';
 import SliderPrice from './SliderPrice';
-import SelectorConveniencesSideBar from './SelectorConveniencesSideBar';
+import SelectorConveniencesSideBar from './SelectorConveniences';
+import AdditionalConveniences from './AdditionalConveniences';
 
 const useStyles = makeStyles((theme) => {
   return {
     textBold: {
       fontFamily: 'Montserrat',
-      fontWeight: 700,
       fontSize: 12,
+      fontWeight: 700,
       textTransform: 'uppercase',
     },
     textRegular: {
-      fontFamily: 'Montserrat',
-      fontWeight: 400,
-      fontSize: 12,
       color: 'rgba(31, 32, 65, 0.5)',
+      fontFamily: 'Montserrat',
+      fontSize: 12,
+      fontWeight: 400,
       textTransform: 'uppercase',
     },
     container: {
@@ -29,9 +30,13 @@ const useStyles = makeStyles((theme) => {
 
 const SideBar = () => {
   const styles = useStyles();
+
   return (
     <>
-      <Box className={styles.container}>
+      <Box
+        className={styles.container}
+        style={{ marginBottom: 500, marginRight: 60 }}
+      >
         <Box style={{ marginBottom: 19.5 }}>
           <Typography className={styles.textBold} style={{ marginBottom: 5 }}>
             dates of stay at the hotel
@@ -139,7 +144,7 @@ const SideBar = () => {
           <SelectorConveniencesSideBar />
         </Box>
         <Box>
-          <Typography>Additional convenience</Typography>
+          <AdditionalConveniences />
         </Box>
       </Box>
     </>

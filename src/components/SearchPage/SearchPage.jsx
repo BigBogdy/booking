@@ -2,7 +2,8 @@ import { Container } from '@material-ui/core';
 import React from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
-import SideBar from './SideBar/SideBar';
+import Rooms from './Rooms';
+import SideBar from './SideBar';
 
 const SearchPage = () => {
   return (
@@ -11,7 +12,10 @@ const SearchPage = () => {
         maxWidth="xl"
         // style={{ display: 'flex', justifyContent: 'center' }}
       >
-        <SideBar />
+        <div style={{ display: 'flex' }}>
+          <SideBar />
+          <Rooms />
+        </div>
       </Container>
     </>
   );

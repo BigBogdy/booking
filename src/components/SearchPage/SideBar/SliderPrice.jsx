@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
-const AirbnbSlider = withStyles({
+const RangePrice = withStyles({
   root: {
     color: '#66D2EA',
     height: 3,
@@ -51,7 +51,7 @@ const SliderPrice = () => {
         {/* <Typography onChange={handleInputChange} value={value}>
           {value}
         </Typography> */}
-        <AirbnbSlider
+        <RangePrice
           onChange={handleSliderChange}
           value={value}
           getAriaLabel={(index) =>
