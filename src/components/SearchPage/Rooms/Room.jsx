@@ -41,20 +41,21 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Room = () => {
+const Room = (props) => {
+  console.log(props);
   const styles = useStyles();
   return (
     <>
       <Card className={styles.card}>
         <Typography className={styles.img} style={{ marginBottom: 20 }}>
-          <img src="../../img/rooms/1.png" alt="1" />
+          <img src={props.imageUrl} alt="1" />
         </Typography>
         <Box style={{ padding: '0px 18.5px' }}>
           <Box
             style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}
           >
             <Typography className={styles.number} style={{ marginRight: 7 }}>
-              № 888
+              № {props.number}
             </Typography>
             <Typography
               style={{
@@ -68,7 +69,7 @@ const Room = () => {
                 width: 41,
               }}
             >
-              Luxury
+              {props.type}
             </Typography>
             <Typography
               className={styles.textBold}
@@ -77,7 +78,7 @@ const Room = () => {
                 marginRight: 3,
               }}
             >
-              200$
+              {props.price}$
             </Typography>
             <Typography
               className={styles.textRegular}
@@ -92,9 +93,8 @@ const Room = () => {
           <Box style={{ marginTop: 10, display: 'flex' }}>
             <Stars
               style={{ marginRight: 15 }}
-              defaultValue={4}
+              defaultValue={props.rate}
               name="half-rating"
-              precision={0.5}
               readOnly
               icon={<StarIcon />}
               emptyIcon={<StarBorderIcon />}
@@ -106,7 +106,7 @@ const Room = () => {
                 marginRight: 3,
               }}
             >
-              135
+              {props.comments}
             </Typography>
             <Typography className={styles.textRegular} style={{ marginTop: 2 }}>
               Comments

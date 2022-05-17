@@ -1,4 +1,4 @@
-import { Box, Typography } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import Room from './Room';
 
@@ -128,7 +128,23 @@ const Rooms = () => {
         >
           The rooms that we have chosen for you
         </Typography>
-        <Room />
+        <Box>
+          <Grid container>
+            {rooms.map((item) => (
+              <Grid item style={{ gap: 12 }}>
+                <Room
+                  key={item.id}
+                  number={item.number}
+                  type={item.type}
+                  rate={item.rate}
+                  imageUrl={item.imageUrl}
+                  price={item.price}
+                  comments={item.comments}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </>
   );

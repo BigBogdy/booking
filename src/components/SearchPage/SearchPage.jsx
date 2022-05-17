@@ -1,22 +1,32 @@
-import { Container } from '@material-ui/core';
+import { Box, Container } from '@material-ui/core';
 import React from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
 import Rooms from './Rooms';
 import SideBar from './SideBar';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => {
+  return {
+    content: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+  };
+});
 
 const SearchPage = () => {
+  const styles = useStyles();
   return (
     <>
-      <Container
-        maxWidth="xl"
-        // style={{ display: 'flex', justifyContent: 'center' }}
-      >
-        <div style={{ display: 'flex' }}>
-          <SideBar />
-          <Rooms />
-        </div>
-      </Container>
+      <Box>
+        <Container maxWidth="xl">
+          <Box className={styles.content}>
+            <SideBar />
+            <Rooms />
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 };
