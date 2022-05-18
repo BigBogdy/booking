@@ -35,7 +35,7 @@ const SideBar = () => {
     <>
       <Box
         className={styles.container}
-        style={{ marginBottom: 500, marginRight: 60 }}
+        style={{ marginBottom: 500, marginRight: 60, marginLeft: 50 }}
       >
         <Box style={{ marginBottom: 19.5 }}>
           <Typography className={styles.textBold} style={{ marginBottom: 5 }}>

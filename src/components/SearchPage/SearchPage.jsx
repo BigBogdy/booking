@@ -7,12 +7,7 @@ import SideBar from './SideBar';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => {
-  return {
-    content: {
-      display: 'flex',
-      justifyContent: 'center',
-    },
-  };
+  return {};
 });
 
 const SearchPage = () => {
@@ -21,7 +16,7 @@ const SearchPage = () => {
     <>
       <Box>
         <Container maxWidth="xl">
-          <Box className={styles.content}>
+          <Box style={{ display: 'flex' }}>
             <SideBar />
             <Rooms />
           </Box>

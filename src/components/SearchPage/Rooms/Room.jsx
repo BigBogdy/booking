@@ -4,6 +4,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Rating } from '@material-ui/lab';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import Skeleton from './Skeleton';
 
 const Stars = withStyles({
   root: {
@@ -41,79 +42,91 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Room = (props) => {
+const Room = (props, { loading = true }) => {
   console.log(props);
   const styles = useStyles();
+
   return (
     <>
-      <Card className={styles.card}>
-        <Typography className={styles.img} style={{ marginBottom: 20 }}>
-          <img src={props.imageUrl} alt="1" />
-        </Typography>
-        <Box style={{ padding: '0px 18.5px' }}>
-          <Box
-            style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}
-          >
-            <Typography className={styles.number} style={{ marginRight: 7 }}>
-              № {props.number}
-            </Typography>
-            <Typography
+      {loading ? (
+        <Skeleton />
+      ) : (
+        <Card className={styles.card}>
+          <Typography className={styles.img} style={{ marginBottom: 20 }}>
+            <img src={props.imageUrl} alt="1" />
+          </Typography>
+          <Box style={{ padding: '0px 18.5px' }}>
+            <Box
               style={{
-                color: '#BC9CFF',
-                fontFamily: 'Montserrat',
-                fontWeight: 700,
-                fontSize: 12,
-                marginRight: 32,
-                textTransform: 'uppercase',
-                marginTop: 3.2,
-                width: 41,
+                display: 'flex',
+                alignItems: 'center',
+                marginBottom: 10,
               }}
             >
-              {props.type}
-            </Typography>
-            <Typography
-              className={styles.textBold}
-              style={{
-                marginTop: 2,
-                marginRight: 3,
-              }}
-            >
-              {props.price}$
-            </Typography>
-            <Typography
-              className={styles.textRegular}
-              style={{
-                marginTop: 2,
-              }}
-            >
-              per day
-            </Typography>
+              <Typography className={styles.number} style={{ marginRight: 7 }}>
+                № {props.number}
+              </Typography>
+              <Typography
+                style={{
+                  color: '#BC9CFF',
+                  fontFamily: 'Montserrat',
+                  fontWeight: 700,
+                  fontSize: 12,
+                  marginRight: 32,
+                  textTransform: 'uppercase',
+                  marginTop: 3.2,
+                  width: 41,
+                }}
+              >
+                {props.type}
+              </Typography>
+              <Typography
+                className={styles.textBold}
+                style={{
+                  marginTop: 2,
+                  marginRight: 3,
+                }}
+              >
+                {props.price}$
+              </Typography>
+              <Typography
+                className={styles.textRegular}
+                style={{
+                  marginTop: 2,
+                }}
+              >
+                per day
+              </Typography>
+            </Box>
+            <Divider />
+            <Box style={{ marginTop: 10, display: 'flex' }}>
+              <Stars
+                style={{ marginRight: 15 }}
+                defaultValue={props.rate}
+                name="half-rating"
+                readOnly
+                icon={<StarIcon />}
+                emptyIcon={<StarBorderIcon />}
+              />
+              <Typography
+                className={styles.textBold}
+                style={{
+                  marginTop: 2,
+                  marginRight: 3,
+                }}
+              >
+                {props.comments}
+              </Typography>
+              <Typography
+                className={styles.textRegular}
+                style={{ marginTop: 2 }}
+              >
+                Comments
+              </Typography>
+            </Box>
           </Box>
-          <Divider />
-          <Box style={{ marginTop: 10, display: 'flex' }}>
-            <Stars
-              style={{ marginRight: 15 }}
-              defaultValue={props.rate}
-              name="half-rating"
-              readOnly
-              icon={<StarIcon />}
-              emptyIcon={<StarBorderIcon />}
-            />
-            <Typography
-              className={styles.textBold}
-              style={{
-                marginTop: 2,
-                marginRight: 3,
-              }}
-            >
-              {props.comments}
-            </Typography>
-            <Typography className={styles.textRegular} style={{ marginTop: 2 }}>
-              Comments
-            </Typography>
-          </Box>
-        </Box>
-      </Card>
+        </Card>
+      )}
     </>
   );
 };
