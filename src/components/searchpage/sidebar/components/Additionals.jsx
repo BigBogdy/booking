@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-const AdditionalConveniences = (props) => {
+const Additional = (props) => {
   const styles = useStyles();
   const [open, setOpen] = useState(true);
 
@@ -85,4 +85,4 @@ const AdditionalConveniences = (props) => {
   );
 };
 
-export default AdditionalConveniences;
+export default Additional;

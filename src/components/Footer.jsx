@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => {
       },
     },
     sloganBox: {
-      width: '15%',
+      width: '260px',
       [theme.breakpoints.down('sm')]: {
         width: '100%',
         marginBottom: 30,

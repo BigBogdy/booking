@@ -35,9 +35,9 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       fontWeight: 400,
       marginRight: 20,
-      '&:hover': {
-        textDecoration: 'underline',
-      },
+      // '&:hover': {
+      //   textDecoration: 'underline',
+      // },
     },
     logos: {
       alignItems: 'center',
@@ -70,7 +70,18 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.up('sm')]: {
         marginRight: 20,
       },
+
+      color: '#BC9CFF',
+
+      '&:hover': {
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        background: '#FFFFFF',
+      },
+      background: '#FFFFFF',
+
+      border: 'solid 2px #BC9CFF',
     },
+
     btn_2: {
       [theme.breakpoints.up('sm')]: {
         width: 196,
@@ -78,6 +89,12 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down('sm')]: {
         width: 100,
       },
+
+      color: '#FFFFFF',
+      '&:hover': {
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      },
+      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
     },
   };
 });
@@ -123,37 +140,21 @@ const Header = () => {
 
             <Hidden mdDown>
               {navigationLinks.map((item) => (
-                <div
+                <Link
+                  to="/"
                   key={item.id}
-                  className={styles.link}
-                  variant="button"
-                  underline="none"
-                  href={item.href}
+                  className="links"
+
+                  // href={item.href}
                 >
                   {item.name}
-                </div>
+                </Link>
               ))}
             </Hidden>
-            <Button
-              className={classNames(styles.btn, styles.btn_1)}
-              style={{
-                color: '#BC9CFF',
-                filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-                background: '#FFFFFF',
-
-                border: 'solid 2px #BC9CFF',
-              }}
-            >
+            <Button className={classNames(styles.btn, styles.btn_1)}>
               Login
             </Button>
-            <Button
-              className={classNames(styles.btn, styles.btn_2)}
-              style={{
-                color: '#FFFFFF',
-                filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-                background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
-              }}
-            >
+            <Button className={classNames(styles.btn, styles.btn_2)}>
               Register
             </Button>
             <Hidden lgUp>

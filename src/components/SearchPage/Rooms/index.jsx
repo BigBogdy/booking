@@ -1,19 +1,22 @@
 import { Box, Grid, Typography } from '@material-ui/core';
 import { Repeat } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
-import Room from './Room';
+import Room from './components/Room';
+import Skeleton from './components/Skeleton';
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('https://6284b002a48bd3c40b73d00d.mockapi.io/rooms')
       .then((response) => {
         return response.json();
       })
       .then((json) => {
         setRooms(json);
+        setIsLoading(false);
       });
   }, []);
 
@@ -31,14 +34,16 @@ const Rooms = () => {
         >
           The rooms that we have chosen for you
         </Typography>
+
         <Box>
           <Grid
             container
             style={{
-              gridGap: 12,
+              gridGap: '20px 12px',
               gridTemplateColumns: 'repeat(auto-fit, 1fr)',
             }}
           >
+            {isLoading && <Skeleton cards={12} />}
             {rooms.map((item) => (
               <Grid key={item.id} item>
                 <Room
@@ -48,7 +53,6 @@ const Rooms = () => {
                   imageUrl={item.imageUrl}
                   price={item.price}
                   comments={item.comments}
-                  loading={true}
                 />
               </Grid>
             ))}

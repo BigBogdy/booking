@@ -2,9 +2,10 @@ import { Box, Container } from '@material-ui/core';
 import React from 'react';
 import Footer from '../Footer';
 import Header from '../Header';
-import Rooms from './Rooms';
-import SideBar from './SideBar';
+
 import { makeStyles } from '@material-ui/core/styles';
+import SideBar from './sidebar';
+import Rooms from './rooms';
 
 const useStyles = makeStyles((theme) => {
   return {};
