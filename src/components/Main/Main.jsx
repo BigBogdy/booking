@@ -4,6 +4,7 @@ import { Box, Button, Card, Typography } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 import DatesPicker from './DatePicker';
 import Selector from './Selector';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -76,11 +77,17 @@ const useStyles = makeStyles((theme) => {
       height: 44,
       padding: 0,
       width: 320,
+      color: '#FFFFFF',
+      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
+      '&:hover': {
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      },
     },
   };
 });
 
-const Main = (props) => {
+const Main = ({ startDate, setStart, endDate, setEnd }) => {
+  const history = useHistory();
   const styles = useStyles();
   return (
     <>
@@ -90,20 +97,20 @@ const Main = (props) => {
             <Typography variant="h1" className={styles.cardTitle}>
               We will find rooms <br /> according to your wishes
             </Typography>
-            <DatesPicker />
+            <DatesPicker
+              startDate={startDate}
+              setStart={setStart}
+              endDate={endDate}
+              setEnd={setEnd}
+            />
             <Selector />
             <Box style={{ display: 'flex', justifyContent: 'center' }}>
               <Button
                 onClick={() => {
-                  props.history.push('/search');
+                  history.push('/search');
                 }}
                 className={styles.btn}
-                style={{
-                  color: '#FFFFFF',
-                  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-                  background:
-                    'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
-                }}
+                style={{}}
               >
                 Find a room
               </Button>

@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => {
         marginRight: 5,
         width: 140,
       },
+      cursor: 'default',
     },
     departureDate: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down('xs')]: {
         width: 140,
       },
+      cursor: 'default',
     },
     label: {
       fontFamily: 'Montserrat',
@@ -42,16 +44,16 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const DatesPicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+const DatesPicker = ({ startDate, endDate, setStart, setEnd }) => {
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
   const styles = useStyles();
 
-  const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
-    key: 'selection',
-  };
+  // const selectionRange = {
+  //   startDate: startDate,
+  //   endDate: endDate,
+  //   key: 'selection',
+  // };
 
   return (
     <>
@@ -66,7 +68,7 @@ const DatesPicker = () => {
           <Typography className={styles.label}>Arriving</Typography>
           <DatePicker
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            onChange={setStart}
             selectsStart
             startDate={startDate}
             endDate={endDate}
@@ -74,13 +76,14 @@ const DatesPicker = () => {
             className={styles.arrivingDate}
             dateFormat="dd/MM/yyyy"
             placeholderText="DD.MM.YYYY"
+            // isClearable={true}
           />
         </Box>
         <Box>
           <Typography className={styles.label}>Departure</Typography>
           <DatePicker
             selected={endDate}
-            onChange={(date) => setEndDate(date)}
+            onChange={setEnd}
             selectsEnd
             startDate={startDate}
             endDate={endDate}
@@ -88,6 +91,7 @@ const DatesPicker = () => {
             className={styles.departureDate}
             dateFormat="dd/MM/yyyy"
             placeholderText="DD.MM.YYYY"
+            // isClearable={true}
           />
         </Box>
       </Box>

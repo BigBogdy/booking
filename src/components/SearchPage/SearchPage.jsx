@@ -1,7 +1,5 @@
 import { Box, Container } from '@material-ui/core';
 import React from 'react';
-import Footer from '../Footer';
-import Header from '../Header';
 
 import { makeStyles } from '@material-ui/core/styles';
 import SideBar from './sidebar';
@@ -11,14 +9,26 @@ const useStyles = makeStyles((theme) => {
   return {};
 });
 
-const SearchPage = () => {
+const SearchPage = ({
+  startDate,
+  setStart,
+  endDate,
+  setEnd,
+  selectionRange,
+  setRange,
+}) => {
   const styles = useStyles();
   return (
     <>
       <Box>
         <Container maxWidth="xl">
           <Box style={{ display: 'flex' }}>
-            <SideBar />
+            <SideBar
+              startDate={startDate}
+              setStart={setStart}
+              endDate={endDate}
+              setEnd={setEnd}
+            />
             <Rooms />
           </Box>
         </Container>

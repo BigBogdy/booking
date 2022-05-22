@@ -30,7 +30,14 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const SideBar = () => {
+const SideBar = ({
+  startDate,
+  setStart,
+  endDate,
+  setEnd,
+  selectionRange,
+  setRange,
+}) => {
   const styles = useStyles();
 
   return (
@@ -39,7 +46,13 @@ const SideBar = () => {
         className={styles.container}
         style={{ marginBottom: 500, marginRight: 60, marginLeft: 50 }}
       >
-        <DatesPickerSideBar />
+        <DatesPickerSideBar
+          startDate={startDate}
+          setStart={setStart}
+          endDate={endDate}
+          setEnd={setEnd}
+          selectionRange={selectionRange}
+        />
         <SelectorSideBar />
         <SliderPrice />
         <Optional />

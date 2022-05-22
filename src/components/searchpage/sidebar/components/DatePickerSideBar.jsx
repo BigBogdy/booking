@@ -13,10 +13,12 @@ const useStyles = makeStyles((theme) => {
       borderRadius: 4,
       height: 40,
       paddingLeft: 15,
-      width: 247,
+      width: 110,
       [theme.breakpoints.down('xs')]: {
         width: 140,
       },
+      marginRight: '6px',
+      cursor: 'default',
     },
     textBold: {
       fontFamily: 'Montserrat',
@@ -27,15 +29,15 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const DatesPickerSideBar = () => {
+const DatesPickerSideBar = ({ startDate, setStart, endDate, setEnd }) => {
   const styles = useStyles();
 
-  const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = dateRange;
+  // const [dateRange, setDateRange] = useState([null, null]);
+  // const [startDate, endDate] = dateRange;
 
   // const selectionRange = {
-  //   startDate: startDate,
-  //   endDate: endDate,
+  //   startDate: dateRange,
+  //   endDate: dateRange,
   //   key: 'selection',
   // };
 
@@ -53,18 +55,33 @@ const DatesPickerSideBar = () => {
             <Typography className={styles.textBold} style={{ marginBottom: 5 }}>
               dates of stay at the hotel
             </Typography>
-            <DatePicker
-              className={styles.dates}
-              selectsRange={true}
-              startDate={startDate}
-              endDate={endDate}
-              onChange={(update) => {
-                setDateRange(update);
-              }}
-              isClearable={true}
-              dateFormat="dd MMMM"
-              placeholderText="DD.MM.YYYY"
-            />
+            <Box style={{ display: 'flex' }}>
+              <DatePicker
+                className={styles.dates}
+                selected={startDate}
+                onChange={setStart}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                minDate={new Date()}
+                dateFormat="dd MMMM"
+                placeholderText="DD.MM.YYYY"
+                // isClearable={true}
+              />
+
+              <DatePicker
+                className={styles.dates}
+                selected={endDate}
+                onChange={setEnd}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                dateFormat="dd MMMM"
+                placeholderText="DD.MM.YYYY"
+                // isClearable={true}
+              />
+            </Box>
           </Box>
         </Box>
       </Box>
