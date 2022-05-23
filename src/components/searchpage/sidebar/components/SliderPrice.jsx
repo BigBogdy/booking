@@ -53,14 +53,10 @@ const RangePrice = withStyles({
 })(Slider);
 
 const SliderPrice = () => {
-  const [value, setValue] = useState([30, 40]);
+  const [value, setValue] = useState([0, 200]);
   const styles = useStyles();
-  const handleSliderChange = (e, data) => {
-    setValue(data);
-  };
-
-  const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value));
+  const handleSliderChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -70,19 +66,16 @@ const SliderPrice = () => {
           <Typography className={styles.textBold} style={{ marginRight: 42 }}>
             Price range
           </Typography>
-          <Typography className={styles.textRegular}>500$ - 1000$</Typography>
+          <Typography className={styles.textRegular}>
+            {value[0]} $ - {value[1]} $
+          </Typography>
         </Box>
         <Box width={266}>
-          {/* <Typography onChange={handleInputChange} value={value}>
-          {value}
-        </Typography> */}
           <RangePrice
             onChange={handleSliderChange}
             value={value}
-            getAriaLabel={(index) =>
-              index === 0 ? 'Minimum price' : 'Maximum price'
-            }
-            defaultValue={[20, 40]}
+            min={0}
+            max={200}
           />
           <Typography className={styles.textRegular}>
             Cost per night in the room

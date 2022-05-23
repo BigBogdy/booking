@@ -22,12 +22,21 @@ const useStyles = makeStyles((theme) => {
 
 const Optional = () => {
   const styles = useStyles();
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
   return (
     <>
       <Box style={{ marginLeft: 26, marginBottom: 30 }}>
         <Typography className={styles.textBold}>Optional</Typography>
         <Box style={{ display: 'flex' }}>
-          <Checkbox />
+          <input
+            className="check"
+            type="checkbox"
+            checked={checked}
+            onChange={handleChange}
+          />
           <Typography
             className={styles.textRegular}
             style={{ fontSize: 14, alignItems: 'center', display: 'flex' }}
@@ -36,7 +45,12 @@ const Optional = () => {
           </Typography>
         </Box>
         <Box style={{ display: 'flex' }}>
-          <Checkbox defaultChecked />
+          <input
+            className="check"
+            type="checkbox"
+            checked={checked}
+            onChange={handleChange}
+          />
           <Typography
             className={styles.textRegular}
             style={{ fontSize: 14, alignItems: 'center', display: 'flex' }}
@@ -45,7 +59,12 @@ const Optional = () => {
           </Typography>
         </Box>
         <Box style={{ display: 'flex' }}>
-          <Checkbox defaultChecked />
+          <input
+            className="check"
+            type="checkbox"
+            checked={checked}
+            onChange={handleChange}
+          />
           <Typography
             className={styles.textRegular}
             style={{ fontSize: 14, alignItems: 'center', display: 'flex' }}

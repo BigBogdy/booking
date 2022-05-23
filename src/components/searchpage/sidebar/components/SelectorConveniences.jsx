@@ -118,20 +118,20 @@ const SelectorConveniencesSideBar = () => {
   const styles = useStyles();
 
   const [open, setOpen] = useState(true);
-  const [adultsCount, setAdultsCount] = useState(0);
-  const [kidsCount, setKidsCount] = useState(0);
-  const [infantsCount, setInfantsCount] = useState(0);
+  const [bedroomsCount, setBedroomsCount] = useState(0);
+  const [bedsCount, setBedsCount] = useState(0);
+  const [bathroomsCount, setBathroomsCount] = useState(0);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
   const onClear = () => {
-    setAdultsCount(0);
-    setKidsCount(0);
-    setInfantsCount(0);
+    setBedroomsCount(0);
+    setBedsCount(0);
+    setBathroomsCount(0);
   };
-  const arr = [adultsCount, kidsCount, infantsCount];
+  const arr = [bedroomsCount, bedsCount, bathroomsCount];
   const numberOfGuests = arr.reduce((a, b) => a + b, 0);
 
   return (
@@ -162,7 +162,9 @@ const SelectorConveniencesSideBar = () => {
               }}
               onClick={handleClick}
             >
-              {adultsCount + kidsCount + infantsCount + ' guests'}
+              {numberOfGuests === 0
+                ? 'Choose your conveniences'
+                : numberOfGuests + ' conv'}
             </Typography>
             <IconButton onClick={handleClick} style={{ width: 40, height: 40 }}>
               <ExpandMoreIcon />
@@ -192,21 +194,21 @@ const SelectorConveniencesSideBar = () => {
                   >
                     <div
                       className={
-                        adultsCount !== 0
+                        bedroomsCount !== 0
                           ? styles.countBtn
                           : styles.countBtnDisabled
                       }
                       onClick={
-                        adultsCount > 0
-                          ? () => setAdultsCount(adultsCount - 1)
+                        bedroomsCount > 0
+                          ? () => setBedroomsCount(bedroomsCount - 1)
                           : null
                       }
                     >
                       -
                     </div>
-                    <div className={styles.countValue}>{adultsCount}</div>
+                    <div className={styles.countValue}>{bedroomsCount}</div>
                     <div
-                      onClick={() => setAdultsCount(adultsCount + 1)}
+                      onClick={() => setBedroomsCount(bedroomsCount + 1)}
                       className={styles.countBtn}
                     >
                       +
@@ -222,19 +224,19 @@ const SelectorConveniencesSideBar = () => {
                   >
                     <div
                       className={
-                        kidsCount !== 0
+                        bedsCount !== 0
                           ? styles.countBtn
                           : styles.countBtnDisabled
                       }
                       onClick={
-                        kidsCount > 0 ? () => setKidsCount(kidsCount - 1) : null
+                        bedsCount > 0 ? () => setBedsCount(bedsCount - 1) : null
                       }
                     >
                       -
                     </div>
-                    <div className={styles.countValue}>{kidsCount}</div>
+                    <div className={styles.countValue}>{bedsCount}</div>
                     <div
-                      onClick={() => setKidsCount(kidsCount + 1)}
+                      onClick={() => setBedsCount(bedsCount + 1)}
                       className={styles.countBtn}
                     >
                       +
@@ -250,21 +252,21 @@ const SelectorConveniencesSideBar = () => {
                   >
                     <div
                       className={
-                        infantsCount !== 0
+                        bathroomsCount !== 0
                           ? styles.countBtn
                           : styles.countBtnDisabled
                       }
                       onClick={
-                        infantsCount > 0
-                          ? () => setInfantsCount(infantsCount - 1)
+                        bathroomsCount > 0
+                          ? () => setBathroomsCount(bathroomsCount - 1)
                           : null
                       }
                     >
                       -
                     </div>
-                    <div className={styles.countValue}>{infantsCount}</div>
+                    <div className={styles.countValue}>{bathroomsCount}</div>
                     <div
-                      onClick={() => setInfantsCount(infantsCount + 1)}
+                      onClick={() => setBathroomsCount(bathroomsCount + 1)}
                       className={styles.countBtn}
                     >
                       +

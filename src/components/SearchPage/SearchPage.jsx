@@ -14,8 +14,13 @@ const SearchPage = ({
   setStart,
   endDate,
   setEnd,
-  selectionRange,
-  setRange,
+  onClear,
+  adultsCount,
+  setAdultsCount,
+  kidsCount,
+  infantsCount,
+  setKidsCount,
+  setInfantsCount,
 }) => {
   const styles = useStyles();
   return (
@@ -28,6 +33,13 @@ const SearchPage = ({
               setStart={setStart}
               endDate={endDate}
               setEnd={setEnd}
+              adultsCount={adultsCount}
+              setAdultsCount={setAdultsCount}
+              setKidsCount={setKidsCount}
+              setInfantsCount={setInfantsCount}
+              kidsCount={kidsCount}
+              infantsCount={infantsCount}
+              onClear={onClear}
             />
             <Rooms />
           </Box>

@@ -9,10 +9,14 @@ function App() {
   // const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [adultsCount, setAdultsCount] = useState(0);
+  const [kidsCount, setKidsCount] = useState(0);
+  const [infantsCount, setInfantsCount] = useState(0);
 
-  const setRange = (date) => {
-    setStart();
-    setEnd();
+  const onClear = () => {
+    setAdultsCount(0);
+    setKidsCount(0);
+    setInfantsCount(0);
   };
 
   const setStart = (date) => {
@@ -34,6 +38,13 @@ function App() {
                 setStart={setStart}
                 endDate={endDate}
                 setEnd={setEnd}
+                adultsCount={adultsCount}
+                setAdultsCount={setAdultsCount}
+                setKidsCount={setKidsCount}
+                setInfantsCount={setInfantsCount}
+                kidsCount={kidsCount}
+                infantsCount={infantsCount}
+                onClear={onClear}
               />
             </Route>
             <Route path="/search">
@@ -42,6 +53,13 @@ function App() {
                 setStart={setStart}
                 endDate={endDate}
                 setEnd={setEnd}
+                adultsCount={adultsCount}
+                setAdultsCount={setAdultsCount}
+                setKidsCount={setKidsCount}
+                setInfantsCount={setInfantsCount}
+                kidsCount={kidsCount}
+                infantsCount={infantsCount}
+                onClear={onClear}
               />
             </Route>
           </Switch>

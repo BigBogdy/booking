@@ -1,5 +1,7 @@
+import React, { useState } from 'react';
 import { Box, Checkbox, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import '../../../../index.scss';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -19,14 +21,29 @@ const useStyles = makeStyles((theme) => {
     container: {
       marginTop: 30,
     },
+    checkboxn: {
+      backgroundColor: '#FFF',
+      border: '#fefefe',
+    },
   };
 });
 const AdditionalItem = (props) => {
+  const [checked, setChecked] = useState(false);
   const styles = useStyles();
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
   return (
     <>
       <Box style={{ display: 'flex' }}>
-        <Checkbox />
+        <input
+          className="check"
+          type="checkbox"
+          checked={checked}
+          onChange={handleChange}
+        />
+
         <Typography
           className={styles.textRegular}
           style={{ display: 'flex', alignItems: 'center' }}

@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => {
       borderRadius: 4,
       height: 40,
       paddingLeft: 15,
-      width: 110,
+      width: 104,
       [theme.breakpoints.down('xs')]: {
         width: 140,
       },
-      marginRight: '6px',
+
       cursor: 'default',
     },
     textBold: {
@@ -68,7 +68,16 @@ const DatesPickerSideBar = ({ startDate, setStart, endDate, setEnd }) => {
                 placeholderText="DD.MM.YYYY"
                 // isClearable={true}
               />
-
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: 5,
+                  color: 'rgba(31, 32, 65, 0.75)',
+                }}
+              >
+                –
+              </div>
               <DatePicker
                 className={styles.dates}
                 selected={endDate}

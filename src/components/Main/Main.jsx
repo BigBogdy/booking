@@ -86,7 +86,19 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Main = ({ startDate, setStart, endDate, setEnd }) => {
+const Main = ({
+  startDate,
+  setStart,
+  endDate,
+  setEnd,
+  onClear,
+  adultsCount,
+  setAdultsCount,
+  kidsCount,
+  infantsCount,
+  setKidsCount,
+  setInfantsCount,
+}) => {
   const history = useHistory();
   const styles = useStyles();
   return (
@@ -103,7 +115,15 @@ const Main = ({ startDate, setStart, endDate, setEnd }) => {
               endDate={endDate}
               setEnd={setEnd}
             />
-            <Selector />
+            <Selector
+              adultsCount={adultsCount}
+              setAdultsCount={setAdultsCount}
+              setKidsCount={setKidsCount}
+              setInfantsCount={setInfantsCount}
+              kidsCount={kidsCount}
+              infantsCount={infantsCount}
+              onClear={onClear}
+            />
             <Box style={{ display: 'flex', justifyContent: 'center' }}>
               <Button
                 onClick={() => {

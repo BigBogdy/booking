@@ -22,13 +22,22 @@ const useStyles = makeStyles((theme) => {
 
 const Availability = () => {
   const styles = useStyles();
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
   return (
     <>
       <Box style={{ marginLeft: 26, marginBottom: 30 }}>
         <Typography className={styles.textBold}>Availability</Typography>
         <Box style={{ display: 'flex' }}>
           <div>
-            <Checkbox />
+            <input
+              className="check"
+              type="checkbox"
+              checked={checked}
+              onChange={handleChange}
+            />
           </div>
           <Box style={{ width: 233, marginTop: 8 }}>
             <Typography
@@ -47,7 +56,12 @@ const Availability = () => {
         </Box>
         <Box style={{ display: 'flex' }}>
           <div>
-            <Checkbox />
+            <input
+              className="check"
+              type="checkbox"
+              checked={checked}
+              onChange={handleChange}
+            />
           </div>
 
           <Box style={{ width: 266, marginTop: 8 }}>

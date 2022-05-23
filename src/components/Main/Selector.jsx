@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => {
     select: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
 
-      borderRadius: '4px 4px 0px 0px',
+      borderRadius: '4px',
       height: 44,
       padding: '0px 0px 0px 15px',
       width: 340,
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => {
       borderRadius: '0px 0px 4px 4px',
       boxShadow: '0px 10px 20px rgba(31, 32, 65, 0.05)',
       height: 159,
-      margin: '45px 0px 0px 0px',
+      margin: '43px 0px 0px 0px',
       position: 'absolute',
       width: 355,
       zIndex: 3,
@@ -108,23 +108,31 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Selector = () => {
+const Selector = ({
+  onClear,
+  adultsCount,
+  setAdultsCount,
+  kidsCount,
+  infantsCount,
+  setKidsCount,
+  setInfantsCount,
+}) => {
   const styles = useStyles();
 
   const [open, setOpen] = useState(true);
-  const [adultsCount, setAdultsCount] = useState(0);
-  const [kidsCount, setKidsCount] = useState(0);
-  const [infantsCount, setInfantsCount] = useState(0);
+  // const [adultsCount, setAdultsCount] = useState(0);
+  // const [kidsCount, setKidsCount] = useState(0);
+  // const [infantsCount, setInfantsCount] = useState(0);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
-  const onClear = () => {
-    setAdultsCount(0);
-    setKidsCount(0);
-    setInfantsCount(0);
-  };
+  // const onClear = () => {
+  //   setAdultsCount(0);
+  //   setKidsCount(0);
+  //   setInfantsCount(0);
+  // };
   const arr = [adultsCount, kidsCount, infantsCount];
   const numberOfGuests = arr.reduce((a, b) => a + b, 0);
 
@@ -160,7 +168,7 @@ const Selector = () => {
           >
             {numberOfGuests === 0
               ? 'How many guests'
-              : adultsCount + kidsCount + infantsCount + ' guests'}
+              : numberOfGuests + ' guests'}
           </Typography>
           <IconButton onClick={handleClick} style={{ width: 40, height: 40 }}>
             <ExpandMoreIcon />

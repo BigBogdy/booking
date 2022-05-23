@@ -35,8 +35,13 @@ const SideBar = ({
   setStart,
   endDate,
   setEnd,
-  selectionRange,
-  setRange,
+  onClear,
+  adultsCount,
+  setAdultsCount,
+  kidsCount,
+  infantsCount,
+  setKidsCount,
+  setInfantsCount,
 }) => {
   const styles = useStyles();
 
@@ -51,10 +56,18 @@ const SideBar = ({
           setStart={setStart}
           endDate={endDate}
           setEnd={setEnd}
-          selectionRange={selectionRange}
         />
-        <SelectorSideBar />
+        <SelectorSideBar
+          adultsCount={adultsCount}
+          setAdultsCount={setAdultsCount}
+          setKidsCount={setKidsCount}
+          setInfantsCount={setInfantsCount}
+          kidsCount={kidsCount}
+          infantsCount={infantsCount}
+          onClear={onClear}
+        />
         <SliderPrice />
+        {/* <SliderP /> */}
         <Optional />
         <Availability />
         <SelectorConveniencesSideBar />

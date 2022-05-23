@@ -114,23 +114,31 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const SelectorGuestsSideBar = () => {
+const SelectorGuestsSideBar = ({
+  onClear,
+  adultsCount,
+  setAdultsCount,
+  kidsCount,
+  infantsCount,
+  setKidsCount,
+  setInfantsCount,
+}) => {
   const styles = useStyles();
 
   const [open, setOpen] = useState(true);
-  const [adultsCount, setAdultsCount] = useState(0);
-  const [kidsCount, setKidsCount] = useState(0);
-  const [infantsCount, setInfantsCount] = useState(0);
+  // const [adultsCount, setAdultsCount] = useState(0);
+  // const [kidsCount, setKidsCount] = useState(0);
+  // const [infantsCount, setInfantsCount] = useState(0);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
-  const onClear = () => {
-    setAdultsCount(0);
-    setKidsCount(0);
-    setInfantsCount(0);
-  };
+  // const onClear = () => {
+  //   setAdultsCount(0);
+  //   setKidsCount(0);
+  //   setInfantsCount(0);
+  // };
   const arr = [adultsCount, kidsCount, infantsCount];
   const numberOfGuests = arr.reduce((a, b) => a + b, 0);
 
