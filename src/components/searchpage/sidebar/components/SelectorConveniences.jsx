@@ -132,7 +132,40 @@ const SelectorConveniencesSideBar = () => {
     setBathroomsCount(0);
   };
   const arr = [bedroomsCount, bedsCount, bathroomsCount];
-  const numberOfGuests = arr.reduce((a, b) => a + b, 0);
+  const numberOfConv = arr.reduce((a, b) => a + b, 0);
+  function bedrooms() {
+    if (bedroomsCount > 1) {
+      return bedroomsCount + ' bedrooms, ';
+    }
+    if (bedroomsCount === 1) {
+      return bedroomsCount + ' bedroom, ';
+    }
+    if (bedroomsCount === 0) {
+      return null;
+    }
+  }
+  function beds() {
+    if (bedsCount > 1) {
+      return bedsCount + ' beds, ';
+    }
+    if (bedsCount === 1) {
+      return bedsCount + ' bed, ';
+    }
+    if (bedsCount === 0) {
+      return null;
+    }
+  }
+  function bathrooms() {
+    if (bathroomsCount > 1) {
+      return bathroomsCount + ' bathrooms ';
+    }
+    if (bathroomsCount === 1) {
+      return bathroomsCount + ' bathroom ';
+    }
+    if (bathroomsCount === 0) {
+      return null;
+    }
+  }
 
   return (
     <div>
@@ -159,13 +192,22 @@ const SelectorConveniencesSideBar = () => {
                 fontSize: 14,
                 marginRight: 'auto',
                 userSelect: 'none',
+
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
               }}
               onClick={handleClick}
             >
-              {numberOfGuests === 0
-                ? 'Choose your conveniences'
-                : numberOfGuests + ' conv'}
+              {bedrooms()}
+              {beds()}
+              {bathrooms()}
+              {/* {bedroomsCount > 0 ? bedroomsCount + ' bedrooms, ' : null}
+              {bedsCount > 0 ? bedsCount + ' beds, ' : null}
+              {bathroomsCount > 0 ? bathroomsCount + ' bathrooms, ' : null} */}
+              {/* {numberOfConv === 0 ? 'csdcdscd' : null} */}
             </Typography>
+
             <IconButton onClick={handleClick} style={{ width: 40, height: 40 }}>
               <ExpandMoreIcon />
             </IconButton>

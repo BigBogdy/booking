@@ -52,13 +52,8 @@ const RangePrice = withStyles({
   },
 })(Slider);
 
-const SliderPrice = () => {
-  const [value, setValue] = useState([0, 200]);
+const SliderPrice = ({ price, handleSliderChange }) => {
   const styles = useStyles();
-  const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   return (
     <>
       <Box style={{ marginBottom: 29 }}>
@@ -67,16 +62,17 @@ const SliderPrice = () => {
             Price range
           </Typography>
           <Typography className={styles.textRegular}>
-            {value[0]} $ - {value[1]} $
+            {price[0]} $ - {price[1]} $
           </Typography>
         </Box>
         <Box width={266}>
           <RangePrice
             onChange={handleSliderChange}
-            value={value}
+            value={price}
             min={0}
             max={200}
           />
+          <button>confirm</button>
           <Typography className={styles.textRegular}>
             Cost per night in the room
           </Typography>

@@ -42,6 +42,8 @@ const SideBar = ({
   infantsCount,
   setKidsCount,
   setInfantsCount,
+  price,
+  handleSliderChange,
 }) => {
   const styles = useStyles();
 
@@ -66,8 +68,7 @@ const SideBar = ({
           infantsCount={infantsCount}
           onClear={onClear}
         />
-        <SliderPrice />
-        {/* <SliderP /> */}
+        <SliderPrice price={price} handleSliderChange={handleSliderChange} />
         <Optional />
         <Availability />
         <SelectorConveniencesSideBar />

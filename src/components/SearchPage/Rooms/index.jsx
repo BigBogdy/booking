@@ -4,22 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Room from './components/Room';
 import Skeleton from './components/Skeleton';
 
-const Rooms = () => {
-  const [rooms, setRooms] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetch('https://6284b002a48bd3c40b73d00d.mockapi.io/rooms')
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        setRooms(json);
-        setIsLoading(false);
-      });
-  }, []);
-
+const Rooms = ({ rooms, isLoading }) => {
+  // console.log(rooms);
   return (
     <>
       <Box style={{ marginTop: 30 }}>
