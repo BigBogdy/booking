@@ -36,7 +36,7 @@ const AdditionalItem = (props) => {
   };
   return (
     <>
-      <Box style={{ display: 'flex' }}>
+      <Box style={{ display: 'flex', marginBottom: 10 }}>
         <input
           className="check"
           type="checkbox"

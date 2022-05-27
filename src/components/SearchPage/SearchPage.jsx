@@ -2,8 +2,8 @@ import { Box, Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import SideBar from './sidebar';
-import Rooms from './rooms';
+import SideBar from './sidebar/SideBar';
+import Rooms from './rooms/Rooms';
 
 const useStyles = makeStyles((theme) => {
   return {};

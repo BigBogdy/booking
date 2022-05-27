@@ -33,7 +33,9 @@ const Optional = () => {
   return (
     <>
       <Box style={{ marginLeft: 26, marginBottom: 30 }}>
-        <Typography className={styles.textBold}>Optional</Typography>
+        <Typography style={{ marginBottom: 17 }} className={styles.textBold}>
+          Optional
+        </Typography>
         <Box>
           {optionalItems.map((obj) => (
             <OptionalItem text={obj.text} key={obj.id} />

@@ -2,8 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Card, Typography } from '@material-ui/core';
 import { Container } from '@material-ui/core';
-import DatesPicker from './DatePicker';
-import Selector from './Selector';
+import DatesPicker from './components/DatePicker';
+import Selector from './components/Selector';
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => {

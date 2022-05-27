@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       fontWeight: 400,
       fontSize: 14,
+      textDecoration: 'none',
     },
     textBold: {
       color: 'rgba(31, 32, 65, 0.5)',

@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Main from './components/main/Main';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchPage from './components/searchpage/SearchPage';
+import RoomDetails from './components/room-details/RoomDetails';
 
 function App() {
   // const [dateRange, setDateRange] = useState([null, null]);
@@ -53,6 +54,9 @@ function App() {
                 kidsCount={kidsCount}
                 infantsCount={infantsCount}
               />
+            </Route>
+            <Route path="/details/:id">
+              <RoomDetails />
             </Route>
           </Switch>
           <Footer />
