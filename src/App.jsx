@@ -13,12 +13,6 @@ function App() {
   const [kidsCount, setKidsCount] = useState(0);
   const [infantsCount, setInfantsCount] = useState(0);
 
-  const onClear = () => {
-    setAdultsCount(0);
-    setKidsCount(0);
-    setInfantsCount(0);
-  };
-
   const setStart = (date) => {
     setStartDate(date);
   };
@@ -44,7 +38,6 @@ function App() {
                 setInfantsCount={setInfantsCount}
                 kidsCount={kidsCount}
                 infantsCount={infantsCount}
-                onClear={onClear}
               />
             </Route>
             <Route path="/search">
@@ -59,7 +52,6 @@ function App() {
                 setInfantsCount={setInfantsCount}
                 kidsCount={kidsCount}
                 infantsCount={infantsCount}
-                onClear={onClear}
               />
             </Route>
           </Switch>

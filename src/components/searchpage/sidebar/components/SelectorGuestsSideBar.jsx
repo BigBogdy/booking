@@ -115,7 +115,6 @@ const useStyles = makeStyles((theme) => {
 });
 
 const SelectorGuestsSideBar = ({
-  onClear,
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -134,11 +133,11 @@ const SelectorGuestsSideBar = ({
     setOpen(!open);
   };
 
-  // const onClear = () => {
-  //   setAdultsCount(0);
-  //   setKidsCount(0);
-  //   setInfantsCount(0);
-  // };
+  const onClear = () => {
+    setAdultsCount(0);
+    setKidsCount(0);
+    setInfantsCount(0);
+  };
   const arr = [adultsCount, kidsCount, infantsCount];
   const numberOfGuests = arr.reduce((a, b) => a + b, 0);
 

@@ -109,7 +109,6 @@ const useStyles = makeStyles((theme) => {
 });
 
 const Selector = ({
-  onClear,
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -126,6 +125,11 @@ const Selector = ({
 
   const handleClick = () => {
     setOpen(!open);
+  };
+  const onClear = () => {
+    setAdultsCount(0);
+    setKidsCount(0);
+    setInfantsCount(0);
   };
 
   // const onClear = () => {

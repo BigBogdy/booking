@@ -14,7 +14,7 @@ const SearchPage = ({
   setStart,
   endDate,
   setEnd,
-  onClear,
+
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -23,13 +23,28 @@ const SearchPage = ({
   setInfantsCount,
 }) => {
   // const styles = useStyles();
-  const [price, setPrice] = useState([0, 200]);
+  const [selectedPrice, setSelectedPriced] = useState([0, 200]);
 
   const handleSliderChange = (event, newValue) => {
-    setPrice(newValue);
+    setSelectedPriced(newValue);
   };
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const applyFilters = () => {
+    const updatedRooms = rooms;
+    //Price Filter
+    const minPrice = selectedPrice[0];
+    const maxPrice = selectedPrice[1];
+
+    updatedRooms.filter(
+      (item) => item.price >= minPrice && item.price <= maxPrice
+    );
+    setRooms(updatedRooms);
+  };
+  useEffect(() => {
+    applyFilters();
+  }, [selectedPrice]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -42,7 +57,6 @@ const SearchPage = ({
         setIsLoading(false);
       });
   }, []);
-  const onPrice = () => {};
 
   return (
     <>
@@ -60,11 +74,17 @@ const SearchPage = ({
               setInfantsCount={setInfantsCount}
               kidsCount={kidsCount}
               infantsCount={infantsCount}
-              onClear={onClear}
-              price={price}
+              selectedPrice={selectedPrice}
               handleSliderChange={handleSliderChange}
+              applyFilters={applyFilters}
             />
-            <Rooms rooms={rooms} isLoading={isLoading} />
+            <Rooms
+              rooms={rooms}
+              isLoading={isLoading}
+              selectedPrice={selectedPrice}
+              handleSliderChange={handleSliderChange}
+              applyFilters={applyFilters}
+            />
           </Box>
         </Container>
       </Box>

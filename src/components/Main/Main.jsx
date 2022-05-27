@@ -91,7 +91,7 @@ const Main = ({
   setStart,
   endDate,
   setEnd,
-  onClear,
+
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -122,7 +122,6 @@ const Main = ({
               setInfantsCount={setInfantsCount}
               kidsCount={kidsCount}
               infantsCount={infantsCount}
-              onClear={onClear}
             />
             <Box style={{ display: 'flex', justifyContent: 'center' }}>
               <Button

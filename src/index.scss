@@ -4,13 +4,13 @@
   
 }
 .links {
-  text-decoration: none;
-  text-transform: uppercase;
   color: rgba(31, 32, 65, 0.5);
   font-family: 'Montserrat';
-  font-weight: 400;
   font-size: 14px;
+  font-weight: 400;
   margin-right: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
   &:hover{
     text-decoration: underline;
   }
@@ -23,18 +23,19 @@ input[type="checkbox"] {
   border: 1.5px solid rgba(31, 32, 65, 0.25);
   cursor: pointer;
   height: 20px;
-  width: 20px;
-  padding:2px 2.5px;
   outline: none;
+  padding:2px 2.5px;
+  width: 20px;
+  
 }
 input[type="checkbox"]::after {
-  font-family: "Font Awesome 5 free";
-  content: '\f00c';
-  font-weight: 900;
   color: #BC9CFF;
-  width: 6px;
-  height: 8px;
+  content: '\f00c';
   display: none;
+  font-family: "Font Awesome 5 free";
+  font-weight: 900;
+  height: 8px;
+  width: 6px;
 
 }
 input[type="checkbox"]:hover {

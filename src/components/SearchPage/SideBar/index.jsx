@@ -35,15 +35,16 @@ const SideBar = ({
   setStart,
   endDate,
   setEnd,
-  onClear,
+
   adultsCount,
   setAdultsCount,
   kidsCount,
   infantsCount,
   setKidsCount,
   setInfantsCount,
-  price,
+  selectedPrice,
   handleSliderChange,
+  applyFilters,
 }) => {
   const styles = useStyles();
 
@@ -66,9 +67,12 @@ const SideBar = ({
           setInfantsCount={setInfantsCount}
           kidsCount={kidsCount}
           infantsCount={infantsCount}
-          onClear={onClear}
         />
-        <SliderPrice price={price} handleSliderChange={handleSliderChange} />
+        <SliderPrice
+          selectedPrice={selectedPrice}
+          handleSliderChange={handleSliderChange}
+          applyFilters={applyFilters}
+        />
         <Optional />
         <Availability />
         <SelectorConveniencesSideBar />

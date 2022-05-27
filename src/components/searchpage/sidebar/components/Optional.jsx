@@ -1,6 +1,13 @@
 import { Box, Checkbox, Typography } from '@material-ui/core';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import OptionalItem from './OptionalItem';
+
+const optionalItems = [
+  { id: 1, text: 'Smoking is allowed' },
+  { id: 2, text: 'Allowed with pets' },
+  { id: 3, text: 'Allowed to invite guests' },
+];
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -22,55 +29,15 @@ const useStyles = makeStyles((theme) => {
 
 const Optional = () => {
   const styles = useStyles();
-  const [checked, setChecked] = React.useState(false);
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+
   return (
     <>
       <Box style={{ marginLeft: 26, marginBottom: 30 }}>
         <Typography className={styles.textBold}>Optional</Typography>
-        <Box style={{ display: 'flex' }}>
-          <input
-            className="check"
-            type="checkbox"
-            checked={checked}
-            onChange={handleChange}
-          />
-          <Typography
-            className={styles.textRegular}
-            style={{ fontSize: 14, alignItems: 'center', display: 'flex' }}
-          >
-            Smoking is allowed
-          </Typography>
-        </Box>
-        <Box style={{ display: 'flex' }}>
-          <input
-            className="check"
-            type="checkbox"
-            checked={checked}
-            onChange={handleChange}
-          />
-          <Typography
-            className={styles.textRegular}
-            style={{ fontSize: 14, alignItems: 'center', display: 'flex' }}
-          >
-            Allowed with pets
-          </Typography>
-        </Box>
-        <Box style={{ display: 'flex' }}>
-          <input
-            className="check"
-            type="checkbox"
-            checked={checked}
-            onChange={handleChange}
-          />
-          <Typography
-            className={styles.textRegular}
-            style={{ fontSize: 14, alignItems: 'center', display: 'flex' }}
-          >
-            Allowed to invite guests
-          </Typography>
+        <Box>
+          {optionalItems.map((obj) => (
+            <OptionalItem text={obj.text} key={obj.id} />
+          ))}
         </Box>
       </Box>
     </>
