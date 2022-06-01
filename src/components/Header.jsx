@@ -14,11 +14,9 @@ import {
   List,
   ListItem,
   SwipeableDrawer,
-  Typography,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { Box } from '@material-ui/core';
 
 const navigationLinks = [
   { id: 1, name: 'About Us', href: '' },

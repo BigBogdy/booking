@@ -1,4 +1,4 @@
-import { Box, Checkbox, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -16,11 +16,23 @@ const additionalLinks = [
 
 const useStyles = makeStyles((theme) => {
   return {
+    content: {
+      margin: '15px 0px 70px 5px',
+    },
     textBold: {
+      alignItems: 'center',
+      display: 'flex',
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
+      marginBottom: 4,
+      marginRight: 15,
       textTransform: 'uppercase',
+      userSelect: 'none',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
+        marginLeft: 5,
+      },
     },
     textRegular: {
       color: 'rgba(31, 32, 65, 0.5)',
@@ -34,7 +46,7 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-const Additional = (props) => {
+const Additionals = (props) => {
   const styles = useStyles();
   const [open, setOpen] = useState(true);
 
@@ -44,33 +56,25 @@ const Additional = (props) => {
 
   return (
     <>
-      <Box>
+      <Box className={styles.content}>
         <Box
           style={{ display: 'flex', cursor: 'pointer', width: 260 }}
           onClick={handleClick}
         >
-          <Typography
-            className={styles.textBold}
-            style={{
-              marginBottom: 4,
-              display: 'flex',
-              marginRight: 15,
-              alignItems: 'center',
-              userSelect: 'none',
-            }}
-          >
+          <Typography className={styles.textBold}>
             Additional convenience
-          </Typography>
-          <Typography
-            style={{
-              color: 'rgba(31, 32, 65, 0.5)',
-              marginBottom: 4,
-              display: 'flex',
-              alignItems: 'center',
-              cursor: 'pointer',
-            }}
-          >
-            {!open ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
+            <Typography
+              component={'span'}
+              variant={'body2'}
+              style={{
+                color: 'rgba(31, 32, 65, 0.5)',
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+            >
+              {!open ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
+            </Typography>
           </Typography>
         </Box>
         {!open ? (
@@ -85,4 +89,4 @@ const Additional = (props) => {
   );
 };
 
-export default Additional;
+export default Additionals;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 
-import '../../../../components/main/components/datePickerStyles/datepicker.scss';
+import '../../../components/main/datePickerStyles/datepicker.scss';
 import { Box, Typography } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';

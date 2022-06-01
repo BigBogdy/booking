@@ -11,18 +11,24 @@ const optionalItems = [
 
 const useStyles = makeStyles((theme) => {
   return {
+    content: {
+      marginBottom: 30,
+      [theme.breakpoints.down('md')]: {
+        margin: '10px 0px 5px 5px',
+      },
+    },
+
     textBold: {
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
       textTransform: 'uppercase',
-    },
-    textRegular: {
-      color: 'rgba(31, 32, 65, 0.5)',
-      fontFamily: 'Montserrat',
-      fontSize: 12,
-      fontWeight: 400,
-      textTransform: 'uppercase',
+      marginBottom: 17,
+      [theme.breakpoints.down('md')]: {
+        marginBottom: 5,
+        fontSize: 10,
+        marginLeft: 3,
+      },
     },
   };
 });
@@ -32,10 +38,8 @@ const Optional = () => {
 
   return (
     <>
-      <Box style={{ marginLeft: 26, marginBottom: 30 }}>
-        <Typography style={{ marginBottom: 17 }} className={styles.textBold}>
-          Optional
-        </Typography>
+      <Box className={styles.content}>
+        <Typography className={styles.textBold}>Optional</Typography>
         <Box>
           {optionalItems.map((obj) => (
             <OptionalItem text={obj.text} key={obj.id} />

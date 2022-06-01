@@ -28,6 +28,14 @@ input[type="checkbox"] {
   width: 20px;
   
 }
+@media (max-width: 1280px) {
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    padding: 0px 0.5px 0px 0.5px;
+    
+  }
+}
 input[type="checkbox"]::after {
   color: #BC9CFF;
   content: '\f00c';
@@ -36,7 +44,6 @@ input[type="checkbox"]::after {
   font-weight: 900;
   height: 8px;
   width: 6px;
-
 }
 input[type="checkbox"]:hover {
   border: 1.5px solid #BC9CFF;;

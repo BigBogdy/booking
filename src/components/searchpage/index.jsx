@@ -1,9 +1,9 @@
-import { Box, Container } from '@material-ui/core';
+import { Box, Container, IconButton } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-
+import TuneIcon from '@material-ui/icons/Tune';
 import { makeStyles } from '@material-ui/core/styles';
-import SideBar from './sidebar/SideBar';
-import Rooms from './rooms/Rooms';
+import SideBar from './sidebar';
+import Rooms from './rooms';
 
 const useStyles = makeStyles((theme) => {
   return {};
@@ -31,20 +31,9 @@ const SearchPage = ({
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const applyFilters = () => {
-    const updatedRooms = rooms;
-    //Price Filter
-    const minPrice = selectedPrice[0];
-    const maxPrice = selectedPrice[1];
-
-    updatedRooms.filter(
-      (item) => item.price >= minPrice && item.price <= maxPrice
-    );
-    setRooms(updatedRooms);
-  };
-  useEffect(() => {
-    applyFilters();
-  }, [selectedPrice]);
+  const updatedRooms = rooms.filter((item) => {
+    return item.price >= selectedPrice[0] && item.price <= selectedPrice[1];
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -76,14 +65,21 @@ const SearchPage = ({
               infantsCount={infantsCount}
               selectedPrice={selectedPrice}
               handleSliderChange={handleSliderChange}
-              applyFilters={applyFilters}
+              // applyFilters={applyFilters}
             />
             <Rooms
-              rooms={rooms}
+              updatedRooms={updatedRooms}
               isLoading={isLoading}
               selectedPrice={selectedPrice}
               handleSliderChange={handleSliderChange}
-              applyFilters={applyFilters}
+              adultsCount={adultsCount}
+              setAdultsCount={setAdultsCount}
+              setKidsCount={setKidsCount}
+              setInfantsCount={setInfantsCount}
+              kidsCount={kidsCount}
+              infantsCount={infantsCount}
+
+              // applyFilters={applyFilters}
             />
           </Box>
         </Container>

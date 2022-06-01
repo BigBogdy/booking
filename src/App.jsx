@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Main from './components/main/Main';
+import Main from './components/main';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SearchPage from './components/searchpage/SearchPage';
-import RoomDetails from './components/room-details/RoomDetails';
+import SearchPage from './components/searchpage';
+import RoomDetails from './components/room-details';
 
 function App() {
   // const [dateRange, setDateRange] = useState([null, null]);

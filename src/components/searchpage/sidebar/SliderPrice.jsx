@@ -1,15 +1,31 @@
 import { Box, Input, Slider, Tooltip, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => {
   return {
+    content: {
+      marginBottom: 29,
+      [theme.breakpoints.down('md')]: {
+        margin: '15px 0px',
+      },
+    },
+    slider: {
+      width: 266,
+      [theme.breakpoints.down('md')]: {
+        width: 210,
+        marginLeft: 13,
+      },
+    },
     textBold: {
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
       textTransform: 'uppercase',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
+        marginLeft: 10,
+      },
     },
     textRegular: {
       color: 'rgba(31, 32, 65, 0.5)',
@@ -17,6 +33,9 @@ const useStyles = makeStyles((theme) => {
       fontSize: 12,
       fontWeight: 400,
       textTransform: 'uppercase',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
+      },
     },
   };
 });
@@ -52,12 +71,12 @@ const RangePrice = withStyles({
   },
 })(Slider);
 
-const SliderPrice = ({ selectedPrice, handleSliderChange, applyFilters }) => {
+const SliderPrice = ({ selectedPrice, handleSliderChange }) => {
   // console.log(selectedPrice);
   const styles = useStyles();
   return (
     <>
-      <Box style={{ marginBottom: 29 }}>
+      <Box className={styles.content}>
         <Box style={{ display: 'flex' }}>
           <Typography className={styles.textBold} style={{ marginRight: 42 }}>
             Price range
@@ -66,14 +85,14 @@ const SliderPrice = ({ selectedPrice, handleSliderChange, applyFilters }) => {
             {selectedPrice[0]} $ - {selectedPrice[1]} $
           </Typography>
         </Box>
-        <Box width={266}>
+        <Box className={styles.slider}>
           <RangePrice
             onChange={handleSliderChange}
             value={selectedPrice}
             min={0}
             max={200}
           />
-          {/* <button onClick={applyFilters}>confirm</button> */}
+
           <Typography className={styles.textRegular}>
             Cost per night in the room
           </Typography>

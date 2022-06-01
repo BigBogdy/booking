@@ -14,28 +14,51 @@ const conveniencesList = [
 
 const useStyles = makeStyles((theme) => {
   return {
-    list: {
-      margin: '0px 0px 22px 15px',
+    content: {
+      marginBottom: 34,
+      [theme.breakpoints.down('md')]: {
+        marginLeft: 10,
+        margin: '15px 0px 15px 0px ',
+      },
     },
-    label: {
+    list: {
+      margin: '13px 0px 22px 15px',
+
+      [theme.breakpoints.down('md')]: {
+        margin: '10px 0px 12px 15px',
+      },
+    },
+    btnList: {
+      display: 'flex',
+      margin: '5.56px 7px 7px 0px',
+      width: 92,
+      height: 30,
+      [theme.breakpoints.down('md')]: {
+        height: 20,
+      },
+    },
+    textConv: {
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
       height: 15,
       textTransform: 'uppercase',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
+      },
     },
     select: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
-
       borderRadius: '4px',
       height: 46,
       padding: '0px 0px 0px 15px',
       width: 249,
-      [theme.breakpoints.down('xs')]: {
-        width: 310,
+      [theme.breakpoints.down('md')]: {
+        width: 200,
+        height: 35,
       },
     },
-    cardGuests: {
+    cardConv: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
       borderRadius: '0px 0px 4px 4px',
       boxShadow: '0px 10px 20px rgba(31, 32, 65, 0.05)',
@@ -44,8 +67,10 @@ const useStyles = makeStyles((theme) => {
       position: 'absolute',
       width: 264,
       zIndex: 3,
-      [theme.breakpoints.down('xs')]: {
-        width: 330,
+      [theme.breakpoints.down('md')]: {
+        width: 215,
+        margin: '35px 0px 0px 0px',
+        height: 115,
       },
     },
     btn: {
@@ -60,6 +85,9 @@ const useStyles = makeStyles((theme) => {
       userSelect: 'none',
       '&:hover': {
         color: 'rgba(31, 32, 65, 0.8)',
+      },
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
       },
     },
     countBtn: {
@@ -80,6 +108,10 @@ const useStyles = makeStyles((theme) => {
       justifyContent: 'center',
       userSelect: 'none',
       width: 30,
+      [theme.breakpoints.down('md')]: {
+        width: 20,
+        height: 20,
+      },
     },
     countBtnDisabled: {
       alignItems: 'center',
@@ -92,9 +124,13 @@ const useStyles = makeStyles((theme) => {
       justifyContent: 'center',
       userSelect: 'none',
       width: 30,
+      [theme.breakpoints.down('md')]: {
+        width: 20,
+        height: 20,
+      },
     },
     countValue: {
-      height: 30,
+      height: 20,
       width: 15,
       display: 'flex',
       justifyContent: 'center',
@@ -110,6 +146,9 @@ const useStyles = makeStyles((theme) => {
       fontSize: 12,
       fontWeight: 700,
       textTransform: 'uppercase',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
+      },
     },
   };
 });
@@ -169,7 +208,7 @@ const SelectorConveniencesSideBar = () => {
 
   return (
     <div>
-      <Box style={{ marginBottom: 15.56 }}>
+      <Box className={styles.content}>
         <Typography className={styles.textBold} style={{ marginBottom: 4 }}>
           Conveniences of rooms
         </Typography>
@@ -177,7 +216,6 @@ const SelectorConveniencesSideBar = () => {
           style={{
             justifyContent: 'start',
             display: 'flex',
-            marginBottom: 33.44,
           }}
         >
           <Box
@@ -202,10 +240,6 @@ const SelectorConveniencesSideBar = () => {
               {bedrooms()}
               {beds()}
               {bathrooms()}
-              {/* {bedroomsCount > 0 ? bedroomsCount + ' bedrooms, ' : null}
-              {bedsCount > 0 ? bedsCount + ' beds, ' : null}
-              {bathroomsCount > 0 ? bathroomsCount + ' bathrooms, ' : null} */}
-              {/* {numberOfConv === 0 ? 'csdcdscd' : null} */}
             </Typography>
 
             <IconButton onClick={handleClick} style={{ width: 40, height: 40 }}>
@@ -213,12 +247,12 @@ const SelectorConveniencesSideBar = () => {
             </IconButton>
           </Box>
           {!open ? (
-            <Card className={styles.cardGuests}>
+            <Card className={styles.cardConv}>
               <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Box style={{ marginTop: 13 }}>
+                <Box>
                   {conveniencesList.map((item) => (
                     <Typography
-                      className={classNames(styles.list, styles.label)}
+                      className={classNames(styles.list, styles.textConv)}
                       key={item.id}
                     >
                       {item.name}
@@ -226,14 +260,7 @@ const SelectorConveniencesSideBar = () => {
                   ))}
                 </Box>
                 <Box>
-                  <Box
-                    style={{
-                      display: 'flex',
-                      margin: '5.56px 7px 7px 0px',
-                      width: 92,
-                      height: 30,
-                    }}
-                  >
+                  <Box className={styles.btnList}>
                     <div
                       className={
                         bedroomsCount !== 0
@@ -256,14 +283,7 @@ const SelectorConveniencesSideBar = () => {
                       +
                     </div>
                   </Box>
-                  <Box
-                    style={{
-                      display: 'flex',
-                      margin: '5.56px 7px 7px 0px',
-                      width: 92,
-                      height: 30,
-                    }}
-                  >
+                  <Box className={styles.btnList}>
                     <div
                       className={
                         bedsCount !== 0
@@ -284,14 +304,7 @@ const SelectorConveniencesSideBar = () => {
                       +
                     </div>
                   </Box>
-                  <Box
-                    style={{
-                      display: 'flex',
-                      margin: '5.56px 7px 7px 0px',
-                      width: 92,
-                      height: 30,
-                    }}
-                  >
+                  <Box className={styles.btnList}>
                     <div
                       className={
                         bathroomsCount !== 0

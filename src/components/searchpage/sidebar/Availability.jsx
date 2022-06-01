@@ -18,18 +18,24 @@ const availabilityLinks = [
 
 const useStyles = makeStyles((theme) => {
   return {
+    content: {
+      marginLeft: 26,
+      marginBottom: 21,
+      [theme.breakpoints.down('md')]: {
+        margin: '15px 0px 5px 5px',
+      },
+    },
     textBold: {
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
+      marginBottom: 16,
       textTransform: 'uppercase',
-    },
-    textRegular: {
-      color: 'rgba(31, 32, 65, 0.5)',
-      fontFamily: 'Montserrat',
-      fontSize: 12,
-      fontWeight: 400,
-      textTransform: 'uppercase',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
+        marginLeft: 5,
+        marginBottom: 10,
+      },
     },
   };
 });
@@ -39,10 +45,8 @@ const Availability = () => {
 
   return (
     <>
-      <Box style={{ marginLeft: 26, marginBottom: 21 }}>
-        <Typography style={{ marginBottom: 16 }} className={styles.textBold}>
-          Availability
-        </Typography>
+      <Box className={styles.content}>
+        <Typography className={styles.textBold}>Availability</Typography>
         <Box>
           {availabilityLinks.map((obj) => (
             <AvailabilityItem title={obj.title} text={obj.text} key={obj.id} />

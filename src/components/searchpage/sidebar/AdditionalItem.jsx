@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Checkbox, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import '../../../../index.scss';
+import '../../../index.scss';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -21,13 +21,16 @@ const useStyles = makeStyles((theme) => {
     container: {
       marginTop: 30,
     },
-    checkboxn: {
-      backgroundColor: '#FFF',
-      border: '#fefefe',
+    checkbox: {
+      display: 'flex',
+      margin: '17px 0px 10px -5px',
+      [theme.breakpoints.down('md')]: {
+        margin: '0px 0px 10px 0px',
+      },
     },
   };
 });
-const OptionalItem = (props) => {
+const AdditionalItem = (props) => {
   const [checked, setChecked] = useState(false);
   const styles = useStyles();
 
@@ -36,23 +39,22 @@ const OptionalItem = (props) => {
   };
   return (
     <>
-      <Box style={{ display: 'flex', marginBottom: 10 }}>
-        <Box style={{ marginRight: 10, display: 'flex', alignItems: 'center' }}>
-          <input
-            className="check"
-            type="checkbox"
-            checked={checked}
-            onChange={handleChange}
-          />
-        </Box>
+      <Box className={styles.checkbox}>
+        <input
+          className="check"
+          type="checkbox"
+          checked={checked}
+          onChange={handleChange}
+        />
+
         <Typography
           className={styles.textRegular}
           style={{ display: 'flex', alignItems: 'center' }}
         >
-          {props.text}
+          {props.name}
         </Typography>
       </Box>
     </>
   );
 };
-export default OptionalItem;
+export default AdditionalItem;
