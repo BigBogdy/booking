@@ -39,20 +39,21 @@ const AdditionalItem = (props) => {
   };
   return (
     <>
-      <Box className={styles.checkbox}>
-        <input
-          className="check"
-          type="checkbox"
-          checked={checked}
-          onChange={handleChange}
-        />
-
-        <Typography
-          className={styles.textRegular}
-          style={{ display: 'flex', alignItems: 'center' }}
-        >
-          {props.name}
-        </Typography>
+      <Box>
+        <label className={styles.checkbox} style={{ userSelect: 'none' }}>
+          <input
+            className="check"
+            type="checkbox"
+            checked={checked}
+            onChange={handleChange}
+          />
+          <Typography
+            className={styles.textRegular}
+            style={{ display: 'flex', alignItems: 'center' }}
+          >
+            {props.name}
+          </Typography>
+        </label>
       </Box>
     </>
   );

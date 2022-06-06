@@ -48,26 +48,24 @@ const AvailabilityItem = (props) => {
   };
   return (
     <>
-      <Box style={{ display: 'flex', marginBottom: 10 }}>
-        <Box className={styles.checkbox}>
+      <Box>
+        <label style={{ display: 'flex', marginBottom: 10, marginLeft: -5 }}>
           <input
             className="check"
             type="checkbox"
             checked={checked}
             onChange={handleChange}
           />
-        </Box>
-        <Box>
-          <Typography
-            className={styles.textBold}
-            style={{ display: 'flex', alignItems: 'center' }}
-          >
-            {props.title}
-          </Typography>
-          <Typography style={{ width: 203 }} className={styles.textRegular}>
-            {props.text}
-          </Typography>
-        </Box>
+          <Box style={{ marginLeft: 5, userSelect: 'none', width: 203 }}>
+            <Typography
+              className={styles.textBold}
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
+              {props.title}
+            </Typography>
+            <Typography className={styles.textRegular}>{props.text}</Typography>
+          </Box>
+        </label>
       </Box>
     </>
   );

@@ -7,15 +7,15 @@ import { Box, Card, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const guestList = [
-  { id: 1, name: 'Adults' },
-  { id: 2, name: 'Kids' },
-  { id: 3, name: 'Infants' },
+  { id: 1, name: 'Adults', text: 'Ages 13 or above' },
+  { id: 2, name: 'Kids', text: 'Ages 2–12' },
+  { id: 3, name: 'Infants', text: 'Under 2' },
 ];
 
 const useStyles = makeStyles((theme) => {
   return {
-    list: {
-      margin: '0px 0px 22px 15px',
+    textList: {
+      margin: '0px 0px 5px 15px',
     },
     label: {
       fontFamily: 'Montserrat',
@@ -23,6 +23,18 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 700,
       height: 15,
       textTransform: 'uppercase',
+    },
+    underLabel: {
+      fontFamily: 'Montserrat',
+      fontSize: 10,
+      height: 15,
+      textTransform: 'uppercase',
+    },
+    btnList: {
+      display: 'flex',
+      margin: '10px 7px 0px 0px',
+      width: 92,
+      height: 30,
     },
     select: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
@@ -182,23 +194,22 @@ const SelectorGuestsSideBar = ({
               <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Box style={{ marginTop: 13 }}>
                   {guestList.map((item) => (
-                    <Typography
-                      className={classNames(styles.list, styles.label)}
-                      key={item.id}
-                    >
-                      {item.name}
-                    </Typography>
+                    <Box className={styles.textList} key={item.id}>
+                      <Typography
+                        component={'span'}
+                        variant={'body2'}
+                        className={styles.label}
+                      >
+                        {item.name}
+                        <Typography className={styles.underLabel}>
+                          {item.text}
+                        </Typography>
+                      </Typography>
+                    </Box>
                   ))}
                 </Box>
                 <Box>
-                  <Box
-                    style={{
-                      display: 'flex',
-                      margin: '5.56px 7px 7px 0px',
-                      width: 92,
-                      height: 30,
-                    }}
-                  >
+                  <Box className={styles.btnList}>
                     <div
                       className={
                         adultsCount !== 0
@@ -221,14 +232,7 @@ const SelectorGuestsSideBar = ({
                       +
                     </div>
                   </Box>
-                  <Box
-                    style={{
-                      display: 'flex',
-                      margin: '5.56px 7px 7px 0px',
-                      width: 92,
-                      height: 30,
-                    }}
-                  >
+                  <Box className={styles.btnList}>
                     <div
                       className={
                         kidsCount !== 0
@@ -249,14 +253,7 @@ const SelectorGuestsSideBar = ({
                       +
                     </div>
                   </Box>
-                  <Box
-                    style={{
-                      display: 'flex',
-                      margin: '5.56px 7px 7px 0px',
-                      width: 92,
-                      height: 30,
-                    }}
-                  >
+                  <Box className={styles.btnList}>
                     <div
                       className={
                         infantsCount !== 0

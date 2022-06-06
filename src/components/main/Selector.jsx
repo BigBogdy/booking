@@ -7,15 +7,21 @@ import { Box, Card, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const guestList = [
-  { id: 1, name: 'Adults' },
-  { id: 2, name: 'Kids' },
-  { id: 3, name: 'Infants' },
+  { id: 1, name: 'Adults', text: 'Ages 13 or above' },
+  { id: 2, name: 'Kids', text: 'Ages 2–12' },
+  { id: 3, name: 'Infants', text: 'Under 2' },
 ];
 
 const useStyles = makeStyles((theme) => {
   return {
-    list: {
-      margin: '0px 0px 22px 15px',
+    textList: {
+      margin: '0px 0px 5px 15px',
+    },
+    btnList: {
+      display: 'flex',
+      margin: '10px 7px 0px 0px',
+      width: 92,
+      height: 30,
     },
     label: {
       fontFamily: 'Montserrat',
@@ -24,13 +30,19 @@ const useStyles = makeStyles((theme) => {
       height: 15,
       textTransform: 'uppercase',
     },
+    underLabel: {
+      fontFamily: 'Montserrat',
+      fontSize: 10,
+      height: 15,
+      textTransform: 'uppercase',
+    },
     select: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
 
       borderRadius: '4px',
-      height: 44,
+      height: 42,
       padding: '0px 0px 0px 15px',
-      width: 340,
+      width: 303,
       [theme.breakpoints.down('xs')]: {
         width: 310,
       },
@@ -40,9 +52,9 @@ const useStyles = makeStyles((theme) => {
       borderRadius: '0px 0px 4px 4px',
       boxShadow: '0px 10px 20px rgba(31, 32, 65, 0.05)',
       height: 159,
-      margin: '43px 0px 0px 0px',
+      margin: '42px 0px 0px 0px',
       position: 'absolute',
-      width: 355,
+      width: 318,
       zIndex: 3,
       [theme.breakpoints.down('xs')]: {
         width: 330,
@@ -143,7 +155,7 @@ const Selector = ({
   return (
     <div>
       <Typography
-        style={{ marginLeft: 10, marginBottom: 5 }}
+        style={{ marginLeft: 31, marginBottom: 5 }}
         className={styles.label}
       >
         Guests
@@ -152,7 +164,6 @@ const Selector = ({
         style={{
           justifyContent: 'center',
           display: 'flex',
-          marginBottom: 33.44,
         }}
       >
         <Box
@@ -183,23 +194,22 @@ const Selector = ({
             <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Box style={{ marginTop: 13 }}>
                 {guestList.map((item) => (
-                  <Typography
-                    className={classNames(styles.list, styles.label)}
-                    key={item.id}
-                  >
-                    {item.name}
-                  </Typography>
+                  <Box className={styles.textList} key={item.id}>
+                    <Typography
+                      component={'span'}
+                      variant={'body2'}
+                      className={styles.label}
+                    >
+                      {item.name}
+                      <Typography className={styles.underLabel}>
+                        {item.text}
+                      </Typography>
+                    </Typography>
+                  </Box>
                 ))}
               </Box>
               <Box>
-                <Box
-                  style={{
-                    display: 'flex',
-                    margin: '5.56px 7px 7px 0px',
-                    width: 92,
-                    height: 30,
-                  }}
-                >
+                <Box className={styles.btnList}>
                   <div
                     className={
                       adultsCount !== 0
@@ -222,14 +232,7 @@ const Selector = ({
                     +
                   </div>
                 </Box>
-                <Box
-                  style={{
-                    display: 'flex',
-                    margin: '5.56px 7px 7px 0px',
-                    width: 92,
-                    height: 30,
-                  }}
-                >
+                <Box className={styles.btnList}>
                   <div
                     className={
                       kidsCount !== 0
@@ -250,14 +253,7 @@ const Selector = ({
                     +
                   </div>
                 </Box>
-                <Box
-                  style={{
-                    display: 'flex',
-                    margin: '5.56px 7px 7px 0px',
-                    width: 92,
-                    height: 30,
-                  }}
-                >
+                <Box className={styles.btnList}>
                   <div
                     className={
                       infantsCount !== 0

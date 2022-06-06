@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => {
         display: 'flex',
         flexWrap: 'wrap',
       },
+      [theme.breakpoints.down('md')]: {
+        marginTop: 220,
+      },
       [theme.breakpoints.up('lg')]: {
         display: 'flex',
         justifyContent: 'center',
@@ -74,8 +77,14 @@ const useStyles = makeStyles((theme) => {
       },
     },
     sloganText: {
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         textAlign: 'center',
+        fontSize: 16,
+      },
+      [theme.breakpoints.down('xs')]: {
+        textAlign: 'center',
+        fontSize: 12,
+        marginTop: -10,
       },
     },
     logos: {

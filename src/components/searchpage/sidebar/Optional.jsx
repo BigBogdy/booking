@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => {
     content: {
       marginBottom: 30,
       [theme.breakpoints.down('md')]: {
-        margin: '10px 0px 5px 5px',
+        margin: '10px 0px 5px 10px',
       },
     },
 

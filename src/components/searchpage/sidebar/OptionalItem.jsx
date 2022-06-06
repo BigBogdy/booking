@@ -38,21 +38,25 @@ const OptionalItem = (props) => {
   };
   return (
     <>
-      <Box style={{ display: 'flex', marginBottom: 10 }}>
-        <Box className={styles.checkbox}>
-          <input
-            className="check"
-            type="checkbox"
-            checked={checked}
-            onChange={handleChange}
-          />
-        </Box>
-        <Typography
-          className={styles.textRegular}
-          style={{ display: 'flex', alignItems: 'center' }}
+      <Box>
+        <label
+          style={{ display: 'flex', marginBottom: 10, userSelect: 'none' }}
         >
-          {props.text}
-        </Typography>
+          <Box className={styles.checkbox}>
+            <input
+              className="check"
+              type="checkbox"
+              checked={checked}
+              onChange={handleChange}
+            />
+          </Box>
+          <Typography
+            className={styles.textRegular}
+            style={{ display: 'flex', alignItems: 'center' }}
+          >
+            {props.text}
+          </Typography>
+        </label>
       </Box>
     </>
   );

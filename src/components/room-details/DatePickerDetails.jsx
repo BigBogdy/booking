@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const DatesPicker = ({ startDate, endDate, setStart, setEnd }) => {
+const DatePickerDetails = ({ startDate, endDate, setStart, setEnd }) => {
   const styles = useStyles();
   return (
     <>
@@ -89,4 +89,4 @@ const DatesPicker = ({ startDate, endDate, setStart, setEnd }) => {
     </>
   );
 };
-export default DatesPicker;
+export default DatePickerDetails;

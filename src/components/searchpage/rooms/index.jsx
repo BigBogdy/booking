@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => {
       marginTop: 30,
       [theme.breakpoints.down('md')]: {
         marginTop: 20,
+        margin: '0px auto',
       },
       [theme.breakpoints.down('sm')]: {
         marginTop: 15,
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => {
       fontSize: 24,
       fontWeight: 700,
       marginBottom: 15,
+
       [theme.breakpoints.down('md')]: {
         fontSize: 20,
         display: 'flex',
@@ -109,6 +111,7 @@ const Rooms = ({
               width: 100,
               margin: '0 auto',
               display: 'flex',
+
               cursor: 'pointer',
             }}
           >
@@ -160,6 +163,7 @@ const Rooms = ({
             }}
           >
             {isLoading && <Skeleton cards={12} />}
+
             {updatedRooms.map((item) => (
               <Grid key={item.id} item>
                 <Link

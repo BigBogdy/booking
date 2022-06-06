@@ -17,8 +17,7 @@ const useStyles = makeStyles((theme) => {
     content: {
       marginBottom: 34,
       [theme.breakpoints.down('md')]: {
-        marginLeft: 10,
-        margin: '15px 0px 15px 0px ',
+        margin: '15px 0px 15px 10px ',
       },
     },
     list: {
@@ -43,6 +42,19 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 700,
       height: 15,
       textTransform: 'uppercase',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 10,
+      },
+    },
+    displayText: {
+      color: 'rgba(31, 32, 65, 0.75)',
+      fontFamily: 'Montserrat',
+      fontSize: 14,
+      marginRight: 'auto',
+      userSelect: 'none',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
       [theme.breakpoints.down('md')]: {
         fontSize: 10,
       },
@@ -223,20 +235,7 @@ const SelectorConveniencesSideBar = () => {
             className={styles.select}
             onClick={handleClick}
           >
-            <Typography
-              style={{
-                color: 'rgba(31, 32, 65, 0.75)',
-                fontFamily: 'Montserrat',
-                fontSize: 14,
-                marginRight: 'auto',
-                userSelect: 'none',
-
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-              onClick={handleClick}
-            >
+            <Typography className={styles.displayText} onClick={handleClick}>
               {bedrooms()}
               {beds()}
               {bathrooms()}

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => {
       marginLeft: 26,
       marginBottom: 21,
       [theme.breakpoints.down('md')]: {
-        margin: '15px 0px 5px 5px',
+        margin: '15px 0px 5px 10px',
       },
     },
     textBold: {

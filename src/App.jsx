@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Footer from './common/Footer';
+import Header from './common/Header';
 import Main from './components/main';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SearchPage from './components/searchpage';
