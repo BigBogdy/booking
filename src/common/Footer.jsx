@@ -286,7 +286,9 @@ const Footer = () => {
               </List>
             </Box>
           </Box>
-          <Divider style={{ width: '100%', marginTop: 26 }} />
+        </Container>
+        <Divider style={{ width: '100%', marginTop: 101 }} />
+        <Container>
           <Box
             style={{
               height: 70,

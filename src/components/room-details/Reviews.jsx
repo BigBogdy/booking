@@ -5,7 +5,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => {
   return {
-    content: { width: 712, height: 306 },
+    content: { width: 712, height: 306, marginBottom: 30 },
     label: {
       color: '#1F2041',
       fontFamily: 'Quicksand',

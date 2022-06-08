@@ -127,13 +127,11 @@ const Selector = ({
   infantsCount,
   setKidsCount,
   setInfantsCount,
+  numberOfGuests,
 }) => {
   const styles = useStyles();
 
   const [open, setOpen] = useState(true);
-  // const [adultsCount, setAdultsCount] = useState(0);
-  // const [kidsCount, setKidsCount] = useState(0);
-  // const [infantsCount, setInfantsCount] = useState(0);
 
   const handleClick = () => {
     setOpen(!open);
@@ -149,8 +147,6 @@ const Selector = ({
   //   setKidsCount(0);
   //   setInfantsCount(0);
   // };
-  const arr = [adultsCount, kidsCount, infantsCount];
-  const numberOfGuests = arr.reduce((a, b) => a + b, 0);
 
   return (
     <div>

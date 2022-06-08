@@ -1,10 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Card, Typography } from '@material-ui/core';
+import { Box, Button, Card, Snackbar, Typography } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 import DatesPicker from './DatePicker';
 import Selector from './Selector';
 import { useHistory } from 'react-router-dom';
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -91,19 +92,32 @@ const Main = ({
   setStart,
   endDate,
   setEnd,
-
+  setEndDate,
+  setStartDate,
   adultsCount,
   setAdultsCount,
   kidsCount,
   infantsCount,
   setKidsCount,
   setInfantsCount,
+  numberOfGuests,
 }) => {
-  const history = useHistory();
   const styles = useStyles();
+  const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
   return (
     <>
-      <Box className={styles.img}>
+      <Box className={styles.img} style={{ marginBottom: 140 }}>
         <Container maxWidth="xl" disableGutters>
           <Card className={styles.card}>
             <Typography variant="h1" className={styles.cardTitle}>
@@ -122,18 +136,54 @@ const Main = ({
               setInfantsCount={setInfantsCount}
               kidsCount={kidsCount}
               infantsCount={infantsCount}
+              numberOfGuests={numberOfGuests}
             />
-            <Box style={{ display: 'flex', justifyContent: 'center' }}>
-              <Button
-                onClick={() => {
-                  history.push('/search');
+            {!numberOfGuests ? (
+              <>
+                <Box
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: 30,
+                  }}
+                >
+                  <Button onClick={handleOpen} className={styles.btn}>
+                    Find a room
+                  </Button>
+                </Box>
+                <Snackbar
+                  open={open}
+                  autoHideDuration={3000}
+                  onClose={handleClose}
+                >
+                  <Alert
+                    onClose={handleClose}
+                    sx={{ width: '100%' }}
+                    style={{ marginTop: 5 }}
+                    severity="error"
+                  >
+                    Enter number of guests
+                  </Alert>
+                </Snackbar>
+              </>
+            ) : (
+              <Box
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  marginTop: 30,
                 }}
-                className={styles.btn}
-                style={{}}
               >
-                Find a room
-              </Button>
-            </Box>
+                <Button
+                  onClick={() => {
+                    history.push('/search');
+                  }}
+                  className={styles.btn}
+                >
+                  Find a room
+                </Button>
+              </Box>
+            )}
           </Card>
         </Container>
         {/* <div className={styles.slogan}>

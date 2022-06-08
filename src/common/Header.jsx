@@ -149,12 +149,22 @@ const Header = () => {
                 </Link>
               ))}
             </Hidden>
-            <Button className={classNames(styles.btn, styles.btn_1)}>
-              Login
-            </Button>
-            <Button className={classNames(styles.btn, styles.btn_2)}>
-              Register
-            </Button>
+            <Link
+              style={{ textDecoration: 'none', color: '#BC9CFF' }}
+              to="/login"
+            >
+              <Button className={classNames(styles.btn, styles.btn_1)}>
+                Login
+              </Button>
+            </Link>
+            <Link
+              to="/register"
+              style={{ textDecoration: 'none', color: '#FFF' }}
+            >
+              <Button className={classNames(styles.btn, styles.btn_2)}>
+                Register
+              </Button>
+            </Link>
             <Hidden lgUp>
               <IconButton
                 onClick={handleDrawerOpen}

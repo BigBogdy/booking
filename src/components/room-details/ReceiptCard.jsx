@@ -4,7 +4,6 @@ import { Box, Button, Card, Typography } from '@material-ui/core';
 import DatesPicker from '../main/DatePicker';
 import Selector from '../main/Selector';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import DatePickerDetails from './DatePickerDetails';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -52,8 +51,26 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const ReceiptCard = () => {
+const ReceiptCard = ({
+  startDate,
+  endDate,
+  setStart,
+  setEnd,
+  adultsCount,
+  setAdultsCount,
+  setKidsCount,
+  setInfantsCount,
+  kidsCount,
+  infantsCount,
+  roomItem,
+  numberOfGuests,
+}) => {
   const styles = useStyles();
+
+  let diff = endDate.getTime() - startDate.getTime();
+  const msInDay = 1000 * 3600 * 24;
+  let result = diff / msInDay;
+
   return (
     <>
       <Card className={styles.card}>
@@ -64,7 +81,7 @@ const ReceiptCard = () => {
               marginRight: 8,
             }}
           >
-            № 888
+            № {roomItem.number}
           </Typography>
           <Typography
             style={{
@@ -76,33 +93,54 @@ const ReceiptCard = () => {
               fontSize: 12,
             }}
           >
-            Luxury
+            {roomItem.type}
           </Typography>
 
           <Typography style={{ marginTop: 5.5 }} className={styles.textBold}>
-            153$ per day
+            {roomItem.price}$ per day
           </Typography>
         </Box>
 
-        <DatePickerDetails />
+        <DatesPicker
+          startDate={startDate}
+          endDate={endDate}
+          setEnd={setEnd}
+          setStart={setStart}
+        />
 
-        <Selector />
+        <Selector
+          adultsCount={adultsCount}
+          setAdultsCount={setAdultsCount}
+          setKidsCount={setKidsCount}
+          setInfantsCount={setInfantsCount}
+          kidsCount={kidsCount}
+          infantsCount={infantsCount}
+          numberOfGuests={numberOfGuests}
+        />
 
         <Box>
-          <Box style={{ display: 'flex', margin: '20px 0px 10px 31px' }}>
-            <Typography
-              style={{ marginRight: 175 }}
-              className={styles.textRegular}
-            >
-              153$ х 4 days
+          <Box
+            style={{
+              display: 'flex',
+              margin: '20px 0px 10px 31px',
+              justifyContent: 'space-between',
+              width: 295,
+            }}
+          >
+            <Typography className={styles.textRegular}>
+              {roomItem.price}$ х {Math.round(result)} days
             </Typography>
-            <Typography className={styles.textRegular}>612$</Typography>
+            <Typography className={styles.textRegular}>
+              {roomItem.price * Math.round(result)}$
+            </Typography>
           </Box>
           <Box
             style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'space-between',
               margin: '0px 0px 10px 31px',
+              width: 295,
             }}
           >
             <Typography
@@ -114,7 +152,7 @@ const ReceiptCard = () => {
             <div>
               <InfoOutlinedIcon
                 color="secondary"
-                style={{ width: 30, height: 30, marginRight: 60 }}
+                style={{ width: 25, height: 25, marginRight: 60 }}
               />
             </div>
             <Typography className={styles.textRegular}>0$</Typography>
@@ -123,21 +161,25 @@ const ReceiptCard = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'space-between',
               margin: '0px 0px 30px 31px',
+              width: 295,
             }}
           >
-            <Typography
-              style={{ marginRight: 5 }}
-              className={styles.textRegular}
-            >
-              Fee for additional services{' '}
-            </Typography>
-            <div>
-              <InfoOutlinedIcon
-                style={{ width: 30, height: 30, marginRight: 60 }}
-                color="secondary"
-              />
-            </div>
+            <Box style={{ display: 'flex', alignItems: 'center' }}>
+              <Typography
+                style={{ marginRight: 5 }}
+                className={styles.textRegular}
+              >
+                Fee for additional services{' '}
+              </Typography>
+              <div>
+                <InfoOutlinedIcon
+                  style={{ width: 25, height: 25, marginRight: 60 }}
+                  color="secondary"
+                />
+              </div>
+            </Box>
             <Typography className={styles.textRegular}>5$</Typography>
           </Box>
           <Box style={{ display: 'flex', margin: '0px 0px 25px 31px' }}>
@@ -150,7 +192,9 @@ const ReceiptCard = () => {
                 height: 1,
               }}
             ></Typography>
-            <Typography className={styles.label}>587$</Typography>
+            <Typography className={styles.label}>
+              {roomItem.price * Math.round(result) - 30 + 5}$
+            </Typography>
           </Box>
           <Button className={styles.btn}>book a room</Button>
         </Box>

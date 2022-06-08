@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => {
     btnList: {
       display: 'flex',
       margin: '5.56px 7px 7px 0px',
+      alignItems: 'center',
       width: 92,
       height: 30,
       [theme.breakpoints.down('md')]: {

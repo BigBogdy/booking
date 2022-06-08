@@ -253,5 +253,6 @@ const BlogData = [
     desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
   },
 ];
+
 // console.log(BlogData[0].data[0].value);
 export default BlogData;
