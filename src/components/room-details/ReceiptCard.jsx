@@ -4,6 +4,8 @@ import { Box, Button, Card, Typography } from '@material-ui/core';
 import DatesPicker from '../main/DatePicker';
 import Selector from '../main/Selector';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import { UserAuth } from '../../context/AuthContext';
+import { useHistory, Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -66,6 +68,8 @@ const ReceiptCard = ({
   numberOfGuests,
 }) => {
   const styles = useStyles();
+  const { user } = UserAuth();
+  const history = useHistory();
 
   let diff = endDate.getTime() - startDate.getTime();
   const msInDay = 1000 * 3600 * 24;
@@ -196,7 +200,13 @@ const ReceiptCard = ({
               {roomItem.price * Math.round(result) - 30 + 5}$
             </Typography>
           </Box>
-          <Button className={styles.btn}>book a room</Button>
+          {!user ? (
+            <Link style={{ textDecoration: 'none' }} to="/login">
+              <Button className={styles.btn}>book a room</Button>
+            </Link>
+          ) : (
+            <Button className={styles.btn}>book a room</Button>
+          )}
         </Box>
       </Card>
     </>

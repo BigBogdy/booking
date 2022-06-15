@@ -87,7 +87,6 @@ const RoomDetails = ({
       {item ? (
         <>
           <Container style={{ marginBottom: 70 }}>
-            <Link to="/search">Go Back</Link>
             <Box
               style={{
                 display: 'flex',

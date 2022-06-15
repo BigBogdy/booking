@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => {
         width: 140,
       },
       cursor: 'default',
+      fontSize: 14,
+      fontFamily: 'Montserrat',
+      color: 'rgba(31, 32, 65, 0.75)',
     },
     departureDate: {
       border: '1px solid rgba(31, 32, 65, 0.25)',
@@ -31,6 +34,9 @@ const useStyles = makeStyles((theme) => {
         width: 140,
       },
       cursor: 'default',
+      fontSize: 14,
+      fontFamily: 'Montserrat',
+      color: 'rgba(31, 32, 65, 0.75)',
     },
     label: {
       fontFamily: 'Montserrat',

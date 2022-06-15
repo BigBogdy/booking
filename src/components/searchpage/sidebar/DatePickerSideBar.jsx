@@ -9,16 +9,18 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => {
   return {
     dates: {
-      border: '1px solid rgba(31, 32, 65, 0.25)',
-      borderRadius: 4,
-      height: 40,
-      paddingLeft: 15,
-      width: 104,
       [theme.breakpoints.down('xs')]: {
         width: 140,
       },
-
+      border: '1px solid rgba(31, 32, 65, 0.25)',
+      borderRadius: 4,
+      color: 'rgba(31, 32, 65, 0.75)',
       cursor: 'default',
+      fontFamily: 'Montserrat',
+      fontSize: 14,
+      height: 40,
+      paddingLeft: 15,
+      width: 104,
     },
     textBold: {
       fontFamily: 'Montserrat',

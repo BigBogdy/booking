@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
+import { Link, useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { UserAuth } from '../context/AuthContext';
 import {
   Box,
   Button,
@@ -89,8 +90,8 @@ const useStyles = makeStyles((theme) => {
       background: '#FFFFFF',
       border: 'solid 2px #BC9CFF',
       borderRadius: 22,
-      width: 99,
-      height: 44,
+      width: 88,
+      height: 34,
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
@@ -100,9 +101,33 @@ const useStyles = makeStyles((theme) => {
 
 const Login = () => {
   const styles = useStyles();
+  const history = useHistory();
+  const { signIn } = UserAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorEmail, setEmailError] = useState('');
+  const [errorPassword, setPasswordError] = useState('');
 
+  const handleSubmit = async (err) => {
+    err.preventDefault();
+    setEmailError('');
+    setPasswordError('');
+    try {
+      await signIn(email, password);
+      history.push('/');
+    } catch (err) {
+      switch (err.code) {
+        case 'auth/invalid-email':
+        case 'auth/user-disabled':
+        case 'auth/user-not-found':
+          setEmailError(err.message);
+          break;
+        case 'auth/wrong-password':
+          setPasswordError(err.message);
+          break;
+      }
+    }
+  };
   return (
     <>
       <Box className={styles.img}>
@@ -117,7 +142,7 @@ const Login = () => {
             </Typography>
 
             <Box style={{ margin: '0px 0px 20px 30px' }}>
-              <form noValidate autoComplete="off">
+              <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <TextField
                   inputProps={{
                     style: {
@@ -125,17 +150,25 @@ const Login = () => {
                       height: 14,
                     },
                   }}
-                  style={{ width: 320, marginBottom: 10 }}
+                  style={{ width: 320, marginBottom: 3 }}
                   id="input-email"
                   type="email"
+                  name="email"
                   variant="outlined"
                   color="secondary"
                   placeholder="Email"
-                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </form>
-              <form noValidate autoComplete="off">
+                <Typography
+                  style={{
+                    color: 'crimson',
+                    fontSize: 14,
+                    fontFamily: 'Montserrat',
+                    marginBottom: 5,
+                  }}
+                >
+                  {errorEmail}
+                </Typography>
                 <TextField
                   inputProps={{
                     style: {
@@ -143,34 +176,50 @@ const Login = () => {
                       height: 14,
                     },
                   }}
-                  style={{ width: 320 }}
+                  style={{ width: 320, marginBottom: 3 }}
                   id="new-password"
+                  name="password"
                   type="password"
                   variant="outlined"
                   color="secondary"
                   placeholder="Password"
-                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <Typography
+                  style={{
+                    color: 'crimson',
+                    fontSize: 14,
+                    fontFamily: 'Montserrat',
+                  }}
+                >
+                  {errorPassword}
+                </Typography>
+                <Button
+                  style={{ marginTop: 20 }}
+                  type="submit"
+                  className={styles.btnRegister}
+                >
+                  Login
+                </Button>
               </form>
             </Box>
 
-            <Button
-              style={{ margin: '0px 0px 30px 30px' }}
-              className={styles.btnRegister}
+            <Box
+              style={{
+                display: 'flex',
+                margin: '10px 0px 0px 30px',
+                width: 320,
+                justifyContent: 'space-between',
+              }}
             >
-              Login
-            </Button>
-            <Box style={{ display: 'flex', margin: '0px 0px 0px 30px' }}>
               <Typography
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  marginRight: 30,
                 }}
                 className={styles.textRegular}
               >
-                You don't have an account
+                Don't have an account?
               </Typography>
               <Link style={{ textDecoration: 'none' }} to="/register">
                 <Button className={styles.btnLogin}>Create</Button>
