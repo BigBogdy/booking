@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { BrowserRouter } from 'react-router-dom';
 const theme = createTheme({
   palette: {
     primary: {
@@ -16,9 +15,7 @@ const theme = createTheme({
 });
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <App />
   </ThemeProvider>,
   document.getElementById('root')
 );

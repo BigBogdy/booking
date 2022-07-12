@@ -35,7 +35,8 @@ const SideBar = ({
   setStart,
   endDate,
   setEnd,
-
+  checked,
+  setChecked,
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -72,7 +73,7 @@ const SideBar = ({
             selectedPrice={selectedPrice}
             handleSliderChange={handleSliderChange}
           />
-          <Optional />
+          <Optional setChecked={setChecked} checked={checked} />
           <Availability />
           <SelectorConveniencesSideBar />
           <Additionals />

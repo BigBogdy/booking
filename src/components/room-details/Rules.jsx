@@ -39,7 +39,9 @@ const Rules = () => {
   const styles = useStyles();
   return (
     <>
-      <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Box
+        style={{ display: 'flex', justifyContent: 'space-between', width: 712 }}
+      >
         <Box className={styles.rules}>
           <Typography
             style={{ marginLeft: 20, marginBottom: 20 }}

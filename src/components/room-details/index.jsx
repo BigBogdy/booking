@@ -1,7 +1,7 @@
-import { Box, Container, Divider, Typography } from '@material-ui/core';
+import { Box, Container, Divider } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import BlogData from '../room-details/detailsData';
+import FakeData from '../room-details/detailsData';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Empty from '../../common/Empty';
@@ -73,15 +73,12 @@ const RoomDetails = ({
     if (roomItem) {
       setRoomItem(roomItem);
     }
-    let item = BlogData.find((item) => item.id === Number.parseInt(id));
+    let item = FakeData.find((item) => item.id === Number.parseInt(id));
     if (item) {
       setItem(item);
     }
   }, [rooms, id]);
 
-  useEffect(() => {}, [id]);
-
-  // console.log(rooms.find((item) => item, id === parseInt(id)));
   return (
     <>
       {item ? (
@@ -108,7 +105,7 @@ const RoomDetails = ({
                   <InfoRoom item={item} />
                   <RateRoom item={item} />
                 </Box>
-                <Reviews />
+                <Reviews item={item} />
                 <Rules />
               </Box>
               <ReceiptCard

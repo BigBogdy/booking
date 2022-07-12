@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Box,
   Container,
   Divider,
   IconButton,
   InputAdornment,
-  Link,
   List,
   ListItem,
   Snackbar,
@@ -21,21 +21,21 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import { Alert } from '@material-ui/lab';
 
 const navigationLinks = [
-  { id: 1, name: 'About Us', href: '' },
-  { id: 2, name: 'News', href: '' },
-  { id: 3, name: 'Support', href: '' },
-  { id: 4, name: 'Services', href: '' },
+  { id: 1, name: 'About Us', to: '/about' },
+  { id: 2, name: 'News', to: '/news' },
+  { id: 3, name: 'Support', to: '/support' },
+  { id: 4, name: 'Services', to: '/services' },
 ];
 const aboutUsLinks = [
-  { id: 1, name: 'About Service', href: '' },
-  { id: 2, name: 'Our Team', href: '' },
-  { id: 3, name: 'Vacancies', href: '' },
-  { id: 4, name: 'Investors', href: '' },
+  { id: 1, name: 'About Service', to: '/aboutservice' },
+  { id: 2, name: 'Our Team', to: '/team' },
+  { id: 3, name: 'Vacancies', to: '/vacancies' },
+  { id: 4, name: 'Investors', to: '/investors' },
 ];
 const supportLinks = [
-  { id: 1, name: 'Agreements', href: '' },
-  { id: 2, name: 'Communities', href: '' },
-  { id: 3, name: 'contact us', href: '' },
+  { id: 1, name: 'Agreements', to: '/agreements' },
+  { id: 2, name: 'Communities', to: '/communities' },
+  { id: 3, name: 'Contact us', to: '/contact' },
 ];
 
 const useStyles = makeStyles((theme) => {
@@ -104,6 +104,8 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       fontWeight: 400,
       lineHeight: '17.07px',
+      textDecoration: 'none',
+
       '&:hover': {
         textDecoration: 'underline',
       },
@@ -177,12 +179,7 @@ const Footer = () => {
               <Typography className={styles.labels}>Navigation</Typography>
               {navigationLinks.map((item) => (
                 <ListItem key={item.id} style={{ padding: 0 }}>
-                  <Link
-                    className={styles.links}
-                    variant="button"
-                    underline="none"
-                    href={item.href}
-                  >
+                  <Link className={styles.links} variant="button" to={item.to}>
                     {item.name}
                   </Link>
                 </ListItem>
@@ -192,12 +189,7 @@ const Footer = () => {
               <Typography className={styles.labels}>About Us</Typography>
               {aboutUsLinks.map((item) => (
                 <ListItem key={item.id} style={{ padding: 0 }}>
-                  <Link
-                    className={styles.links}
-                    variant="button"
-                    underline="none"
-                    href={item.href}
-                  >
+                  <Link className={styles.links} variant="button" to={item.to}>
                     {item.name}
                   </Link>
                 </ListItem>
@@ -211,7 +203,7 @@ const Footer = () => {
                     className={styles.links}
                     variant="button"
                     underline="none"
-                    href={item.href}
+                    to={item.to}
                   >
                     {item.name}
                   </Link>

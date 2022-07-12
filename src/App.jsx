@@ -9,10 +9,17 @@ import Register from './auth/Register';
 import Login from './auth/Login';
 import { AuthContextProvider } from './context/AuthContext';
 import Empty from './common/Empty';
+import AboutUs from './components/AboutUs';
+import Services from './components/Services';
+import Documentation from './components/Documentation';
+import Vacancies from './components/Vacancies';
+import News from './components/News';
+import Success from './components/Success';
 
 function App() {
   let datePlus = new Date();
   datePlus.setDate(datePlus.getDate() + 1);
+  const [checked, setChecked] = useState(false);
   const [selectedPrice, setSelectedPriced] = useState([0, 200]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(datePlus);
@@ -37,7 +44,11 @@ function App() {
   };
 
   const updatedRooms = rooms.filter((item) => {
-    return item.price >= selectedPrice[0] && item.price <= selectedPrice[1];
+    return (
+      item.price >= selectedPrice[0] &&
+      item.price <= selectedPrice[1] &&
+      item.smoking === checked
+    );
   });
 
   useEffect(() => {
@@ -62,6 +73,21 @@ function App() {
           <Router>
             <Header />
             <Switch>
+              <Route path="/about">
+                <AboutUs />
+              </Route>
+              <Route path="/services">
+                <Services />
+              </Route>
+              <Route path="/vacancies">
+                <Vacancies />
+              </Route>
+              <Route path="/news">
+                <News />
+              </Route>
+              <Route path="/documentation">
+                <Documentation />
+              </Route>
               <Route exact path="/">
                 <Main
                   startDate={startDate}
@@ -79,6 +105,8 @@ function App() {
               </Route>
               <Route exact path="/search">
                 <SearchPage
+                  checked={checked}
+                  setChecked={setChecked}
                   startDate={startDate}
                   setStart={setStart}
                   endDate={endDate}
@@ -118,7 +146,10 @@ function App() {
               <Route exact path="/register">
                 <Register />
               </Route>
-              <Route path="*">
+              <Route exact path="/success">
+                <Success />
+              </Route>
+              <Route exact path="*">
                 <Empty />
               </Route>
             </Switch>

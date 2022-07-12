@@ -29,8 +29,7 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-const OptionalItem = (props) => {
-  const [checked, setChecked] = useState(false);
+const OptionalItem = ({ text, checked, setChecked }) => {
   const styles = useStyles();
 
   const handleChange = (event) => {
@@ -54,7 +53,7 @@ const OptionalItem = (props) => {
             className={styles.textRegular}
             style={{ display: 'flex', alignItems: 'center' }}
           >
-            {props.text}
+            {text}
           </Typography>
         </label>
       </Box>

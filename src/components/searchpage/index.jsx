@@ -14,7 +14,8 @@ const SearchPage = ({
   setStart,
   endDate,
   setEnd,
-
+  checked,
+  setChecked,
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -47,6 +48,8 @@ const SearchPage = ({
               infantsCount={infantsCount}
               selectedPrice={selectedPrice}
               handleSliderChange={handleSliderChange}
+              checked={checked}
+              setChecked={setChecked}
               // applyFilters={applyFilters}
             />
             <Rooms

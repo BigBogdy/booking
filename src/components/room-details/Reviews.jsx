@@ -5,7 +5,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => {
   return {
-    content: { width: 712, height: 306, marginBottom: 30 },
+    content: { width: 712, marginBottom: 30 },
     label: {
       color: '#1F2041',
       fontFamily: 'Quicksand',
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-const Reviews = () => {
+const Reviews = ({ item }) => {
   const styles = useStyles();
   return (
     <>
@@ -36,109 +36,73 @@ const Reviews = () => {
           style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: 20,
+            marginBottom: 22,
           }}
         >
           <Typography className={styles.label}>Guest reviews</Typography>
           <Typography
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', marginTop: 5, marginRight: 25 }}
             className={styles.textRegular}
           >
-            2 reviews
+            {item.comments?.length} reviews
           </Typography>
         </Box>
-        <Box>
-          <Box style={{ display: 'flex', marginBottom: 22 }}>
+        {item.comments[0] ? (
+          item.comments.map((i) => (
             <Box>
-              <Avatar
-                style={{ width: 48, height: 48, margin: '0px 10px 9px 0px' }}
-                src=""
-                alt=""
-              />
-              <Typography
-                style={{
-                  width: 35.7,
-                  height: 16,
-                  border: '2px solid #BC9CFF',
-                  borderRadius: 10,
-                  marginLeft: 4,
-                  fontSize: 10,
-                  color: '#BC9CFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  fontFamily: 'Montserrat',
-                }}
-              >
-                <FavoriteIcon
-                  style={{ width: 10, height: 10, margin: '0px 4px 2px 5px' }}
-                />
-                12
-              </Typography>
+              <Box style={{ display: 'flex', marginBottom: 22 }}>
+                <Box>
+                  <Avatar
+                    style={{
+                      width: 48,
+                      height: 48,
+                      margin: '0px 10px 9px 0px',
+                    }}
+                    src={i?.avatar}
+                    alt=""
+                  />
+                  <Typography
+                    style={{
+                      width: 35.7,
+                      height: 16,
+                      border: '2px solid #BC9CFF',
+                      borderRadius: 10,
+                      marginLeft: 4,
+                      fontSize: 10,
+                      color: '#BC9CFF',
+                      display: 'flex',
+                      alignItems: 'center',
+                      fontFamily: 'Montserrat',
+                    }}
+                  >
+                    <FavoriteIcon
+                      style={{
+                        width: 10,
+                        height: 10,
+                        margin: '0px 4px 2px 5px',
+                      }}
+                    />
+                    {i?.likes}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography className={styles.textBold}>{i?.name}</Typography>
+                  <Typography
+                    style={{ marginBottom: 10 }}
+                    className={styles.textRegular}
+                  >
+                    {i?.online}
+                  </Typography>
+                  <Typography className={styles.textRegular}>
+                    {i?.comment}
+                  </Typography>
+                </Box>
+              </Box>
             </Box>
-            <Box>
-              <Typography className={styles.textBold}>
-                Marat Bulvaria
-              </Typography>
-              <Typography
-                style={{ marginBottom: 10 }}
-                className={styles.textRegular}
-              >
-                5 days ago
-              </Typography>
-              <Typography className={styles.textRegular}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati
-                cumque iure dolorem nulla dicta ducimus voluptas, cum odit,
-                incidunt laudantium consequatur.
-              </Typography>
-            </Box>
-          </Box>
-          <Box style={{ display: 'flex' }}>
-            <Box>
-              <Avatar
-                style={{ width: 48, height: 48, margin: '0px 10px 9px 0px' }}
-                src=""
-                alt=""
-              />
-              <Typography
-                style={{
-                  width: 35.7,
-                  height: 16,
-                  border: '2px solid #BC9CFF',
-                  borderRadius: 10,
-                  marginLeft: 4,
-                  fontSize: 10,
-                  color: '#BC9CFF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  fontFamily: 'Montserrat',
-                }}
-              >
-                <FavoriteIcon
-                  style={{ width: 10, height: 10, margin: '0px 4px 2px 5px' }}
-                />
-                2
-              </Typography>
-            </Box>
-            <Box>
-              <Typography className={styles.textBold}>
-                Gulchatai Nurov
-              </Typography>
-              <Typography
-                style={{ marginBottom: 10 }}
-                className={styles.textRegular}
-              >
-                yesterday
-              </Typography>
-              <Typography className={styles.textRegular}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati
-                cumque iure dolorem nulla dicta ducimus voluptas, cum odit,
-                incidunt laudantium consequatur.
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
+          ))
+        ) : (
+          <Typography style={{ marginBottom: 188 }}></Typography>
+        )}
       </Box>
     </>
   );

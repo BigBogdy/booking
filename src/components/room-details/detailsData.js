@@ -1,4 +1,4 @@
-const BlogData = [
+const FakeData = [
   {
     id: 1,
 
@@ -18,9 +18,32 @@ const BlogData = [
       { name: 'Fine', value: 65 },
       { name: 'Terrible', value: 0 },
     ],
-
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/1.png',
+        name: 'Marat Bulvaria',
+        likes: 12,
+        online: '5 days ago',
+        comment:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/2.png',
+        name: 'Gulchatai Nurova',
+        likes: 3,
+        online: 'Yesterday',
+        comment:
+          'Lorem ipsum dolor sit qui quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/3.png',
+        name: 'Margot Robbie',
+        likes: 0,
+        online: '3 days ago',
+        comment:
+          'Lorem ipsum dolor sit qui quis obcaecati cu Lorem ipsum dolor sit qui quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 2,
@@ -40,8 +63,16 @@ const BlogData = [
       { name: 'Fine', value: 25 },
       { name: 'Terrible', value: 5 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/8.png',
+        name: 'Cengiz Under',
+        likes: 4,
+        online: 'week ago',
+        comment:
+          ' Lorem ipsum dolor sit amet consectetur forem ipsum dolor sit amet consectetur dorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 3,
@@ -61,8 +92,44 @@ const BlogData = [
       { name: 'Fine', value: 100 },
       { name: 'Terrible', value: 10 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/8.png',
+        name: 'Alex Zinchenko',
+        likes: 15,
+        online: '2 days ago',
+
+        comment:
+          'Lore m ipsum dolor sit amet consectetur, adipisicing elit. Quaerat m ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/4.png',
+        name: 'Taras Stepanenko',
+        likes: 6,
+        online: 'week ago',
+
+        comment:
+          'Lorem ipsum dolor sit amet consect m ipsum dolor sit amet consectetur, adipisicing elit. Quaerat  m ipsum dolor sit amet consectetur, adipisicing elit. Quaerat etur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/2.png',
+        name: 'Andriy Yarmolenko',
+        likes: 7,
+        online: '8 days ago',
+
+        comment:
+          'Lorem ipsum dolor sio dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/7.png',
+        name: 'Artem Milevskiy',
+        likes: 10,
+        online: 'online',
+
+        comment:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 4,
@@ -82,8 +149,17 @@ const BlogData = [
       { name: 'Fine', value: 65 },
       { name: 'Terrible', value: 10 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/4.png',
+        name: 'Taras Bulba',
+        likes: 9,
+        online: '5 days ago',
+
+        comment:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 5,
@@ -104,8 +180,7 @@ const BlogData = [
       { name: 'Fine', value: 65 },
       { name: 'Terrible', value: 5 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: '',
   },
   {
     id: 6,
@@ -125,8 +200,16 @@ const BlogData = [
       { name: 'Fine', value: 60 },
       { name: 'Terrible', value: 20 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/8.png',
+        name: 'Cengiz Under',
+        likes: 4,
+        online: 'week ago',
+        comment:
+          ' Lorem ipsum dolor sit amet consectetur forem ipsum dolor sit amet consectetur dorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 7,
@@ -146,8 +229,26 @@ const BlogData = [
       { name: 'Fine', value: 40 },
       { name: 'Terrible', value: 0 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/7.png',
+        name: 'Nikita Shevchenko',
+        likes: 5,
+        online: '7 days ago',
+
+        comment:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/1.png',
+        name: 'Maxim Malishev',
+        likes: 5,
+        online: 'online',
+
+        comment:
+          'Lati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 8,
@@ -167,8 +268,16 @@ const BlogData = [
       { name: 'Fine', value: 65 },
       { name: 'Terrible', value: 5 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/3.png',
+        name: 'Andriy Shevchenko',
+        likes: 112,
+        online: '5 days ago',
+        comment:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 9,
@@ -188,8 +297,7 @@ const BlogData = [
       { name: 'Fine', value: 60 },
       { name: 'Terrible', value: 15 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: '',
   },
   {
     id: 10,
@@ -204,11 +312,12 @@ const BlogData = [
       'The room with a fireplace',
     ],
     votes: [
-      { name: 'Excellent', value: 1200 },
+      { name: 'Excellent', value: 120 },
       { name: 'Good', value: 70 },
       { name: 'Fine', value: 50 },
       { name: 'Terrible', value: 0 },
     ],
+    comments: '',
   },
   {
     id: 11,
@@ -228,8 +337,16 @@ const BlogData = [
       { name: 'Fine', value: 65 },
       { name: 'Terrible', value: 20 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/10.png',
+        name: 'Ivan Zorro',
+        likes: 52,
+        online: '2 days ago',
+        comment:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
   {
     id: 12,
@@ -249,10 +366,42 @@ const BlogData = [
       { name: 'Fine', value: 30 },
       { name: 'Terrible', value: 10 },
     ],
-    para: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum.',
-    desc: 'Lorem ipsum dolor sit amet consectetur ipiscing elit amet consectetur piscing elit consectetur adipiscing elit sed et eletum. orem ipsum dolor sit amet consectetur adipiscing elit amet consectetur piscing elit amet consectetur adipiscing elit sed et eletum nulla eu placerat felis etiam tincidunt orci lacus id varius dolor fermum sit amet.',
+    comments: [
+      {
+        avatar: '../../img/room-details/comments/9.png',
+        name: 'Leonardo Dicaprio',
+        likes: 3,
+        online: '1 day ago',
+        comment:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/3.png',
+        name: 'Eugen Babzunis',
+        likes: 1,
+        online: '2 days ago',
+        comment:
+          'Lorem  ipsum dolor sit amet consectetur, adipisicing elit  ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/3.png',
+        name: 'Eugen Nazarenko',
+        likes: 12,
+        online: '2 days ago',
+        comment:
+          'Lorem  ipsum dolor sit amet consectetur, adipisicing elit  ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+      {
+        avatar: '../../img/room-details/comments/3.png',
+        name: 'Elena Muratova',
+        likes: 14,
+        online: '31 days ago',
+        comment:
+          'Lorem  ipsum dolor sit amet consectetur, adipisicing elit  ipsum dolor sit amet consectetur, adipisicing elit. Quaerat beatae ad hic iusto dolorum quod. Sequi quis obcaecati cumque iure dolorem nulla dicta ducimus voluptas, cum odit, incidunt laudantium consequatur.',
+      },
+    ],
   },
 ];
 
 // console.log(BlogData[0].data[0].value);
-export default BlogData;
+export default FakeData;

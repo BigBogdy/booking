@@ -21,11 +21,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const navigationLinks = [
-  { id: 1, name: 'About Us', href: '' },
-  { id: 2, name: 'Services', href: '' },
-  { id: 3, name: 'Vacancies', href: '' },
-  { id: 4, name: 'News', href: '' },
-  { id: 5, name: 'Documentation', href: '' },
+  { id: 1, name: 'About Us', to: '/about' },
+  { id: 2, name: 'Services', to: '/services' },
+  { id: 3, name: 'Vacancies', to: '/vacancies' },
+  { id: 4, name: 'News', to: '/news' },
+  { id: 5, name: 'Documentation', to: '/documentation' },
 ];
 
 const useStyles = makeStyles((theme) => {
@@ -172,18 +172,11 @@ const Header = () => {
 
             <Hidden mdDown>
               {navigationLinks.map((item) => (
-                <Link
-                  to="/"
-                  key={item.id}
-                  className="links"
-
-                  // href={item.href}
-                >
+                <Link className="links" to={item.to} key={item.id}>
                   {item.name}
                 </Link>
               ))}
             </Hidden>
-
             {user ? (
               <>
                 <Typography className={styles.userName}>
@@ -245,14 +238,14 @@ const Header = () => {
           <List>
             {navigationLinks.map((item) => (
               <ListItem key={item.id}>
-                <div
-                  className={styles.link}
+                <Link
+                  className="links"
                   variant="button"
                   underline="none"
-                  href={item.href}
+                  to={item.to}
                 >
                   {item.name}
-                </div>
+                </Link>
               </ListItem>
             ))}
           </List>

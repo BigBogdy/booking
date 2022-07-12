@@ -1,11 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Card, Typography } from '@material-ui/core';
+import { Box, Button, Card, Snackbar, Typography } from '@material-ui/core';
 import DatesPicker from '../main/DatePicker';
 import Selector from '../main/Selector';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { UserAuth } from '../../context/AuthContext';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -68,8 +69,18 @@ const ReceiptCard = ({
   numberOfGuests,
 }) => {
   const styles = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
   const { user } = UserAuth();
-  const history = useHistory();
 
   let diff = endDate.getTime() - startDate.getTime();
   const msInDay = 1000 * 3600 * 24;
@@ -204,8 +215,32 @@ const ReceiptCard = ({
             <Link style={{ textDecoration: 'none' }} to="/login">
               <Button className={styles.btn}>book a room</Button>
             </Link>
+          ) : !numberOfGuests ? (
+            <>
+              <Button onClick={handleOpen} className={styles.btn}>
+                book a room
+              </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={3000}
+                onClose={handleClose}
+              >
+                <Alert
+                  onClose={handleClose}
+                  sx={{ width: '100%' }}
+                  style={{ marginTop: 5 }}
+                  severity="error"
+                >
+                  Enter number of guests
+                </Alert>
+              </Snackbar>
+            </>
           ) : (
-            <Button className={styles.btn}>book a room</Button>
+            <>
+              <Link style={{ textDecoration: 'none' }} to="/success">
+                <Button className={styles.btn}>book a room</Button>
+              </Link>
+            </>
           )}
         </Box>
       </Card>

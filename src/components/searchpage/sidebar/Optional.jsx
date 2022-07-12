@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Optional = () => {
+const Optional = ({ checked, setChecked }) => {
   const styles = useStyles();
 
   return (
@@ -42,7 +42,12 @@ const Optional = () => {
         <Typography className={styles.textBold}>Optional</Typography>
         <Box>
           {optionalItems.map((obj) => (
-            <OptionalItem text={obj.text} key={obj.id} />
+            <OptionalItem
+              setChecked={setChecked}
+              checked={checked}
+              text={obj.text}
+              key={obj.id}
+            />
           ))}
         </Box>
       </Box>

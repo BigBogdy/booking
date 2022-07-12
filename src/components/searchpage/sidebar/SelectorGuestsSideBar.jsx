@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -135,11 +135,9 @@ const SelectorGuestsSideBar = ({
   setInfantsCount,
 }) => {
   const styles = useStyles();
+  const ref = useRef();
 
-  const [open, setOpen] = useState(true);
-  // const [adultsCount, setAdultsCount] = useState(0);
-  // const [kidsCount, setKidsCount] = useState(0);
-  // const [infantsCount, setInfantsCount] = useState(0);
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
@@ -152,9 +150,25 @@ const SelectorGuestsSideBar = ({
   };
   const arr = [adultsCount, kidsCount, infantsCount];
   const numberOfGuests = arr.reduce((a, b) => a + b, 0);
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (open && ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', checkIfClickedOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [open]);
 
   return (
-    <div>
+    <div ref={ref}>
       <Box style={{ marginBottom: 30 }}>
         <Typography className={styles.textBold} style={{ marginBottom: 4.56 }}>
           Guests
@@ -189,7 +203,7 @@ const SelectorGuestsSideBar = ({
               <ExpandMoreIcon />
             </IconButton>
           </Box>
-          {!open ? (
+          {open ? (
             <Card className={styles.cardGuests}>
               <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Box style={{ marginTop: 13 }}>

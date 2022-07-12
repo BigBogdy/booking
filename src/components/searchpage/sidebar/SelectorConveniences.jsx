@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -168,8 +168,9 @@ const useStyles = makeStyles((theme) => {
 
 const SelectorConveniencesSideBar = () => {
   const styles = useStyles();
+  const ref = useRef();
 
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [bedroomsCount, setBedroomsCount] = useState(0);
   const [bedsCount, setBedsCount] = useState(0);
   const [bathroomsCount, setBathroomsCount] = useState(0);
@@ -219,8 +220,25 @@ const SelectorConveniencesSideBar = () => {
     }
   }
 
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (open && ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', checkIfClickedOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [open]);
+
   return (
-    <div>
+    <div ref={ref}>
       <Box className={styles.content}>
         <Typography className={styles.textBold} style={{ marginBottom: 4 }}>
           Conveniences of rooms
@@ -246,7 +264,7 @@ const SelectorConveniencesSideBar = () => {
               <ExpandMoreIcon />
             </IconButton>
           </Box>
-          {!open ? (
+          {open ? (
             <Card className={styles.cardConv}>
               <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Box>

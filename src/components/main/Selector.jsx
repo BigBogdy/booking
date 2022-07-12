@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
 
 import { Box, Card, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -130,26 +129,38 @@ const Selector = ({
   numberOfGuests,
 }) => {
   const styles = useStyles();
-
-  const [open, setOpen] = useState(true);
+  const ref = useRef();
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
+
   const onClear = () => {
     setAdultsCount(0);
     setKidsCount(0);
     setInfantsCount(0);
   };
 
-  // const onClear = () => {
-  //   setAdultsCount(0);
-  //   setKidsCount(0);
-  //   setInfantsCount(0);
-  // };
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (open && ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', checkIfClickedOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [open]);
 
   return (
-    <div>
+    <div ref={ref}>
       <Typography
         style={{ marginLeft: 31, marginBottom: 5 }}
         className={styles.label}
@@ -185,7 +196,7 @@ const Selector = ({
             <ExpandMoreIcon />
           </IconButton>
         </Box>
-        {!open ? (
+        {open ? (
           <Card className={styles.cardGuests}>
             <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Box style={{ marginTop: 13 }}>
