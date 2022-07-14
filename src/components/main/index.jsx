@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => {
       height: 374,
       marginTop: 140,
       width: 380,
+      marginLeft: 15,
       [theme.breakpoints.down('xs')]: {
         margin: '100px 5px 0px 10px',
         width: 240,

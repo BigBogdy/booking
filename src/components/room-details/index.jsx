@@ -1,9 +1,14 @@
 import { Box, Container, Divider, Hidden } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import FakeData from '../room-details/detailsData';
+// import FakeData from '../room-details/detailsData';
 import { makeStyles } from '@material-ui/core/styles';
 import Empty from '../../common/Empty';
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import InfoRoom from './InfoRoom';
 import RateRoom from './RateRoom';
@@ -64,6 +69,10 @@ const useStyles = makeStyles((theme) => {
         display: 'block',
       },
     },
+    img: {
+      width: '100%',
+      height: '100%',
+    },
   };
 });
 const RoomDetails = ({
@@ -108,6 +117,27 @@ const RoomDetails = ({
       {item ? (
         <>
           <Container className={styles.container}>
+            <Hidden lgUp>
+              <Swiper
+                modules={[Navigation, Pagination]}
+                navigation
+                effect
+                speed={800}
+                slidesPerView={1}
+                loop
+                pagination={{ clickable: true, color: 'white' }}
+              >
+                <SwiperSlide>
+                  <img className={styles.img} src={item.images[0]} alt="img1" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img className={styles.img} src={item.images[1]} alt="img2" />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img className={styles.img} src={item.images[2]} alt="img3" />
+                </SwiperSlide>
+              </Swiper>
+            </Hidden>
             <Hidden mdDown>
               <Box
                 style={{

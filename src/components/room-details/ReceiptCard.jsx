@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Card, Snackbar, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Card,
+  IconButton,
+  Snackbar,
+  Typography,
+} from '@material-ui/core';
 import DatesPicker from '../main/DatePicker';
 import Selector from '../main/Selector';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
@@ -112,6 +119,37 @@ const useStyles = makeStyles((theme) => {
         width: 220,
       },
     },
+    infoCard_1: {
+      position: 'absolute',
+      margin: '-160px 0px 0px -30px',
+      width: 200,
+      boxShadow: 'rgb(0 0 0 / 28%) 0px 8px 50px ',
+      borderRadius: 10,
+      padding: 10,
+      fontSize: 14,
+      fontFamily: 'Montserrat',
+      zIndex: 4,
+      [theme.breakpoints.down('xs')]: {
+        margin: '-220px 0px 0px -20px',
+        fontSize: 12,
+        width: 120,
+      },
+    },
+    infoCard_2: {
+      position: 'absolute',
+      margin: '100px 0px 0px -30px',
+      width: 200,
+      boxShadow: 'rgb(0 0 0 / 28%) 0px 8px 50px ',
+      borderRadius: 10,
+      padding: 10,
+      fontSize: 14,
+      fontFamily: 'Montserrat',
+      zIndex: 4,
+      [theme.breakpoints.down('xs')]: {
+        width: 100,
+        margin: '180px 0px 0px 0px',
+      },
+    },
   };
 });
 
@@ -129,17 +167,49 @@ const ReceiptCard = ({
   roomItem,
   numberOfGuests,
 }) => {
+  const ref = useRef();
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [openInfo, setOpenInfo] = React.useState(false);
+  const [openServiceInfo, setOpenServiceInfo] = React.useState(false);
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (openInfo && ref.current && !ref.current.contains(e.target)) {
+        setOpenInfo(false);
+      }
+    };
+    document.addEventListener('mousedown', checkIfClickedOutside);
+    return () => {
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [openInfo]);
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (openServiceInfo && ref.current && !ref.current.contains(e.target)) {
+        setOpenServiceInfo(false);
+      }
+    };
+    document.addEventListener('mousedown', checkIfClickedOutside);
+    return () => {
+      document.removeEventListener('mousedown', checkIfClickedOutside);
+    };
+  }, [openServiceInfo]);
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
   const handleOpen = () => {
     setOpen(true);
+  };
+  const handleOpenInfo = () => {
+    setOpenInfo(!openInfo);
+  };
+  const handleOpenServiceInfo = () => {
+    setOpenServiceInfo(!openServiceInfo);
   };
   const { user } = UserAuth();
 
@@ -149,120 +219,139 @@ const ReceiptCard = ({
 
   return (
     <>
-      <Card className={styles.card}>
-        <Box className={styles.roomNumBox}>
-          <Typography
-            className={styles.label}
-            style={{
-              marginRight: 8,
-            }}
-          >
-            № {roomItem.number}
-          </Typography>
-          <Typography className={styles.type}>{roomItem.type}</Typography>
-          <Typography style={{ marginTop: 5.5 }} className={styles.textBold}>
-            {roomItem.price}$ per day
-          </Typography>
-        </Box>
-
-        <DatesPicker
-          startDate={startDate}
-          endDate={endDate}
-          setEnd={setEnd}
-          setStart={setStart}
-        />
-
-        <Selector
-          adultsCount={adultsCount}
-          setAdultsCount={setAdultsCount}
-          setKidsCount={setKidsCount}
-          setInfantsCount={setInfantsCount}
-          kidsCount={kidsCount}
-          infantsCount={infantsCount}
-          numberOfGuests={numberOfGuests}
-        />
-
-        <Box style={{ marginTop: 20 }}>
-          <Box className={styles.fees}>
-            <Typography className={styles.textRegular}>
-              {roomItem.price}$ х {Math.round(result)} days
-            </Typography>
-            <Typography className={styles.textRegular}>
-              {roomItem.price * Math.round(result)}$
-            </Typography>
-          </Box>
-          <Box className={styles.fees}>
+      <div>
+        <Card className={styles.card}>
+          <Box className={styles.roomNumBox} ref={ref}>
             <Typography
-              style={{ marginRight: 12.5 }}
-              className={styles.textRegular}
+              className={styles.label}
+              style={{
+                marginRight: 8,
+              }}
             >
-              Service fee: discount 30$
+              № {roomItem.number}
             </Typography>
-            <div>
-              <InfoOutlinedIcon
-                color="secondary"
-                style={{ width: 25, height: 25, marginRight: 60 }}
-              />
-            </div>
-            <Typography className={styles.textRegular}>0$</Typography>
+            <Typography className={styles.type}>{roomItem.type}</Typography>
+            <Typography style={{ marginTop: 5.5 }} className={styles.textBold}>
+              {roomItem.price}$ per day
+            </Typography>
           </Box>
-          <Box className={styles.fees}>
-            <Box style={{ display: 'flex', alignItems: 'center' }}>
+
+          <DatesPicker
+            startDate={startDate}
+            endDate={endDate}
+            setEnd={setEnd}
+            setStart={setStart}
+          />
+
+          <Selector
+            adultsCount={adultsCount}
+            setAdultsCount={setAdultsCount}
+            setKidsCount={setKidsCount}
+            setInfantsCount={setInfantsCount}
+            kidsCount={kidsCount}
+            infantsCount={infantsCount}
+            numberOfGuests={numberOfGuests}
+          />
+
+          <Box style={{ marginTop: 20 }}>
+            <Box className={styles.fees}>
+              <Typography className={styles.textRegular}>
+                {roomItem.price}$ х {Math.round(result)} days
+              </Typography>
+              <Typography className={styles.textRegular}>
+                {roomItem.price * Math.round(result)}$
+              </Typography>
+            </Box>
+            <Box className={styles.fees}>
               <Typography
-                style={{ marginRight: 5 }}
+                style={{ marginRight: 12.5 }}
                 className={styles.textRegular}
               >
-                Fee for additional services
+                Service fee: discount 30$
               </Typography>
               <div>
                 <InfoOutlinedIcon
-                  style={{ width: 25, height: 25, marginRight: 60 }}
+                  onClick={handleOpenServiceInfo}
                   color="secondary"
+                  style={{ width: 25, height: 25, marginRight: 60 }}
                 />
               </div>
+              {openServiceInfo ? (
+                <Card className={styles.infoCard_1}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit .
+                  Blanditiis Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit . Blanditiis Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit . Blanditiis
+                </Card>
+              ) : null}
+              <Typography className={styles.textRegular}>0$</Typography>
             </Box>
-            <Typography className={styles.textRegular}>5$</Typography>
-          </Box>
-          <Box className={styles.totalBox}>
-            <Typography className={styles.label}>Total</Typography>
-            <Typography className={styles.dashedLine}></Typography>
-            <Typography className={styles.label}>
-              {roomItem.price * Math.round(result) - 30 + 5}$
-            </Typography>
-          </Box>
-          {!user ? (
-            <Link style={{ textDecoration: 'none' }} to="/login">
-              <Button className={styles.btn}>book a room</Button>
-            </Link>
-          ) : !numberOfGuests ? (
-            <>
-              <Button onClick={handleOpen} className={styles.btn}>
-                book a room
-              </Button>
-              <Snackbar
-                open={open}
-                autoHideDuration={3000}
-                onClose={handleClose}
-              >
-                <Alert
-                  onClose={handleClose}
-                  sx={{ width: '100%' }}
-                  style={{ marginTop: 5 }}
-                  severity="error"
+            <Box className={styles.fees}>
+              <Box style={{ display: 'flex', alignItems: 'center' }}>
+                <Typography
+                  style={{ marginRight: 5 }}
+                  className={styles.textRegular}
                 >
-                  Enter number of guests
-                </Alert>
-              </Snackbar>
-            </>
-          ) : (
-            <>
-              <Link style={{ textDecoration: 'none' }} to="/success">
+                  Fee for additional services
+                </Typography>
+                <div>
+                  <InfoOutlinedIcon
+                    onClick={handleOpenInfo}
+                    style={{ width: 25, height: 25, marginRight: 60 }}
+                    color="secondary"
+                  />
+                </div>
+                {openInfo ? (
+                  <Card className={styles.infoCard_2}>
+                    This helps to develop our platform and offer different
+                    services, such as 24/7 support while traveling. Includes
+                    VAT.
+                  </Card>
+                ) : null}
+              </Box>
+              <Typography className={styles.textRegular}>5$</Typography>
+            </Box>
+            <Box className={styles.totalBox}>
+              <Typography className={styles.label}>Total</Typography>
+              <Typography className={styles.dashedLine}></Typography>
+              <Typography className={styles.label}>
+                {roomItem.price * Math.round(result) - 30 + 5}$
+              </Typography>
+            </Box>
+            {!user ? (
+              <Link style={{ textDecoration: 'none' }} to="/login">
                 <Button className={styles.btn}>book a room</Button>
               </Link>
-            </>
-          )}
-        </Box>
-      </Card>
+            ) : !numberOfGuests ? (
+              <>
+                <Button onClick={handleOpen} className={styles.btn}>
+                  book a room
+                </Button>
+                <Snackbar
+                  open={open}
+                  autoHideDuration={3000}
+                  onClose={handleClose}
+                >
+                  <Alert
+                    onClose={handleClose}
+                    sx={{ width: '100%' }}
+                    style={{ marginTop: 5 }}
+                    severity="error"
+                  >
+                    Enter number of guests
+                  </Alert>
+                </Snackbar>
+              </>
+            ) : (
+              <>
+                <Link style={{ textDecoration: 'none' }} to="/success">
+                  <Button className={styles.btn}>book a room</Button>
+                </Link>
+              </>
+            )}
+          </Box>
+        </Card>
+      </div>
     </>
   );
 };

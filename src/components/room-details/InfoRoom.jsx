@@ -10,11 +10,15 @@ const useStyles = makeStyles((theme) => {
   return {
     content: {
       height: 273,
+
       width: 291,
       marginRight: 70,
       [theme.breakpoints.down('xs')]: {
         width: 250,
         height: 290,
+      },
+      [theme.breakpoints.down('lg')]: {
+        marginTop: 15,
       },
     },
     img1: {

@@ -57,3 +57,10 @@ input[type="checkbox"]:checked::after {
   display: block;
 
 }
+.swiper-button-next,
+.swiper-button-prev { 
+  color: white !important;
+}
+.swiper-pagination-bullet-active {
+  background: white !important
+}
