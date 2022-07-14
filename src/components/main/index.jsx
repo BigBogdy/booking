@@ -27,12 +27,11 @@ const useStyles = makeStyles((theme) => {
     },
     card: {
       height: 374,
-      marginLeft: 140,
       marginTop: 140,
       width: 380,
       [theme.breakpoints.down('xs')]: {
         margin: '100px 5px 0px 10px',
-        width: 340,
+        width: 240,
         height: 350,
       },
     },
@@ -46,7 +45,8 @@ const useStyles = makeStyles((theme) => {
       marginTop: 40,
       [theme.breakpoints.down('xs')]: {
         marginTop: 20,
-        fontSize: 18,
+        marginLeft: 10,
+        fontSize: 16,
       },
     },
     slogan: {
@@ -83,6 +83,10 @@ const useStyles = makeStyles((theme) => {
       '&:hover': {
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
       },
+      [theme.breakpoints.down('xs')]: {
+        width: 225,
+        fontSize: 10,
+      },
     },
   };
 });
@@ -118,7 +122,7 @@ const Main = ({
   return (
     <>
       <Box className={styles.img} style={{ marginBottom: 140 }}>
-        <Container maxWidth="xl" disableGutters>
+        <Container maxWidth="lg" disableGutters>
           <Card className={styles.card}>
             <Typography variant="h1" className={styles.cardTitle}>
               We will find rooms <br /> according to your wishes

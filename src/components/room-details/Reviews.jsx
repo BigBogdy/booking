@@ -5,7 +5,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => {
   return {
-    content: { width: 712, marginBottom: 30 },
+    content: {
+      width: 712,
+      marginBottom: 30,
+      [theme.breakpoints.down('md')]: {
+        width: 'auto',
+      },
+    },
     label: {
       color: '#1F2041',
       fontFamily: 'Quicksand',
@@ -48,8 +54,8 @@ const Reviews = ({ item }) => {
           </Typography>
         </Box>
         {item.comments[0] ? (
-          item.comments.map((i) => (
-            <Box>
+          item.comments.map((i, index) => (
+            <Box key={index}>
               <Box style={{ display: 'flex', marginBottom: 22 }}>
                 <Box>
                   <Avatar
@@ -59,7 +65,7 @@ const Reviews = ({ item }) => {
                       margin: '0px 10px 9px 0px',
                     }}
                     src={i?.avatar}
-                    alt=""
+                    alt="avatar"
                   />
                   <Typography
                     style={{

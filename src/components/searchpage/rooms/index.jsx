@@ -10,7 +10,7 @@ import {
 import React, { useState } from 'react';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Room from './Room';
-import Skeleton from './Skeleton';
+import SkeletonRoom from './SkeletonRoom';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => {
         justifyContent: 'center',
       },
       [theme.breakpoints.down('xs')]: {
-        fontSize: 16,
+        fontSize: 14,
         display: 'flex',
         justifyContent: 'center',
       },
@@ -86,6 +86,8 @@ const Rooms = ({
   setInfantsCount,
   selectedPrice,
   handleSliderChange,
+  checked,
+  setChecked,
 }) => {
   const styles = useStyles();
   const [open, setOpen] = useState(false);
@@ -137,7 +139,7 @@ const Rooms = ({
                 </IconButton>
               </div>
               <Divider />
-              <Optional />
+              <Optional checked={checked} setChecked={setChecked} />
               <Divider />
               <SliderPrice
                 selectedPrice={selectedPrice}
@@ -162,7 +164,7 @@ const Rooms = ({
               gridTemplateColumns: 'repeat(auto-fit, 1fr)',
             }}
           >
-            {isLoading && <Skeleton cards={12} />}
+            {isLoading && <SkeletonRoom cards={12} />}
 
             {updatedRooms.map((item) => (
               <Grid key={item.id} item>

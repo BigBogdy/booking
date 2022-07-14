@@ -17,6 +17,15 @@ const useStyles = makeStyles((theme) => {
       flex: '1 0 auto',
       height: 900,
     },
+    contentBox: {
+      margin: '40px 0px 20px 30px',
+      [theme.breakpoints.down('sm')]: {
+        margin: '20px 0px 20px 15px',
+      },
+      [theme.breakpoints.down('xs')]: {
+        margin: '15px 0px 10px 10px',
+      },
+    },
     img: {
       alignItems: 'center',
       backgroundImage: 'url(img/background2.jpg)',
@@ -38,12 +47,24 @@ const useStyles = makeStyles((theme) => {
       width: 378,
       margin: '0 auto',
       marginTop: 163,
+      [theme.breakpoints.down('sm')]: {
+        width: 320,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 220,
+        height: 340,
+      },
     },
     title: {
       fontSize: 24,
       color: '#1F2041',
       fontFamily: 'Quicksand',
       fontWeight: 700,
+      marginBottom: 20,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 20,
+        marginBottom: 15,
+      },
     },
     textRegular: {
       color: 'rgba(31, 32, 65, 0.75)',
@@ -51,6 +72,9 @@ const useStyles = makeStyles((theme) => {
       fontSize: 14,
       fontWeight: 400,
       textDecoration: 'none',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 12,
+      },
     },
     label: {
       color: '#1F2041',
@@ -67,21 +91,27 @@ const useStyles = makeStyles((theme) => {
       paddingLeft: 15,
       width: 301,
     },
-    btnRegister: {
+    btnLogin: {
+      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
       borderRadius: 22,
+      color: '#FFFFFF',
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
       height: 44,
       padding: 0,
       width: 320,
-      color: '#FFFFFF',
-      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
       '&:hover': {
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
       },
+      [theme.breakpoints.down('sm')]: {
+        width: 290,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 200,
+      },
     },
-    btnLogin: {
+    btnRegister: {
       color: '#BC9CFF',
       '&:hover': {
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
@@ -90,11 +120,50 @@ const useStyles = makeStyles((theme) => {
       background: '#FFFFFF',
       border: 'solid 2px #BC9CFF',
       borderRadius: 22,
-      width: 88,
-      height: 34,
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
+      height: 34,
+      width: 88,
+      [theme.breakpoints.down('sm')]: {
+        width: 70,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 40,
+        fontSize: 10,
+      },
+    },
+    input: {
+      width: 320,
+      marginBottom: 3,
+      [theme.breakpoints.down('sm')]: {
+        width: 290,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 200,
+      },
+    },
+    textBtn: {
+      display: 'flex',
+      margin: '15px 0px 0px 30px',
+      width: 320,
+      justifyContent: 'space-between',
+      [theme.breakpoints.down('sm')]: {
+        width: 290,
+        margin: '15px 0px 0px 10px',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 200,
+      },
+    },
+    errText: {
+      color: 'crimson',
+      fontFamily: 'Montserrat',
+      fontSize: 14,
+      marginBottom: 5,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 12,
+      },
     },
   };
 });
@@ -133,15 +202,11 @@ const Login = () => {
       <Box className={styles.img}>
         <Container>
           <Card className={styles.card}>
-            <Typography
-              style={{ margin: '40px 0px 20px 30px' }}
-              variant="h1"
-              className={styles.title}
-            >
-              Login
-            </Typography>
+            <Box className={styles.contentBox}>
+              <Typography variant="h1" className={styles.title}>
+                Login
+              </Typography>
 
-            <Box style={{ margin: '0px 0px 20px 30px' }}>
               <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <TextField
                   inputProps={{
@@ -150,7 +215,7 @@ const Login = () => {
                       height: 14,
                     },
                   }}
-                  style={{ width: 320, marginBottom: 3 }}
+                  className={styles.input}
                   id="input-email"
                   type="email"
                   name="email"
@@ -159,16 +224,7 @@ const Login = () => {
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <Typography
-                  style={{
-                    color: 'crimson',
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    marginBottom: 5,
-                  }}
-                >
-                  {errorEmail}
-                </Typography>
+                <Typography className={styles.errText}>{errorEmail}</Typography>
                 <TextField
                   inputProps={{
                     style: {
@@ -176,7 +232,7 @@ const Login = () => {
                       height: 14,
                     },
                   }}
-                  style={{ width: 320, marginBottom: 3 }}
+                  className={styles.input}
                   id="new-password"
                   name="password"
                   type="password"
@@ -185,33 +241,20 @@ const Login = () => {
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <Typography
-                  style={{
-                    color: 'crimson',
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                  }}
-                >
+                <Typography className={styles.errText}>
                   {errorPassword}
                 </Typography>
                 <Button
                   style={{ marginTop: 20 }}
                   type="submit"
-                  className={styles.btnRegister}
+                  className={styles.btnLogin}
                 >
                   Login
                 </Button>
               </form>
             </Box>
 
-            <Box
-              style={{
-                display: 'flex',
-                margin: '10px 0px 0px 30px',
-                width: 320,
-                justifyContent: 'space-between',
-              }}
-            >
+            <Box className={styles.textBtn}>
               <Typography
                 style={{
                   display: 'flex',
@@ -222,7 +265,7 @@ const Login = () => {
                 Don't have an account?
               </Typography>
               <Link style={{ textDecoration: 'none' }} to="/register">
-                <Button className={styles.btnLogin}>Create</Button>
+                <Button className={styles.btnRegister}>Create</Button>
               </Link>
             </Box>
           </Card>

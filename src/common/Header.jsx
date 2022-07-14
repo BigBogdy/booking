@@ -70,7 +70,9 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.up('sm')]: {
         marginRight: 20,
       },
-
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 10,
+      },
       color: '#BC9CFF',
 
       '&:hover': {
@@ -88,14 +90,20 @@ const useStyles = makeStyles((theme) => {
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
       },
       background: 'linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%)',
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 10,
+      },
     },
-
     btn_register: {
       [theme.breakpoints.up('sm')]: {
         width: 196,
       },
       [theme.breakpoints.down('sm')]: {
         width: 100,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 80,
+        fontSize: 10,
       },
       color: '#FFFFFF',
       '&:hover': {
@@ -113,10 +121,9 @@ const useStyles = makeStyles((theme) => {
       textOverflow: 'ellipsis',
       [theme.breakpoints.down('xs')]: {
         width: 200,
+        fontSize: 10,
+        marginLeft: 0,
       },
-      // [theme.breakpoints.down('sm')]: {
-      //   width: 100,
-      // },
     },
   };
 });

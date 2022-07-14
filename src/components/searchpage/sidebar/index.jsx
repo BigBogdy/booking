@@ -53,7 +53,7 @@ const SideBar = ({
       <Hidden mdDown>
         <Box
           className={styles.container}
-          style={{ marginBottom: 500, marginRight: 60, marginLeft: 50 }}
+          style={{ marginBottom: 200, marginRight: 60 }}
         >
           <DatesPickerSideBar
             startDate={startDate}

@@ -16,6 +16,12 @@ const useStyles = makeStyles((theme) => {
       boxShadow: '0px 0px 25px rgba(0, 0, 0, 0.2)',
       height: 511,
       width: 380,
+      [theme.breakpoints.down('md')]: {
+        margin: '40px auto',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 250,
+      },
     },
     textRegular: {
       color: 'rgba(31, 32, 65, 0.75)',
@@ -23,6 +29,9 @@ const useStyles = makeStyles((theme) => {
       fontSize: 14,
       fontWeight: 400,
       textDecoration: 'none',
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 12,
+      },
     },
     textBold: {
       color: 'rgba(31, 32, 65, 0.5)',
@@ -37,18 +46,70 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 700,
     },
     btn: {
+      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
       borderRadius: 22,
+      color: '#FFFFFF',
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
       height: 44,
-      padding: 0,
       marginLeft: 30,
+      padding: 0,
       width: 320,
-      color: '#FFFFFF',
-      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
       '&:hover': {
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 220,
+        marginLeft: 15,
+        fontSize: 10,
+        marginTop: -10,
+      },
+    },
+    type: {
+      margin: '8.5px 110px 0px 0px',
+      textTransform: 'uppercase',
+      color: '#BC9CFF',
+      fontFamily: 'Montserrat',
+      fontWeight: 700,
+      fontSize: 12,
+      [theme.breakpoints.down('xs')]: {
+        margin: '8.5px 20px 0px 0px',
+        fontSize: 10,
+      },
+    },
+    roomNumBox: {
+      display: 'flex',
+      margin: '40px 0px 23px 30px',
+      [theme.breakpoints.down('xs')]: {
+        margin: '20px 0px 23px 15px',
+      },
+    },
+    totalBox: {
+      display: 'flex',
+      margin: '0px 0px 25px 31px',
+      [theme.breakpoints.down('xs')]: {
+        margin: '0px 0px 25px 10px',
+      },
+    },
+    dashedLine: {
+      borderBottom: '1px dashed rgba(31, 32, 65, 0.25)',
+      width: 195,
+      margin: '22px 5px 0px 5px',
+      height: 1,
+      [theme.breakpoints.down('xs')]: {
+        width: 130,
+      },
+    },
+    fees: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      margin: '0px 0px 10px 31px',
+      width: 295,
+      [theme.breakpoints.down('xs')]: {
+        margin: '0px 0px 10px 15px',
+        width: 220,
       },
     },
   };
@@ -89,7 +150,7 @@ const ReceiptCard = ({
   return (
     <>
       <Card className={styles.card}>
-        <Box style={{ display: 'flex', margin: '40px 0px 23px 30px' }}>
+        <Box className={styles.roomNumBox}>
           <Typography
             className={styles.label}
             style={{
@@ -98,19 +159,7 @@ const ReceiptCard = ({
           >
             № {roomItem.number}
           </Typography>
-          <Typography
-            style={{
-              margin: '8.5px 110px 0px 0px',
-              textTransform: 'uppercase',
-              color: '#BC9CFF',
-              fontFamily: 'Montserrat',
-              fontWeight: 700,
-              fontSize: 12,
-            }}
-          >
-            {roomItem.type}
-          </Typography>
-
+          <Typography className={styles.type}>{roomItem.type}</Typography>
           <Typography style={{ marginTop: 5.5 }} className={styles.textBold}>
             {roomItem.price}$ per day
           </Typography>
@@ -133,15 +182,8 @@ const ReceiptCard = ({
           numberOfGuests={numberOfGuests}
         />
 
-        <Box>
-          <Box
-            style={{
-              display: 'flex',
-              margin: '20px 0px 10px 31px',
-              justifyContent: 'space-between',
-              width: 295,
-            }}
-          >
+        <Box style={{ marginTop: 20 }}>
+          <Box className={styles.fees}>
             <Typography className={styles.textRegular}>
               {roomItem.price}$ х {Math.round(result)} days
             </Typography>
@@ -149,20 +191,12 @@ const ReceiptCard = ({
               {roomItem.price * Math.round(result)}$
             </Typography>
           </Box>
-          <Box
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              margin: '0px 0px 10px 31px',
-              width: 295,
-            }}
-          >
+          <Box className={styles.fees}>
             <Typography
               style={{ marginRight: 12.5 }}
               className={styles.textRegular}
             >
-              Service fee: discount 30${' '}
+              Service fee: discount 30$
             </Typography>
             <div>
               <InfoOutlinedIcon
@@ -172,21 +206,13 @@ const ReceiptCard = ({
             </div>
             <Typography className={styles.textRegular}>0$</Typography>
           </Box>
-          <Box
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              margin: '0px 0px 30px 31px',
-              width: 295,
-            }}
-          >
+          <Box className={styles.fees}>
             <Box style={{ display: 'flex', alignItems: 'center' }}>
               <Typography
                 style={{ marginRight: 5 }}
                 className={styles.textRegular}
               >
-                Fee for additional services{' '}
+                Fee for additional services
               </Typography>
               <div>
                 <InfoOutlinedIcon
@@ -197,16 +223,9 @@ const ReceiptCard = ({
             </Box>
             <Typography className={styles.textRegular}>5$</Typography>
           </Box>
-          <Box style={{ display: 'flex', margin: '0px 0px 25px 31px' }}>
+          <Box className={styles.totalBox}>
             <Typography className={styles.label}>Total</Typography>
-            <Typography
-              style={{
-                borderBottom: '1px dashed rgba(31, 32, 65, 0.25)',
-                width: 195,
-                margin: '22px 5px 0px 5px',
-                height: 1,
-              }}
-            ></Typography>
+            <Typography className={styles.dashedLine}></Typography>
             <Typography className={styles.label}>
               {roomItem.price * Math.round(result) - 30 + 5}$
             </Typography>

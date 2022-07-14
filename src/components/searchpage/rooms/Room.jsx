@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => {
       height: 257,
       width: 270,
       cursor: 'pointer',
+      [theme.breakpoints.down('xs')]: {
+        width: 230,
+        height: 270,
+      },
     },
     img: {
       filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
@@ -26,6 +30,9 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Quicksand',
       color: '#1F2041',
       fontWeight: 700,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 12,
+      },
     },
     textRegular: {
       color: 'rgba(31, 32, 65, 0.5)',
@@ -33,12 +40,40 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 400,
       fontSize: 14,
       textDecoration: 'none',
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 12,
+      },
     },
     textBold: {
       color: 'rgba(31, 32, 65, 0.5)',
       fontFamily: 'Montserrat',
       fontWeight: 700,
       fontSize: 14,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 12,
+      },
+    },
+    type: {
+      color: '#BC9CFF',
+      fontFamily: 'Montserrat',
+      fontWeight: 700,
+      fontSize: 12,
+      marginRight: 32,
+      textTransform: 'uppercase',
+      marginTop: 3.2,
+      width: 41,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 10,
+        marginRight: 20,
+        width: 35,
+      },
+    },
+    stars: {
+      marginTop: 10,
+      display: 'flex',
+      [theme.breakpoints.down('xs')]: {
+        display: 'block',
+      },
     },
   };
 });
@@ -63,20 +98,7 @@ const Room = (props) => {
             <Typography className={styles.number} style={{ marginRight: 7 }}>
               № {props.number}
             </Typography>
-            <Typography
-              style={{
-                color: '#BC9CFF',
-                fontFamily: 'Montserrat',
-                fontWeight: 700,
-                fontSize: 12,
-                marginRight: 32,
-                textTransform: 'uppercase',
-                marginTop: 3.2,
-                width: 41,
-              }}
-            >
-              {props.type}
-            </Typography>
+            <Typography className={styles.type}>{props.type}</Typography>
             <Typography
               className={styles.textBold}
               style={{
@@ -96,7 +118,7 @@ const Room = (props) => {
             </Typography>
           </Box>
           <Divider />
-          <Box style={{ marginTop: 10, display: 'flex' }}>
+          <Box className={styles.stars}>
             <Stars
               style={{ marginRight: 15 }}
               defaultValue={props.rate}
@@ -105,18 +127,23 @@ const Room = (props) => {
               icon={<StarIcon />}
               emptyIcon={<StarBorderIcon />}
             />
-            <Typography
-              className={styles.textBold}
-              style={{
-                marginTop: 2,
-                marginRight: 3,
-              }}
-            >
-              {props.comments}
-            </Typography>
-            <Typography className={styles.textRegular} style={{ marginTop: 2 }}>
-              Comments
-            </Typography>
+            <Box style={{ display: 'flex' }}>
+              <Typography
+                className={styles.textBold}
+                style={{
+                  marginTop: 2,
+                  marginRight: 3,
+                }}
+              >
+                {props.comments}
+              </Typography>
+              <Typography
+                className={styles.textRegular}
+                style={{ marginTop: 2 }}
+              >
+                Comments
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Card>

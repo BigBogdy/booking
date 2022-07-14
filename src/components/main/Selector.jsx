@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => {
       padding: '0px 0px 0px 15px',
       width: 303,
       [theme.breakpoints.down('xs')]: {
-        width: 310,
+        width: 205,
       },
     },
     cardGuests: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => {
       width: 318,
       zIndex: 3,
       [theme.breakpoints.down('xs')]: {
-        width: 330,
+        width: 220,
       },
     },
     btn: {

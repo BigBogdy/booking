@@ -8,6 +8,15 @@ const useStyles = makeStyles((theme) => {
     content: {
       width: 310,
       marginRight: 108,
+      [theme.breakpoints.down('xs')]: {
+        width: 250,
+      },
+    },
+    container: {
+      display: 'flex',
+      [theme.breakpoints.down('xs')]: {
+        display: 'block',
+      },
     },
     label: {
       fontFamily: 'Quicksand',
@@ -17,8 +26,13 @@ const useStyles = makeStyles((theme) => {
       width: 10,
       height: 10,
       marginRight: 5,
-
       borderRadius: '50%',
+    },
+    circleBox: {
+      marginTop: 54,
+      [theme.breakpoints.down('xs')]: {
+        marginTop: 10,
+      },
     },
     text: {
       fontFamily: 'Montserrat',
@@ -31,14 +45,14 @@ const RateRoom = ({ item }) => {
   return (
     <>
       <div>
-        <Box className={styles.content} style={{}}>
+        <Box className={styles.content}>
           <Typography className={styles.label}>Room impressions</Typography>
-          <Box style={{ display: 'flex' }}>
+          <Box className={styles.container}>
             <Box>
               <ChartPie item={item} />
             </Box>
             <Box>
-              <Box style={{ marginTop: 54 }}>
+              <Box className={styles.circleBox}>
                 <Box className={styles.circle}></Box>
               </Box>
               <Box style={{ display: 'flex', alignItems: 'center' }}>

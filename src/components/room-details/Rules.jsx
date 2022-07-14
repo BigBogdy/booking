@@ -4,19 +4,40 @@ import { Box, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => {
   return {
+    content: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: 712,
+      [theme.breakpoints.down('md')]: {
+        display: 'block',
+        width: 'auto',
+      },
+    },
     rules: {
-      minWidth: 292,
+      width: 292,
       marginRight: 108,
       height: 160,
+      [theme.breakpoints.down('xs')]: {
+        width: 250,
+      },
     },
     cancellation: {
       width: 341,
       height: 140,
+      [theme.breakpoints.down('md')]: {
+        marginTop: 15,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 240,
+      },
     },
     label: {
       fontFamily: 'Quicksand',
       fontSize: 19,
       color: '#1F2041',
+      [theme.breakpoints.down('xs')]: {
+        marginBottom: 10,
+      },
     },
     circle: {
       width: 10,
@@ -39,16 +60,9 @@ const Rules = () => {
   const styles = useStyles();
   return (
     <>
-      <Box
-        style={{ display: 'flex', justifyContent: 'space-between', width: 712 }}
-      >
+      <Box className={styles.content}>
         <Box className={styles.rules}>
-          <Typography
-            style={{ marginLeft: 20, marginBottom: 20 }}
-            className={styles.label}
-          >
-            Rules
-          </Typography>
+          <Typography className={styles.label}>Rules</Typography>
           <Box
             style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}
           >
@@ -74,9 +88,7 @@ const Rules = () => {
           </Box>
         </Box>
         <Box className={styles.cancellation}>
-          <Typography style={{ marginBottom: 20 }} className={styles.label}>
-            Cancellation
-          </Typography>
+          <Typography className={styles.label}>Cancellation</Typography>
           <Typography className={styles.textRegular}>
             Free cancellation within 48 hours. After that, if canceled no later
             than 5 days in advance before arrival, you will receive a full

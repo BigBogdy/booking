@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => {
       margin: '0 auto',
       marginTop: 50,
       marginBottom: 50,
+      [theme.breakpoints.down('xs')]: {
+        width: 250,
+      },
     },
     textRegular: {
       color: 'rgba(31, 32, 65, 0.75)',
@@ -37,17 +40,21 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 700,
     },
     btn: {
+      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
       borderRadius: 22,
+      color: '#FFFFFF',
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
       height: 44,
       padding: 0,
       width: 320,
-      color: '#FFFFFF',
-      background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
       '&:hover': {
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 220,
+        marginTop: -15,
       },
     },
   };
@@ -72,13 +79,22 @@ const Success = () => {
           />
         </div>
         <Typography
-          style={{ display: 'flex', justifyContent: 'center', marginBottom: 5 }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            textAlign: 'center',
+            marginBottom: 5,
+          }}
           className={styles.textBold}
         >
           Thank you for booking on our site!
         </Typography>
         <Typography
-          style={{ display: 'flex', justifyContent: 'center' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}
           className={styles.textRegular}
         >
           Check your email inbox for the receipt

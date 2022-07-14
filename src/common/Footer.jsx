@@ -47,9 +47,6 @@ const useStyles = makeStyles((theme) => {
         display: 'flex',
         flexWrap: 'wrap',
       },
-      [theme.breakpoints.down('md')]: {
-        marginTop: 220,
-      },
       [theme.breakpoints.up('lg')]: {
         display: 'flex',
         justifyContent: 'center',
@@ -118,6 +115,27 @@ const useStyles = makeStyles((theme) => {
       fontWeight: 700,
       marginBottom: 21,
     },
+    input: {
+      width: 260,
+      [theme.breakpoints.down('sm')]: {
+        width: 230,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 200,
+      },
+    },
+    offer: {
+      color: 'rgba(31, 32, 65, 0.75)',
+      fontFamily: 'Montserrat',
+      fontWeight: 400,
+      marginBottom: 30,
+      width: 260,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 14,
+        width: 200,
+        marginBottom: 10,
+      },
+    },
   };
 });
 const Footer = () => {
@@ -152,7 +170,7 @@ const Footer = () => {
   return (
     <>
       <Box>
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           <Box className={styles.content}>
             <Box className={styles.sloganBox}>
               <Typography className={styles.logos}>
@@ -213,20 +231,12 @@ const Footer = () => {
             <Box>
               <List className={styles.column}>
                 <Typography className={styles.labels}>Subscription</Typography>
-                <Typography
-                  style={{
-                    color: 'rgba(31, 32, 65, 0.75)',
-                    fontFamily: 'Montserrat',
-                    fontWeight: 400,
-                    marginBottom: 30,
-                    width: 260,
-                  }}
-                >
+                <Typography className={styles.offer}>
                   Get special offers and service news
                 </Typography>
                 <form noValidate autoComplete="off">
                   <TextField
-                    style={{ width: 260 }}
+                    className={styles.input}
                     id="input-with-icon-textfield"
                     type={'text'}
                     label="Email"

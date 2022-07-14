@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => {
       width: 131,
       [theme.breakpoints.down('xs')]: {
         marginRight: 5,
-        width: 140,
+        width: 90,
       },
       cursor: 'default',
       fontSize: 14,
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => {
       paddingLeft: 15,
       width: 131,
       [theme.breakpoints.down('xs')]: {
-        width: 140,
+        width: 90,
       },
       cursor: 'default',
       fontSize: 14,

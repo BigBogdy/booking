@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => {
       height: 273,
       width: 291,
       marginRight: 70,
+      [theme.breakpoints.down('xs')]: {
+        width: 250,
+        height: 290,
+      },
     },
     img1: {
       height: 485,

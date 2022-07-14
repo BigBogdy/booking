@@ -24,6 +24,15 @@ const useStyles = makeStyles((theme) => {
       flex: '1 0 auto',
       height: 900,
     },
+    contentBox: {
+      margin: '40px 0px 20px 30px',
+      [theme.breakpoints.down('sm')]: {
+        margin: '20px 0px 20px 10px',
+      },
+      [theme.breakpoints.down('xs')]: {
+        margin: '15px 0px 20px 10px',
+      },
+    },
     img: {
       alignItems: 'center',
       backgroundImage: 'url(img/background2.jpg)',
@@ -45,12 +54,24 @@ const useStyles = makeStyles((theme) => {
       width: 378,
       margin: '0 auto',
       marginTop: 30,
+      [theme.breakpoints.down('sm')]: {
+        width: 320,
+      },
+      [theme.breakpoints.down('xs')]: {
+        height: 640,
+        width: 220,
+      },
     },
     title: {
       fontSize: 24,
       color: '#1F2041',
       fontFamily: 'Quicksand',
       fontWeight: 700,
+      marginBottom: 20,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 20,
+        marginBottom: 15,
+      },
     },
     textRegular: {
       color: 'rgba(31, 32, 65, 0.75)',
@@ -58,6 +79,9 @@ const useStyles = makeStyles((theme) => {
       fontSize: 14,
       fontWeight: 400,
       textDecoration: 'none',
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 12,
+      },
     },
     label: {
       color: '#1F2041',
@@ -76,6 +100,12 @@ const useStyles = makeStyles((theme) => {
       marginRight: 20,
       paddingLeft: 15,
       width: 301,
+      [theme.breakpoints.down('sm')]: {
+        width: 270,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 180,
+      },
     },
     btnRegister: {
       borderRadius: 22,
@@ -89,6 +119,12 @@ const useStyles = makeStyles((theme) => {
       background: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
       '&:hover': {
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      },
+      [theme.breakpoints.down('sm')]: {
+        width: 290,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 200,
       },
     },
     btnLogin: {
@@ -106,10 +142,40 @@ const useStyles = makeStyles((theme) => {
       fontSize: 12,
       fontWeight: 700,
     },
+    input: {
+      width: 320,
+      [theme.breakpoints.down('sm')]: {
+        width: 290,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 200,
+      },
+    },
+    textBtn: {
+      display: 'flex',
+      marginTop: 20,
+      width: 320,
+      justifyContent: 'space-between',
+      [theme.breakpoints.down('sm')]: {
+        width: 290,
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: 200,
+      },
+    },
+    errText: {
+      color: 'crimson',
+      fontFamily: 'Montserrat',
+      fontSize: 14,
+      marginBottom: 5,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 12,
+      },
+    },
   };
 });
 
-const Register = ({}) => {
+const Register = () => {
   const styles = useStyles();
   const [startDate, setStartDate] = useState(new Date());
   const [email, setEmail] = useState('');
@@ -124,7 +190,6 @@ const Register = ({}) => {
   const onSubmit = async (err, data) => {
     try {
       setUserInfo(data);
-
       await createUser(email, password);
       history.push('/');
     } catch (err) {
@@ -140,156 +205,33 @@ const Register = ({}) => {
       <Box className={styles.img}>
         <Container>
           <Card className={styles.card}>
-            <Typography
-              style={{ margin: '40px 0px 20px 30px' }}
-              variant="h1"
-              className={styles.title}
-            >
-              Registration
-            </Typography>
-            <form
-              noValidate
-              autoComplete="off"
-              style={{ margin: '0px 0px 10px 30px' }}
-              onSubmit={handleSubmit(onSubmit)}
-            >
-              <TextField
-                inputProps={{
-                  style: {
-                    padding: 15,
-                    height: 14,
-                  },
-                }}
-                style={{ width: 320 }}
-                id="input-name"
-                type="name"
-                variant="outlined"
-                color="secondary"
-                placeholder="Name"
-                name="name"
-                inputRef={register({ required: 'Name is required' })}
-              />
-              <Typography
-                style={{
-                  color: 'crimson',
-                  fontSize: 14,
-                  fontFamily: 'Montserrat',
-                  marginBottom: 5,
-                }}
-              >
-                {errors.name?.message}
+            <Box className={styles.contentBox}>
+              <Typography variant="h1" className={styles.title}>
+                Registration
               </Typography>
-              <TextField
-                inputProps={{
-                  style: {
-                    padding: 15,
-                    height: 14,
-                  },
-                }}
-                style={{ width: 320 }}
-                id="input-lastname"
-                name="lastname"
-                type="lastname"
-                variant="outlined"
-                color="secondary"
-                placeholder="Second name"
-                inputRef={register({ required: 'Second name is required' })}
-              />
-              <Typography
-                style={{
-                  color: 'crimson',
-                  fontSize: 14,
-                  fontFamily: 'Montserrat',
-                }}
+              <form
+                noValidate
+                autoComplete="off"
+                onSubmit={handleSubmit(onSubmit)}
               >
-                {errors.lastname?.message}
-              </Typography>
-              <RadioGroup
-                aria-label="gender"
-                name="gender1"
-                value={value}
-                onChange={handleChange}
-              >
-                <Box style={{ display: 'flex' }}>
-                  <Box style={{ display: 'flex' }}>
-                    <FormControlLabel
-                      value="male"
-                      control={<Radio style={{ color: '#BC9CFF' }} />}
-                    />
-                    <Typography
-                      className={styles.textRegular}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        margin: '0px 20px 0px -15px',
-                      }}
-                    >
-                      Male
-                    </Typography>
-                  </Box>
-                  <Box style={{ display: 'flex' }}>
-                    <FormControlLabel
-                      value="female"
-                      control={<Radio style={{ color: '#BC9CFF' }} />}
-                    />
-                    <Typography
-                      className={styles.textRegular}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginLeft: -15,
-                      }}
-                    >
-                      Female
-                    </Typography>
-                  </Box>
-                </Box>
-              </RadioGroup>
-              <Box>
-                <Typography
-                  style={{ marginBottom: 5 }}
-                  className={styles.label}
-                >
-                  date of birth
-                </Typography>
-                <Controller
-                  control={control}
-                  name="datepicker"
-                  defaultValue={null}
-                  rules={{ required: 'Select your birthday' }}
-                  render={({ onChange, onBlur, value, ref }) => (
-                    <DatePicker
-                      selected={value}
-                      className={styles.birthDate}
-                      onChange={onChange}
-                      placeholderText="DD.MM.YYYY"
-                      startDate={startDate}
-                      dateFormat="dd/MM/yyyy"
-                      scrollableYearDropdown
-                      showYearDropdown
-                      showMonthDropdown
-                      dropdownMode="select"
-                      yearDropdownItemNumber={80}
-                    />
-                  )}
+                <TextField
+                  inputProps={{
+                    style: {
+                      padding: 15,
+                      height: 14,
+                    },
+                  }}
+                  className={styles.input}
+                  id="input-name"
+                  type="name"
+                  variant="outlined"
+                  color="secondary"
+                  placeholder="Name"
+                  name="name"
+                  inputRef={register({ required: 'Name is required' })}
                 />
-              </Box>
-              <Typography
-                style={{
-                  color: 'crimson',
-                  fontSize: 14,
-                  fontFamily: 'Montserrat',
-                  marginBottom: 15,
-                }}
-              >
-                {errors.datepicker?.message}
-              </Typography>
-              <Box>
-                <Typography
-                  style={{ marginBottom: 5 }}
-                  className={styles.label}
-                >
-                  Enter email and password
+                <Typography className={styles.errText}>
+                  {errors.name?.message}
                 </Typography>
                 <TextField
                   inputProps={{
@@ -298,127 +240,208 @@ const Register = ({}) => {
                       height: 14,
                     },
                   }}
-                  style={{ width: 320 }}
-                  id="input-email"
-                  type="email"
+                  className={styles.input}
+                  id="input-lastname"
+                  name="lastname"
+                  type="lastname"
                   variant="outlined"
-                  name="email"
                   color="secondary"
-                  placeholder="Email"
-                  inputRef={register({
-                    required: 'Email is required',
-                    pattern: {
-                      value:
-                        /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/,
-                      message: 'This is not valid email',
-                    },
-                  })}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Second name"
+                  inputRef={register({ required: 'Second name is required' })}
                 />
-                <Typography
-                  style={{
-                    color: 'crimson',
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    marginBottom: 5,
-                  }}
-                >
-                  {errors.email?.message}
+                <Typography className={styles.errText}>
+                  {errors.lastname?.message}
                 </Typography>
-                <TextField
-                  inputProps={{
-                    style: {
-                      padding: 15,
-                      height: 14,
-                    },
-                  }}
-                  style={{ width: 320 }}
-                  id="new-password"
-                  type="password"
-                  variant="outlined"
-                  name="password"
-                  color="secondary"
-                  placeholder="Password"
-                  inputRef={register({
-                    required: 'Password is required',
-                    pattern: {
-                      value: /[a-z]/i,
-                      message: 'At least one character',
-                    },
-                    pattern: {
-                      value: /[0-9]/,
-                      message: 'At least one digit',
-                    },
-                    minLength: {
-                      value: 4,
-                      message: 'Password must be more than 4 characters',
-                    },
-                    maxLength: {
-                      value: 16,
-                      message: 'Password must be less than 16 characters',
-                    },
-                  })}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Typography
-                  style={{
-                    color: 'crimson',
-                    fontSize: 14,
-                    fontFamily: 'Montserrat',
-                    marginBottom: 5,
-                  }}
+                <RadioGroup
+                  aria-label="gender"
+                  name="gender1"
+                  value={value}
+                  onChange={handleChange}
                 >
-                  {errors.password?.message}
-                </Typography>
-              </Box>
-              <Box>
-                <Box style={{ display: 'flex', marginBottom: 20, height: 20 }}>
-                  <FormControlLabel
-                    control={
-                      <Switch
-                        checked={checked}
-                        onChange={(e) => setChecked(e.target.checked)}
+                  <Box style={{ display: 'flex' }}>
+                    <Box style={{ display: 'flex' }}>
+                      <FormControlLabel
+                        value="male"
+                        control={<Radio style={{ color: '#BC9CFF' }} />}
                       />
-                    }
-                  />
+                      <Typography
+                        className={styles.textRegular}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          margin: '0px 20px 0px -15px',
+                        }}
+                      >
+                        Male
+                      </Typography>
+                    </Box>
+                    <Box style={{ display: 'flex' }}>
+                      <FormControlLabel
+                        value="female"
+                        control={<Radio style={{ color: '#BC9CFF' }} />}
+                      />
+                      <Typography
+                        className={styles.textRegular}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginLeft: -15,
+                        }}
+                      >
+                        Female
+                      </Typography>
+                    </Box>
+                  </Box>
+                </RadioGroup>
+                <Box>
                   <Typography
-                    className={styles.textRegular}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginLeft: -10,
-                    }}
+                    style={{ marginBottom: 5 }}
+                    className={styles.label}
                   >
-                    Receive special offers
+                    date of birth
+                  </Typography>
+                  <Controller
+                    control={control}
+                    name="datepicker"
+                    defaultValue={null}
+                    rules={{ required: 'Select your birthday' }}
+                    render={({ onChange, onBlur, value, ref }) => (
+                      <DatePicker
+                        selected={value}
+                        className={styles.birthDate}
+                        onChange={onChange}
+                        placeholderText="DD.MM.YYYY"
+                        startDate={startDate}
+                        dateFormat="dd/MM/yyyy"
+                        scrollableYearDropdown
+                        showYearDropdown
+                        showMonthDropdown
+                        dropdownMode="select"
+                        yearDropdownItemNumber={80}
+                      />
+                    )}
+                  />
+                </Box>
+                <Typography className={styles.errText}>
+                  {errors.datepicker?.message}
+                </Typography>
+                <Box>
+                  <Typography
+                    style={{ marginBottom: 5 }}
+                    className={styles.label}
+                  >
+                    Enter email and password
+                  </Typography>
+                  <TextField
+                    inputProps={{
+                      style: {
+                        padding: 15,
+                        height: 14,
+                      },
+                    }}
+                    className={styles.input}
+                    id="input-email"
+                    type="email"
+                    variant="outlined"
+                    name="email"
+                    color="secondary"
+                    placeholder="Email"
+                    inputRef={register({
+                      required: 'Email is required',
+                      pattern: {
+                        value:
+                          /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/,
+                        message: 'This is not valid email',
+                      },
+                    })}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <Typography className={styles.errText}>
+                    {errors.email?.message}
+                  </Typography>
+                  <TextField
+                    inputProps={{
+                      style: {
+                        padding: 15,
+                        height: 14,
+                      },
+                    }}
+                    className={styles.input}
+                    id="new-password"
+                    type="password"
+                    variant="outlined"
+                    name="password"
+                    color="secondary"
+                    placeholder="Password"
+                    inputRef={register({
+                      required: 'Password is required',
+                      pattern: {
+                        value: /[a-z]/i,
+                        message: 'At least one character',
+                      },
+                      pattern: {
+                        value: /[0-9]/,
+                        message: 'At least one digit',
+                      },
+                      minLength: {
+                        value: 4,
+                        message: 'Password must be more than 4 characters',
+                      },
+                      maxLength: {
+                        value: 16,
+                        message: 'Password must be less than 16 characters',
+                      },
+                    })}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <Typography className={styles.errText}>
+                    {errors.password?.message}
                   </Typography>
                 </Box>
+                <Box>
+                  <Box
+                    style={{ display: 'flex', marginBottom: 20, height: 20 }}
+                  >
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={checked}
+                          onChange={(e) => setChecked(e.target.checked)}
+                        />
+                      }
+                    />
+                    <Typography
+                      className={styles.textRegular}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginLeft: -10,
+                      }}
+                    >
+                      Receive special offers
+                    </Typography>
+                  </Box>
+                </Box>
+                <Button type="submit" className={styles.btnRegister}>
+                  Register
+                </Button>
+              </form>
+              <Box className={styles.textBtn}>
+                <Typography
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                  className={styles.textRegular}
+                >
+                  Don't have an account?
+                </Typography>
+                <Link style={{ textDecoration: 'none' }} to="/login">
+                  <Button className={styles.btnLogin}>Login</Button>
+                </Link>
               </Box>
-              <Button type="submit" className={styles.btnRegister}>
-                Register
-              </Button>
-            </form>
-            <Box
-              style={{
-                display: 'flex',
-                margin: '0px 0px 0px 30px',
-                width: 320,
-                justifyContent: 'space-between',
-              }}
-            >
-              <Typography
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-                className={styles.textRegular}
-              >
-                Don't have an account?
-              </Typography>
-              <Link style={{ textDecoration: 'none' }} to="/login">
-                <Button className={styles.btnLogin}>Login</Button>
-              </Link>
             </Box>
           </Card>
         </Container>

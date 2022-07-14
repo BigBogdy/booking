@@ -27,6 +27,7 @@ function App() {
   const [kidsCount, setKidsCount] = useState(0);
   const [infantsCount, setInfantsCount] = useState(0);
   const [rooms, setRooms] = useState([]);
+  const [details, setDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const setStart = (date) => {
@@ -60,6 +61,21 @@ function App() {
         })
         .then((json) => {
           setRooms(json);
+          setIsLoading(false);
+        });
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true);
+      fetch('https://6284b002a48bd3c40b73d00d.mockapi.io/details')
+        .then((response) => {
+          return response.json();
+        })
+        .then((json) => {
+          setDetails(json);
           setIsLoading(false);
         });
     }
@@ -138,6 +154,7 @@ function App() {
                   infantsCount={infantsCount}
                   rooms={rooms}
                   numberOfGuests={numberOfGuests}
+                  details={details}
                 />
               </Route>
               <Route exact path="/login">

@@ -1,8 +1,7 @@
-import { Box, Container, Divider } from '@material-ui/core';
+import { Box, Container, Divider, Hidden } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FakeData from '../room-details/detailsData';
-import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Empty from '../../common/Empty';
 
@@ -11,9 +10,23 @@ import RateRoom from './RateRoom';
 import ReceiptCard from './ReceiptCard';
 import Reviews from './Reviews';
 import Rules from './Rules';
+import Loading from '../../common/Loading';
 
 const useStyles = makeStyles((theme) => {
   return {
+    container: {
+      marginBottom: 70,
+      [theme.breakpoints.down('xs')]: {
+        padding: 0,
+      },
+    },
+    content: {
+      display: 'flex',
+      [theme.breakpoints.down('md')]: {
+        display: 'block',
+        margin: '0px auto',
+      },
+    },
     img1: {
       height: 485,
       minWidth: 900,
@@ -44,6 +57,13 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       fontSize: 14,
     },
+    roomRates: {
+      display: 'flex',
+      marginBottom: 30,
+      [theme.breakpoints.down('sm')]: {
+        display: 'block',
+      },
+    },
   };
 });
 const RoomDetails = ({
@@ -59,6 +79,7 @@ const RoomDetails = ({
   infantsCount,
   numberOfGuests,
   rooms,
+  details,
 }) => {
   const styles = useStyles();
 
@@ -73,35 +94,48 @@ const RoomDetails = ({
     if (roomItem) {
       setRoomItem(roomItem);
     }
-    let item = FakeData.find((item) => item.id === Number.parseInt(id));
+  }, [rooms, id]);
+
+  useEffect(() => {
+    let item = details.find((item) => item.id === Number.parseInt(id));
     if (item) {
       setItem(item);
     }
-  }, [rooms, id]);
+  }, [details, id]);
 
   return (
     <>
       {item ? (
         <>
-          <Container style={{ marginBottom: 70 }}>
-            <Box
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                marginBottom: 70,
-              }}
-            >
-              <img className={styles.img1} src={item.images[0]} alt="img1" />
-              <Box>
-                <img className={styles.img2} src={item.images[1]} alt="img2" />
-                <img className={styles.img3} src={item.images[2]} alt="img3" />
+          <Container className={styles.container}>
+            <Hidden mdDown>
+              <Box
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  marginBottom: 70,
+                }}
+              >
+                <img className={styles.img1} src={item.images[0]} alt="img1" />
+                <Box>
+                  <img
+                    className={styles.img2}
+                    src={item.images[1]}
+                    alt="img2"
+                  />
+                  <img
+                    className={styles.img3}
+                    src={item.images[2]}
+                    alt="img3"
+                  />
+                </Box>
               </Box>
-            </Box>
-            <Box style={{ display: 'flex' }}>
+            </Hidden>
+            <Box className={styles.content}>
               <Box>
-                <Box style={{ display: 'flex', marginBottom: 30 }}>
+                <Box className={styles.roomRates}>
                   <InfoRoom item={item} />
                   <RateRoom item={item} />
                 </Box>
@@ -127,7 +161,7 @@ const RoomDetails = ({
           <Divider style={{ marginBottom: 110 }} />
         </>
       ) : (
-        <Empty />
+        <Loading />
       )}
     </>
   );

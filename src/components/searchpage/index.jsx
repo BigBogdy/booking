@@ -33,7 +33,7 @@ const SearchPage = ({
   return (
     <>
       <Box>
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           <Box style={{ display: 'flex' }}>
             <SideBar
               startDate={startDate}
@@ -63,7 +63,8 @@ const SearchPage = ({
               setInfantsCount={setInfantsCount}
               kidsCount={kidsCount}
               infantsCount={infantsCount}
-
+              checked={checked}
+              setChecked={setChecked}
               // applyFilters={applyFilters}
             />
           </Box>
