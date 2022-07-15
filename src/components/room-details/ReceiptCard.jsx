@@ -14,6 +14,7 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { UserAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 import { Alert } from '@material-ui/lab';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -137,7 +138,7 @@ const useStyles = makeStyles((theme) => {
     },
     infoCard_2: {
       position: 'absolute',
-      margin: '100px 0px 0px -30px',
+      margin: '130px 0px 0px -30px',
       width: 200,
       boxShadow: 'rgb(0 0 0 / 28%) 0px 8px 50px ',
       borderRadius: 10,
@@ -146,8 +147,8 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       zIndex: 4,
       [theme.breakpoints.down('xs')]: {
-        width: 100,
-        margin: '180px 0px 0px 0px',
+        width: 120,
+        margin: '180px 0px 0px -18px',
       },
     },
   };
@@ -278,10 +279,30 @@ const ReceiptCard = ({
               </div>
               {openServiceInfo ? (
                 <Card className={styles.infoCard_1}>
+                  <Box style={{ display: 'flex' }}>
+                    <IconButton
+                      style={{ width: 30, height: 30 }}
+                      onClick={() => setOpenServiceInfo(false)}
+                    >
+                      <CloseIcon style={{ color: 'grey', width: 20 }} />
+                    </IconButton>
+                    <br />
+                    <Typography
+                      style={{
+                        fontFamily: 'Montserrat',
+                        fontWeight: 700,
+                        fontSize: 14,
+                        marginTop: 5,
+                        marginLeft: 10,
+                      }}
+                    >
+                      Service Fee
+                    </Typography>
+                  </Box>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit .
                   Blanditiis Lorem ipsum dolor sit amet consectetur adipisicing
                   elit . Blanditiis Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit . Blanditiis
+                  adipisicing elit.
                 </Card>
               ) : null}
               <Typography className={styles.textRegular}>0$</Typography>
@@ -302,11 +323,32 @@ const ReceiptCard = ({
                   />
                 </div>
                 {openInfo ? (
-                  <Card className={styles.infoCard_2}>
-                    This helps to develop our platform and offer different
-                    services, such as 24/7 support while traveling. Includes
-                    VAT.
-                  </Card>
+                  <>
+                    <Card className={styles.infoCard_2}>
+                      <Box style={{ display: 'flex' }}>
+                        <IconButton
+                          style={{ width: 30, height: 30 }}
+                          onClick={() => setOpenInfo(false)}
+                        >
+                          <CloseIcon style={{ color: 'grey', width: 20 }} />
+                        </IconButton>
+                        <Typography
+                          style={{
+                            fontFamily: 'Montserrat',
+                            fontWeight: 700,
+                            fontSize: 14,
+                            marginTop: 5,
+                            marginLeft: 10,
+                          }}
+                        >
+                          Additional Fee
+                        </Typography>
+                      </Box>
+                      This helps to develop our platform and offer different
+                      services, such as 24/7 support while traveling. Includes
+                      VAT.
+                    </Card>
+                  </>
                 ) : null}
               </Box>
               <Typography className={styles.textRegular}>5$</Typography>

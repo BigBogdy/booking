@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // import FakeData from '../room-details/detailsData';
 import { makeStyles } from '@material-ui/core/styles';
-import Empty from '../../common/Empty';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
