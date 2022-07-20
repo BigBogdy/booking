@@ -5,17 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import SideBar from './sidebar';
 import Rooms from './rooms';
 
-const useStyles = makeStyles((theme) => {
-  return {};
-});
+// const useStyles = makeStyles((theme) => {
+//   return {};
+// });
 
 const SearchPage = ({
   startDate,
   setStart,
   endDate,
   setEnd,
-  checked,
-  setChecked,
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -27,6 +25,16 @@ const SearchPage = ({
   isLoading,
   selectedPrice,
   handleSliderChange,
+  checkedSmoking,
+  setCheckedSmoking,
+  checkedPets,
+  setCheckedPets,
+  checkedGuests,
+  setCheckedGuests,
+  checkedWideCorridor,
+  setCheckedWideCorridor,
+  checkedAssistant,
+  setCheckedAssistant,
 }) => {
   // const styles = useStyles();
 
@@ -48,9 +56,16 @@ const SearchPage = ({
               infantsCount={infantsCount}
               selectedPrice={selectedPrice}
               handleSliderChange={handleSliderChange}
-              checked={checked}
-              setChecked={setChecked}
-              // applyFilters={applyFilters}
+              checkedSmoking={checkedSmoking}
+              setCheckedSmoking={setCheckedSmoking}
+              checkedPets={checkedPets}
+              setCheckedPets={setCheckedPets}
+              checkedGuests={checkedGuests}
+              setCheckedGuests={setCheckedGuests}
+              checkedWideCorridor={checkedWideCorridor}
+              setCheckedWideCorridor={setCheckedWideCorridor}
+              checkedAssistant={checkedAssistant}
+              setCheckedAssistant={setCheckedAssistant}
             />
             <Rooms
               updatedRooms={updatedRooms}
@@ -63,8 +78,8 @@ const SearchPage = ({
               setInfantsCount={setInfantsCount}
               kidsCount={kidsCount}
               infantsCount={infantsCount}
-              checked={checked}
-              setChecked={setChecked}
+              checkedSmoking={checkedSmoking}
+              setCheckedSmoking={setCheckedSmoking}
               // applyFilters={applyFilters}
             />
           </Box>

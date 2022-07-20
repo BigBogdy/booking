@@ -19,7 +19,11 @@ import Success from './components/Success';
 function App() {
   let datePlus = new Date();
   datePlus.setDate(datePlus.getDate() + 1);
-  const [checked, setChecked] = useState(false);
+  const [checkedSmoking, setCheckedSmoking] = useState(false);
+  const [checkedPets, setCheckedPets] = useState(false);
+  const [checkedGuests, setCheckedGuests] = useState(false);
+  const [checkedWideCorridor, setCheckedWideCorridor] = useState(false);
+  const [checkedAssistant, setCheckedAssistant] = useState(false);
   const [selectedPrice, setSelectedPriced] = useState([0, 200]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(datePlus);
@@ -48,9 +52,29 @@ function App() {
     return (
       item.price >= selectedPrice[0] &&
       item.price <= selectedPrice[1] &&
-      item.smoking === checked
+      smoke(checkedSmoking, item.smoking) &&
+      pets(checkedPets, item.pets) &&
+      guests(checkedGuests, item.guests) &&
+      wideCorridor(checkedWideCorridor, item.widecorridor) &&
+      assistant(checkedAssistant, item.assistant)
     );
   });
+
+  function smoke(checkedSmoking, itemProperty) {
+    return checkedSmoking ? checkedSmoking === itemProperty : true;
+  }
+  function pets(checkedPets, itemProperty) {
+    return checkedPets ? checkedPets === itemProperty : true;
+  }
+  function guests(checkedGuests, itemProperty) {
+    return checkedGuests ? checkedGuests === itemProperty : true;
+  }
+  function wideCorridor(checkedWideCorridor, itemProperty) {
+    return checkedWideCorridor ? checkedWideCorridor === itemProperty : true;
+  }
+  function assistant(checkedAssistant, itemProperty) {
+    return checkedAssistant ? checkedAssistant === itemProperty : true;
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -121,8 +145,6 @@ function App() {
               </Route>
               <Route exact path="/search">
                 <SearchPage
-                  checked={checked}
-                  setChecked={setChecked}
                   startDate={startDate}
                   setStart={setStart}
                   endDate={endDate}
@@ -138,6 +160,16 @@ function App() {
                   isLoading={isLoading}
                   selectedPrice={selectedPrice}
                   handleSliderChange={handleSliderChange}
+                  checkedSmoking={checkedSmoking}
+                  setCheckedSmoking={setCheckedSmoking}
+                  checkedPets={checkedPets}
+                  setCheckedPets={setCheckedPets}
+                  checkedGuests={checkedGuests}
+                  setCheckedGuests={setCheckedGuests}
+                  checkedWideCorridor={checkedWideCorridor}
+                  setCheckedWideCorridor={setCheckedWideCorridor}
+                  checkedAssistant={checkedAssistant}
+                  setCheckedAssistant={setCheckedAssistant}
                 />
               </Route>
               <Route exact path="/details/:id">

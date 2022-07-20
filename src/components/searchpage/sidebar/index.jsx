@@ -35,8 +35,6 @@ const SideBar = ({
   setStart,
   endDate,
   setEnd,
-  checked,
-  setChecked,
   adultsCount,
   setAdultsCount,
   kidsCount,
@@ -45,6 +43,16 @@ const SideBar = ({
   setInfantsCount,
   selectedPrice,
   handleSliderChange,
+  checkedSmoking,
+  setCheckedSmoking,
+  checkedPets,
+  setCheckedPets,
+  checkedGuests,
+  setCheckedGuests,
+  checkedWideCorridor,
+  setCheckedWideCorridor,
+  checkedAssistant,
+  setCheckedAssistant,
 }) => {
   const styles = useStyles();
 
@@ -73,8 +81,20 @@ const SideBar = ({
             selectedPrice={selectedPrice}
             handleSliderChange={handleSliderChange}
           />
-          <Optional setChecked={setChecked} checked={checked} />
-          <Availability />
+          <Optional
+            checkedSmoking={checkedSmoking}
+            setCheckedSmoking={setCheckedSmoking}
+            checkedPets={checkedPets}
+            setCheckedPets={setCheckedPets}
+            checkedGuests={checkedGuests}
+            setCheckedGuests={setCheckedGuests}
+          />
+          <Availability
+            checkedWideCorridor={checkedWideCorridor}
+            setCheckedWideCorridor={setCheckedWideCorridor}
+            checkedAssistant={checkedAssistant}
+            setCheckedAssistant={setCheckedAssistant}
+          />
           <SelectorConveniencesSideBar />
           <Additionals />
         </Box>

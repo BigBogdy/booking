@@ -1,20 +1,6 @@
 import { Box, Checkbox, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AvailabilityItem from './AvailabilityItem';
-
-const availabilityLinks = [
-  {
-    id: 1,
-    title: 'Wide corridor',
-    text: ' The width of the corridors in the room is at least 91 cm.',
-  },
-  {
-    id: 2,
-    title: ' Assistant for the disabled',
-    text: ' A specialist will meet you on the 1st floor and take you to your room',
-  },
-];
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -37,10 +23,26 @@ const useStyles = makeStyles((theme) => {
         marginBottom: 10,
       },
     },
+    textRegular: {
+      color: 'rgba(31, 32, 65, 0.5)',
+      fontFamily: 'Montserrat',
+      fontSize: 12,
+      fontWeight: 400,
+      textTransform: 'uppercase',
+      [theme.breakpoints.down('md')]: {
+        margin: '0px 0px 0px 0px',
+        fontSize: 10,
+      },
+    },
   };
 });
 
-const Availability = () => {
+const Availability = ({
+  checkedWideCorridor,
+  setCheckedWideCorridor,
+  checkedAssistant,
+  setCheckedAssistant,
+}) => {
   const styles = useStyles();
 
   return (
@@ -48,9 +50,51 @@ const Availability = () => {
       <Box className={styles.content}>
         <Typography className={styles.textBold}>Availability</Typography>
         <Box>
-          {availabilityLinks.map((obj) => (
-            <AvailabilityItem title={obj.title} text={obj.text} key={obj.id} />
-          ))}
+          <Box>
+            <label
+              style={{ display: 'flex', marginBottom: 10, marginLeft: -5 }}
+            >
+              <input
+                className="check"
+                type="checkbox"
+                onChange={() => setCheckedWideCorridor(!checkedWideCorridor)}
+              />
+              <Box style={{ marginLeft: 5, userSelect: 'none', width: 203 }}>
+                <Typography
+                  className={styles.textBold}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  Wide corridor
+                </Typography>
+                <Typography className={styles.textRegular}>
+                  The width of the corridors in the room is at least 91 cm.
+                </Typography>
+              </Box>
+            </label>
+          </Box>
+          <Box>
+            <label
+              style={{ display: 'flex', marginBottom: 10, marginLeft: -5 }}
+            >
+              <input
+                className="check"
+                type="checkbox"
+                onChange={() => setCheckedAssistant(!checkedAssistant)}
+              />
+              <Box style={{ marginLeft: 5, userSelect: 'none', width: 203 }}>
+                <Typography
+                  className={styles.textBold}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  Assistant for the disabled
+                </Typography>
+                <Typography className={styles.textRegular}>
+                  A specialist will meet you on the 1st floor and take you to
+                  your room
+                </Typography>
+              </Box>
+            </label>
+          </Box>
         </Box>
       </Box>
     </>
