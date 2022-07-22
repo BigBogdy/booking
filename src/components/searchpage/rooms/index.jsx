@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => {
   return {
     content: {
       marginTop: 30,
+      marginBottom: 110,
       [theme.breakpoints.down('md')]: {
         marginTop: 20,
         margin: '0px auto',
@@ -78,20 +79,42 @@ const useStyles = makeStyles((theme) => {
 const Rooms = ({
   updatedRooms,
   isLoading,
-  adultsCount,
-  setAdultsCount,
-  kidsCount,
-  setKidsCount,
-  infantsCount,
-  setInfantsCount,
   selectedPrice,
   handleSliderChange,
   checked,
   setChecked,
+  checkedSmoking,
+  setCheckedSmoking,
+  checkedPets,
+  setCheckedPets,
+  checkedGuests,
+  setCheckedGuests,
+  checkedWideCorridor,
+  setCheckedWideCorridor,
+  checkedAssistant,
+  setCheckedAssistant,
+  checkedBreakfast,
+  setCheckedBreakfast,
+  checkedDesk,
+  setCheckedDesk,
+  checkedWorktable,
+  setCheckedWorktable,
+  checkedCrib,
+  setCheckedCrib,
+  checkedTv,
+  setCheckedTv,
+  checkedShampoo,
+  setCheckedShampoo,
+  bedroomsCount,
+  setBedroomsCount,
+  bedsCount,
+  setBedsCount,
+  bathroomsCount,
+  setBathroomsCount,
 }) => {
   const styles = useStyles();
   const [open, setOpen] = useState(false);
-
+  console.log(checkedSmoking);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -139,18 +162,50 @@ const Rooms = ({
                 </IconButton>
               </div>
               <Divider />
-              <Optional checked={checked} setChecked={setChecked} />
+              <Optional
+                checkedSmoking={checkedSmoking}
+                setCheckedSmoking={setCheckedSmoking}
+                checkedPets={checkedPets}
+                setCheckedPets={setCheckedPets}
+                checkedGuests={checkedGuests}
+                setCheckedGuests={setCheckedGuests}
+              />
               <Divider />
               <SliderPrice
                 selectedPrice={selectedPrice}
                 handleSliderChange={handleSliderChange}
               />
               <Divider />
-              <Availability />
+              <Availability
+                checkedWideCorridor={checkedWideCorridor}
+                setCheckedWideCorridor={setCheckedWideCorridor}
+                checkedAssistant={checkedAssistant}
+                setCheckedAssistant={setCheckedAssistant}
+              />
               <Divider />
-              <SelectorConveniencesSideBar />
+              <SelectorConveniencesSideBar
+                bedroomsCount={bedroomsCount}
+                setBedroomsCount={setBedroomsCount}
+                bedsCount={bedsCount}
+                setBedsCount={setBedsCount}
+                bathroomsCount={bathroomsCount}
+                setBathroomsCount={setBathroomsCount}
+              />
               <Divider />
-              <Additionals />
+              <Additionals
+                checkedBreakfast={checkedBreakfast}
+                setCheckedBreakfast={setCheckedBreakfast}
+                checkedDesk={checkedDesk}
+                setCheckedDesk={setCheckedDesk}
+                checkedWorktable={checkedWorktable}
+                setCheckedWorktable={setCheckedWorktable}
+                checkedCrib={checkedCrib}
+                setCheckedCrib={setCheckedCrib}
+                checkedTv={checkedTv}
+                setCheckedTv={setCheckedTv}
+                checkedShampoo={checkedShampoo}
+                setCheckedShampoo={setCheckedShampoo}
+              />
             </SwipeableDrawer>
           </Typography>
         </Hidden>

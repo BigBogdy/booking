@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
-      marginBottom: 16,
       textTransform: 'uppercase',
       [theme.breakpoints.down('md')]: {
         fontSize: 10,
@@ -48,7 +47,9 @@ const Availability = ({
   return (
     <>
       <Box className={styles.content}>
-        <Typography className={styles.textBold}>Availability</Typography>
+        <Typography className={styles.textBold} style={{ marginBottom: 16 }}>
+          Availability
+        </Typography>
         <Box>
           <Box>
             <label
@@ -62,7 +63,12 @@ const Availability = ({
               <Box style={{ marginLeft: 5, userSelect: 'none', width: 203 }}>
                 <Typography
                   className={styles.textBold}
-                  style={{ display: 'flex', alignItems: 'center' }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: 10,
+                    marginTop: 5,
+                  }}
                 >
                   Wide corridor
                 </Typography>
@@ -84,7 +90,12 @@ const Availability = ({
               <Box style={{ marginLeft: 5, userSelect: 'none', width: 203 }}>
                 <Typography
                   className={styles.textBold}
-                  style={{ display: 'flex', alignItems: 'center' }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: 10,
+                    marginTop: 5,
+                  }}
                 >
                   Assistant for the disabled
                 </Typography>

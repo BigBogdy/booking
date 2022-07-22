@@ -53,6 +53,24 @@ const SideBar = ({
   setCheckedWideCorridor,
   checkedAssistant,
   setCheckedAssistant,
+  checkedBreakfast,
+  setCheckedBreakfast,
+  checkedDesk,
+  setCheckedDesk,
+  checkedWorktable,
+  setCheckedWorktable,
+  checkedCrib,
+  setCheckedCrib,
+  checkedTv,
+  setCheckedTv,
+  checkedShampoo,
+  setCheckedShampoo,
+  bedroomsCount,
+  setBedroomsCount,
+  bedsCount,
+  setBedsCount,
+  bathroomsCount,
+  setBathroomsCount,
 }) => {
   const styles = useStyles();
 
@@ -95,8 +113,28 @@ const SideBar = ({
             checkedAssistant={checkedAssistant}
             setCheckedAssistant={setCheckedAssistant}
           />
-          <SelectorConveniencesSideBar />
-          <Additionals />
+          <SelectorConveniencesSideBar
+            bedroomsCount={bedroomsCount}
+            setBedroomsCount={setBedroomsCount}
+            bedsCount={bedsCount}
+            setBedsCount={setBedsCount}
+            bathroomsCount={bathroomsCount}
+            setBathroomsCount={setBathroomsCount}
+          />
+          <Additionals
+            checkedBreakfast={checkedBreakfast}
+            setCheckedBreakfast={setCheckedBreakfast}
+            checkedDesk={checkedDesk}
+            setCheckedDesk={setCheckedDesk}
+            checkedWorktable={checkedWorktable}
+            setCheckedWorktable={setCheckedWorktable}
+            checkedCrib={checkedCrib}
+            setCheckedCrib={setCheckedCrib}
+            checkedTv={checkedTv}
+            setCheckedTv={setCheckedTv}
+            checkedShampoo={checkedShampoo}
+            setCheckedShampoo={setCheckedShampoo}
+          />
         </Box>
       </Hidden>
     </>

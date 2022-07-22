@@ -166,14 +166,18 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const SelectorConveniencesSideBar = () => {
+const SelectorConveniencesSideBar = ({
+  bedroomsCount,
+  setBedroomsCount,
+  bedsCount,
+  setBedsCount,
+  bathroomsCount,
+  setBathroomsCount,
+}) => {
   const styles = useStyles();
   const ref = useRef();
 
   const [open, setOpen] = useState(false);
-  const [bedroomsCount, setBedroomsCount] = useState(0);
-  const [bedsCount, setBedsCount] = useState(0);
-  const [bathroomsCount, setBathroomsCount] = useState(0);
 
   const handleClick = () => {
     setOpen(!open);
@@ -222,17 +226,12 @@ const SelectorConveniencesSideBar = () => {
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
       if (open && ref.current && !ref.current.contains(e.target)) {
         setOpen(false);
       }
     };
-
     document.addEventListener('mousedown', checkIfClickedOutside);
-
     return () => {
-      // Cleanup the event listener
       document.removeEventListener('mousedown', checkIfClickedOutside);
     };
   }, [open]);

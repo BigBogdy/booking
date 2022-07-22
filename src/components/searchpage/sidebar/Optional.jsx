@@ -61,21 +61,22 @@ const Optional = ({
         <Box>
           <Box>
             <form style={{ userSelect: 'none' }}>
-              <Box className={styles.checkbox}>
+              <label className={styles.checkbox}>
                 <input
                   className="check"
                   type="checkbox"
                   onChange={() => setCheckedSmoking(!checkedSmoking)}
                   style={{ marginRight: 10 }}
                 />
+
                 <Typography
                   className={styles.textRegular}
                   style={{ display: 'flex', alignItems: 'center' }}
                 >
                   Smoking is allowed
                 </Typography>
-              </Box>
-              <Box className={styles.checkbox}>
+              </label>
+              <label className={styles.checkbox}>
                 <input
                   className="check"
                   type="checkbox"
@@ -88,8 +89,8 @@ const Optional = ({
                 >
                   Allowed with pets
                 </Typography>
-              </Box>
-              <Box className={styles.checkbox}>
+              </label>
+              <label className={styles.checkbox}>
                 <input
                   className="check"
                   type="checkbox"
@@ -102,7 +103,7 @@ const Optional = ({
                 >
                   Allowed to invite guests
                 </Typography>
-              </Box>
+              </label>
             </form>
           </Box>
         </Box>

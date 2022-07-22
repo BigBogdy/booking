@@ -35,6 +35,24 @@ const SearchPage = ({
   setCheckedWideCorridor,
   checkedAssistant,
   setCheckedAssistant,
+  checkedBreakfast,
+  setCheckedBreakfast,
+  checkedDesk,
+  setCheckedDesk,
+  checkedWorktable,
+  setCheckedWorktable,
+  checkedCrib,
+  setCheckedCrib,
+  checkedTv,
+  setCheckedTv,
+  checkedShampoo,
+  setCheckedShampoo,
+  bedroomsCount,
+  setBedroomsCount,
+  bedsCount,
+  setBedsCount,
+  bathroomsCount,
+  setBathroomsCount,
 }) => {
   // const styles = useStyles();
 
@@ -66,6 +84,24 @@ const SearchPage = ({
               setCheckedWideCorridor={setCheckedWideCorridor}
               checkedAssistant={checkedAssistant}
               setCheckedAssistant={setCheckedAssistant}
+              checkedBreakfast={checkedBreakfast}
+              setCheckedBreakfast={setCheckedBreakfast}
+              checkedDesk={checkedDesk}
+              setCheckedDesk={setCheckedDesk}
+              checkedWorktable={checkedWorktable}
+              setCheckedWorktable={setCheckedWorktable}
+              checkedCrib={checkedCrib}
+              setCheckedCrib={setCheckedCrib}
+              checkedTv={checkedTv}
+              setCheckedTv={setCheckedTv}
+              checkedShampoo={checkedShampoo}
+              setCheckedShampoo={setCheckedShampoo}
+              bedroomsCount={bedroomsCount}
+              setBedroomsCount={setBedroomsCount}
+              bedsCount={bedsCount}
+              setBedsCount={setBedsCount}
+              bathroomsCount={bathroomsCount}
+              setBathroomsCount={setBathroomsCount}
             />
             <Rooms
               updatedRooms={updatedRooms}
@@ -80,7 +116,32 @@ const SearchPage = ({
               infantsCount={infantsCount}
               checkedSmoking={checkedSmoking}
               setCheckedSmoking={setCheckedSmoking}
-              // applyFilters={applyFilters}
+              checkedPets={checkedPets}
+              setCheckedPets={setCheckedPets}
+              checkedGuests={checkedGuests}
+              setCheckedGuests={setCheckedGuests}
+              checkedWideCorridor={checkedWideCorridor}
+              setCheckedWideCorridor={setCheckedWideCorridor}
+              checkedAssistant={checkedAssistant}
+              setCheckedAssistant={setCheckedAssistant}
+              checkedBreakfast={checkedBreakfast}
+              setCheckedBreakfast={setCheckedBreakfast}
+              checkedDesk={checkedDesk}
+              setCheckedDesk={setCheckedDesk}
+              checkedWorktable={checkedWorktable}
+              setCheckedWorktable={setCheckedWorktable}
+              checkedCrib={checkedCrib}
+              setCheckedCrib={setCheckedCrib}
+              checkedTv={checkedTv}
+              setCheckedTv={setCheckedTv}
+              checkedShampoo={checkedShampoo}
+              setCheckedShampoo={setCheckedShampoo}
+              bedroomsCount={bedroomsCount}
+              setBedroomsCount={setBedroomsCount}
+              bedsCount={bedsCount}
+              setBedsCount={setBedsCount}
+              bathroomsCount={bathroomsCount}
+              setBathroomsCount={setBathroomsCount}
             />
           </Box>
         </Container>

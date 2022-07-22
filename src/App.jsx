@@ -24,6 +24,17 @@ function App() {
   const [checkedGuests, setCheckedGuests] = useState(false);
   const [checkedWideCorridor, setCheckedWideCorridor] = useState(false);
   const [checkedAssistant, setCheckedAssistant] = useState(false);
+  const [checkedBreakfast, setCheckedBreakfast] = useState(false);
+  const [checkedDesk, setCheckedDesk] = useState(false);
+  const [checkedWorktable, setCheckedWorktable] = useState(false);
+  const [checkedCrib, setCheckedCrib] = useState(false);
+  const [checkedTv, setCheckedTv] = useState(false);
+  const [checkedShampoo, setCheckedShampoo] = useState(false);
+
+  const [bedroomsCount, setBedroomsCount] = useState(0);
+  const [bedsCount, setBedsCount] = useState(0);
+  const [bathroomsCount, setBathroomsCount] = useState(0);
+
   const [selectedPrice, setSelectedPriced] = useState([0, 200]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(datePlus);
@@ -56,7 +67,16 @@ function App() {
       pets(checkedPets, item.pets) &&
       guests(checkedGuests, item.guests) &&
       wideCorridor(checkedWideCorridor, item.widecorridor) &&
-      assistant(checkedAssistant, item.assistant)
+      assistant(checkedAssistant, item.assistant) &&
+      breakfast(checkedBreakfast, item.breakfast) &&
+      desk(checkedDesk, item.desk) &&
+      worktable(checkedWorktable, item.worktable) &&
+      crib(checkedCrib, item.crib) &&
+      tv(checkedTv, item.tv) &&
+      shampoo(checkedShampoo, item.shampoo) &&
+      bedrooms(bedroomsCount, item.bedrooms) &&
+      beds(bedsCount, item.beds) &&
+      bathrooms(bathroomsCount, item.bathrooms)
     );
   });
 
@@ -74,6 +94,33 @@ function App() {
   }
   function assistant(checkedAssistant, itemProperty) {
     return checkedAssistant ? checkedAssistant === itemProperty : true;
+  }
+  function breakfast(checkedBreakfast, itemProperty) {
+    return checkedBreakfast ? checkedBreakfast === itemProperty : true;
+  }
+  function desk(checkedDesk, itemProperty) {
+    return checkedDesk ? checkedDesk === itemProperty : true;
+  }
+  function worktable(checkedWorktable, itemProperty) {
+    return checkedWorktable ? checkedWorktable === itemProperty : true;
+  }
+  function crib(checkedCrib, itemProperty) {
+    return checkedCrib ? checkedCrib === itemProperty : true;
+  }
+  function tv(checkedTv, itemProperty) {
+    return checkedTv ? checkedTv === itemProperty : true;
+  }
+  function shampoo(checkedShampoo, itemProperty) {
+    return checkedShampoo ? checkedShampoo === itemProperty : true;
+  }
+  function bedrooms(bedroomsCount, itemProperty) {
+    return bedroomsCount ? bedroomsCount === itemProperty : true;
+  }
+  function beds(bedsCount, itemProperty) {
+    return bedsCount ? bedsCount === itemProperty : true;
+  }
+  function bathrooms(bathroomsCount, itemProperty) {
+    return bathroomsCount ? bathroomsCount === itemProperty : true;
   }
 
   useEffect(() => {
@@ -170,6 +217,24 @@ function App() {
                   setCheckedWideCorridor={setCheckedWideCorridor}
                   checkedAssistant={checkedAssistant}
                   setCheckedAssistant={setCheckedAssistant}
+                  checkedBreakfast={checkedBreakfast}
+                  setCheckedBreakfast={setCheckedBreakfast}
+                  checkedDesk={checkedDesk}
+                  setCheckedDesk={setCheckedDesk}
+                  checkedWorktable={checkedWorktable}
+                  setCheckedWorktable={setCheckedWorktable}
+                  checkedCrib={checkedCrib}
+                  setCheckedCrib={setCheckedCrib}
+                  checkedTv={checkedTv}
+                  setCheckedTv={setCheckedTv}
+                  checkedShampoo={checkedShampoo}
+                  setCheckedShampoo={setCheckedShampoo}
+                  bedroomsCount={bedroomsCount}
+                  setBedroomsCount={setBedroomsCount}
+                  bedsCount={bedsCount}
+                  setBedsCount={setBedsCount}
+                  bathroomsCount={bathroomsCount}
+                  setBathroomsCount={setBathroomsCount}
                 />
               </Route>
               <Route exact path="/details/:id">

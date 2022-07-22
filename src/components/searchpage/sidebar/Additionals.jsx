@@ -3,16 +3,6 @@ import React, { useState } from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { makeStyles } from '@material-ui/core/styles';
-import AdditionalItem from './AdditionalItem';
-
-const additionalLinks = [
-  { id: 1, name: 'Breakfast' },
-  { id: 2, name: 'Desk' },
-  { id: 3, name: 'Work table' },
-  { id: 4, name: 'Crib' },
-  { id: 5, name: 'TV' },
-  { id: 6, name: 'Shampoo' },
-];
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -26,7 +16,7 @@ const useStyles = makeStyles((theme) => {
       fontSize: 12,
       fontWeight: 700,
       marginBottom: 4,
-      marginRight: 15,
+      marginRight: 5,
       textTransform: 'uppercase',
       userSelect: 'none',
       [theme.breakpoints.down('md')]: {
@@ -46,10 +36,22 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-const Additionals = (props) => {
+const Additionals = ({
+  checkedBreakfast,
+  setCheckedBreakfast,
+  checkedDesk,
+  setCheckedDesk,
+  checkedWorktable,
+  setCheckedWorktable,
+  checkedCrib,
+  setCheckedCrib,
+  checkedTv,
+  setCheckedTv,
+  checkedShampoo,
+  setCheckedShampoo,
+}) => {
   const styles = useStyles();
   const [open, setOpen] = useState(true);
-
   const handleClick = () => {
     setOpen(!open);
   };
@@ -63,26 +65,138 @@ const Additionals = (props) => {
         >
           <Typography className={styles.textBold}>
             Additional convenience
-            <Typography
-              component={'span'}
-              variant={'body2'}
-              style={{
-                color: 'rgba(31, 32, 65, 0.5)',
-                display: 'flex',
-                alignItems: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              {!open ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
-            </Typography>
+          </Typography>
+          <Typography
+            component={'span'}
+            variant={'body2'}
+            style={{
+              color: 'rgba(31, 32, 65, 0.5)',
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+              marginTop: -5,
+            }}
+          >
+            {!open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </Typography>
         </Box>
         {!open ? (
-          <Box>
-            {additionalLinks.map((obj) => (
-              <AdditionalItem name={obj.name} key={obj.id} />
-            ))}
-          </Box>
+          <>
+            <Box style={{ display: 'flex' }}>
+              <label
+                className={styles.checkbox}
+                style={{ userSelect: 'none', display: 'flex' }}
+              >
+                <input
+                  style={{ marginRight: 10 }}
+                  className="check"
+                  type="checkbox"
+                  onChange={() => setCheckedBreakfast(!checkedBreakfast)}
+                />
+                <Typography
+                  className={styles.textRegular}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  breakfast
+                </Typography>
+              </label>
+            </Box>
+            <Box style={{ display: 'flex' }}>
+              <label
+                className={styles.checkbox}
+                style={{ userSelect: 'none', display: 'flex' }}
+              >
+                <input
+                  style={{ marginRight: 10 }}
+                  className="check"
+                  type="checkbox"
+                  onChange={() => setCheckedDesk(!checkedDesk)}
+                />
+                <Typography
+                  className={styles.textRegular}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  Desk
+                </Typography>
+              </label>
+            </Box>
+            <Box style={{ display: 'flex' }}>
+              <label
+                className={styles.checkbox}
+                style={{ userSelect: 'none', display: 'flex' }}
+              >
+                <input
+                  style={{ marginRight: 10 }}
+                  className="check"
+                  type="checkbox"
+                  onChange={() => setCheckedWorktable(!checkedWorktable)}
+                />
+                <Typography
+                  className={styles.textRegular}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  Work table
+                </Typography>
+              </label>
+            </Box>
+            <Box style={{ display: 'flex' }}>
+              <label
+                className={styles.checkbox}
+                style={{ userSelect: 'none', display: 'flex' }}
+              >
+                <input
+                  style={{ marginRight: 10 }}
+                  className="check"
+                  type="checkbox"
+                  onChange={() => setCheckedCrib(!checkedCrib)}
+                />
+                <Typography
+                  className={styles.textRegular}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  Crib
+                </Typography>
+              </label>
+            </Box>
+            <Box style={{ display: 'flex' }}>
+              <label
+                className={styles.checkbox}
+                style={{ userSelect: 'none', display: 'flex' }}
+              >
+                <input
+                  style={{ marginRight: 10 }}
+                  className="check"
+                  type="checkbox"
+                  onChange={() => setCheckedTv(!checkedTv)}
+                />
+                <Typography
+                  className={styles.textRegular}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  TV
+                </Typography>
+              </label>
+            </Box>
+            <Box style={{ display: 'flex' }}>
+              <label
+                className={styles.checkbox}
+                style={{ userSelect: 'none', display: 'flex' }}
+              >
+                <input
+                  style={{ marginRight: 10 }}
+                  className="check"
+                  type="checkbox"
+                  onChange={() => setCheckedShampoo(!checkedShampoo)}
+                />
+                <Typography
+                  className={styles.textRegular}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                >
+                  Shampoo
+                </Typography>
+              </label>
+            </Box>
+          </>
         ) : null}
       </Box>
     </>
