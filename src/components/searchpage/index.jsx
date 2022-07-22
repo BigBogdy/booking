@@ -1,7 +1,5 @@
 import { Box, Container, IconButton } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import TuneIcon from '@material-ui/icons/Tune';
-import { makeStyles } from '@material-ui/core/styles';
 import SideBar from './sidebar';
 import Rooms from './rooms';
 

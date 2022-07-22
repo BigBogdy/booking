@@ -97,8 +97,6 @@ const Main = ({
   setStart,
   endDate,
   setEnd,
-  setEndDate,
-  setStartDate,
   adultsCount,
   setAdultsCount,
   kidsCount,

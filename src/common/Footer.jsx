@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => {
   return {
     content: {
       display: 'flex',
-      margin: '25px 0px 0px 0px',
+      margin: '100px 0px 0px 0px',
       [theme.breakpoints.down('sm')]: {
         display: 'flex',
         flexWrap: 'wrap',

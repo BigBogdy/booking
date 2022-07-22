@@ -58,6 +58,7 @@ const Availability = ({
               <input
                 className="check"
                 type="checkbox"
+                checked={checkedWideCorridor}
                 onChange={() => setCheckedWideCorridor(!checkedWideCorridor)}
               />
               <Box style={{ marginLeft: 5, userSelect: 'none', width: 203 }}>
@@ -85,6 +86,7 @@ const Availability = ({
               <input
                 className="check"
                 type="checkbox"
+                checked={checkedAssistant}
                 onChange={() => setCheckedAssistant(!checkedAssistant)}
               />
               <Box style={{ marginLeft: 5, userSelect: 'none', width: 203 }}>

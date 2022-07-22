@@ -54,6 +54,7 @@ const Optional = ({
   setCheckedGuests,
 }) => {
   const styles = useStyles();
+
   return (
     <>
       <Box className={styles.content}>
@@ -65,6 +66,7 @@ const Optional = ({
                 <input
                   className="check"
                   type="checkbox"
+                  checked={checkedSmoking}
                   onChange={() => setCheckedSmoking(!checkedSmoking)}
                   style={{ marginRight: 10 }}
                 />
@@ -80,9 +82,11 @@ const Optional = ({
                 <input
                   className="check"
                   type="checkbox"
+                  checked={checkedPets}
                   onChange={() => setCheckedPets(!checkedPets)}
                   style={{ marginRight: 10 }}
                 />
+
                 <Typography
                   className={styles.textRegular}
                   style={{ display: 'flex', alignItems: 'center' }}
@@ -94,6 +98,7 @@ const Optional = ({
                 <input
                   className="check"
                   type="checkbox"
+                  checked={checkedGuests}
                   onChange={() => setCheckedGuests(!checkedGuests)}
                   style={{ marginRight: 10 }}
                 />

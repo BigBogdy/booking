@@ -15,32 +15,54 @@ import Documentation from './components/Documentation';
 import Vacancies from './components/Vacancies';
 import News from './components/News';
 import Success from './components/Success';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
   let datePlus = new Date();
   datePlus.setDate(datePlus.getDate() + 1);
-  const [checkedSmoking, setCheckedSmoking] = useState(false);
-  const [checkedPets, setCheckedPets] = useState(false);
-  const [checkedGuests, setCheckedGuests] = useState(false);
-  const [checkedWideCorridor, setCheckedWideCorridor] = useState(false);
-  const [checkedAssistant, setCheckedAssistant] = useState(false);
-  const [checkedBreakfast, setCheckedBreakfast] = useState(false);
-  const [checkedDesk, setCheckedDesk] = useState(false);
-  const [checkedWorktable, setCheckedWorktable] = useState(false);
-  const [checkedCrib, setCheckedCrib] = useState(false);
-  const [checkedTv, setCheckedTv] = useState(false);
-  const [checkedShampoo, setCheckedShampoo] = useState(false);
+  const [checkedSmoking, setCheckedSmoking] = useLocalStorage(
+    'isCheckedSmoking',
+    false
+  );
+  const [checkedPets, setCheckedPets] = useLocalStorage('isCheckedPets', false);
+  const [checkedGuests, setCheckedGuests] = useLocalStorage(
+    'isCheckedGuests',
+    false
+  );
+  const [checkedWideCorridor, setCheckedWideCorridor] = useLocalStorage(
+    'isCheckedCorridor',
+    false
+  );
+  const [checkedAssistant, setCheckedAssistant] = useLocalStorage(
+    'isCheckedAssistant',
+    false
+  );
+  const [checkedBreakfast, setCheckedBreakfast] = useLocalStorage(
+    'isCheckedBreakfast',
+    false
+  );
+  const [checkedDesk, setCheckedDesk] = useLocalStorage('isCheckedDesk', false);
+  const [checkedWorktable, setCheckedWorktable] = useLocalStorage(
+    'isCheckedTable',
+    false
+  );
+  const [checkedCrib, setCheckedCrib] = useLocalStorage('isCheckedCrib', false);
+  const [checkedTv, setCheckedTv] = useLocalStorage('isCheckedTv', false);
+  const [checkedShampoo, setCheckedShampoo] = useLocalStorage(
+    'isCheckedShampoo',
+    false
+  );
 
-  const [bedroomsCount, setBedroomsCount] = useState(0);
-  const [bedsCount, setBedsCount] = useState(0);
-  const [bathroomsCount, setBathroomsCount] = useState(0);
+  const [bedroomsCount, setBedroomsCount] = useLocalStorage('bedroom', 0);
+  const [bedsCount, setBedsCount] = useLocalStorage('beds', 0);
+  const [bathroomsCount, setBathroomsCount] = useLocalStorage('bathroom', 0);
 
   const [selectedPrice, setSelectedPriced] = useState([0, 200]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(datePlus);
-  const [adultsCount, setAdultsCount] = useState(0);
-  const [kidsCount, setKidsCount] = useState(0);
-  const [infantsCount, setInfantsCount] = useState(0);
+  const [adultsCount, setAdultsCount] = useLocalStorage('adults', 0);
+  const [kidsCount, setKidsCount] = useLocalStorage('kids', 0);
+  const [infantsCount, setInfantsCount] = useLocalStorage('infants', 0);
   const [rooms, setRooms] = useState([]);
   const [details, setDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

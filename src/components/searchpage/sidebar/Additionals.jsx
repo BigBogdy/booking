@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => {
   return {
     content: {
+      height: '150px',
       margin: '15px 0px 70px 5px',
     },
     textBold: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       fontSize: 12,
       fontWeight: 700,
-      marginBottom: 4,
+      marginBottom: 10,
       marginRight: 5,
       textTransform: 'uppercase',
       userSelect: 'none',
@@ -74,7 +75,7 @@ const Additionals = ({
               display: 'flex',
               alignItems: 'center',
               cursor: 'pointer',
-              marginTop: -5,
+              marginTop: -15,
             }}
           >
             {!open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -91,6 +92,7 @@ const Additionals = ({
                   style={{ marginRight: 10 }}
                   className="check"
                   type="checkbox"
+                  checked={checkedBreakfast}
                   onChange={() => setCheckedBreakfast(!checkedBreakfast)}
                 />
                 <Typography
@@ -110,6 +112,7 @@ const Additionals = ({
                   style={{ marginRight: 10 }}
                   className="check"
                   type="checkbox"
+                  checked={checkedDesk}
                   onChange={() => setCheckedDesk(!checkedDesk)}
                 />
                 <Typography
@@ -129,6 +132,7 @@ const Additionals = ({
                   style={{ marginRight: 10 }}
                   className="check"
                   type="checkbox"
+                  checked={checkedWorktable}
                   onChange={() => setCheckedWorktable(!checkedWorktable)}
                 />
                 <Typography
@@ -148,6 +152,7 @@ const Additionals = ({
                   style={{ marginRight: 10 }}
                   className="check"
                   type="checkbox"
+                  checked={checkedCrib}
                   onChange={() => setCheckedCrib(!checkedCrib)}
                 />
                 <Typography
@@ -167,6 +172,7 @@ const Additionals = ({
                   style={{ marginRight: 10 }}
                   className="check"
                   type="checkbox"
+                  checked={checkedTv}
                   onChange={() => setCheckedTv(!checkedTv)}
                 />
                 <Typography
@@ -186,6 +192,7 @@ const Additionals = ({
                   style={{ marginRight: 10 }}
                   className="check"
                   type="checkbox"
+                  checked={checkedShampoo}
                   onChange={() => setCheckedShampoo(!checkedShampoo)}
                 />
                 <Typography
