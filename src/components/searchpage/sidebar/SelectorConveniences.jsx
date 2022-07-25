@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-
 import { Box, Card, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -188,8 +186,7 @@ const SelectorConveniencesSideBar = ({
     setBedsCount(0);
     setBathroomsCount(0);
   };
-  const arr = [bedroomsCount, bedsCount, bathroomsCount];
-  const numberOfConv = arr.reduce((a, b) => a + b, 0);
+
   function bedrooms() {
     if (bedroomsCount > 1) {
       return bedroomsCount + ' bedrooms, ';

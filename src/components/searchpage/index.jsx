@@ -1,11 +1,7 @@
-import { Box, Container, IconButton } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Box, Container } from '@material-ui/core';
 import SideBar from './sidebar';
 import Rooms from './rooms';
-
-// const useStyles = makeStyles((theme) => {
-//   return {};
-// });
 
 const SearchPage = ({
   startDate,
@@ -18,7 +14,6 @@ const SearchPage = ({
   infantsCount,
   setKidsCount,
   setInfantsCount,
-  rooms,
   updatedRooms,
   isLoading,
   selectedPrice,
@@ -52,8 +47,6 @@ const SearchPage = ({
   bathroomsCount,
   setBathroomsCount,
 }) => {
-  // const styles = useStyles();
-
   return (
     <>
       <Box>

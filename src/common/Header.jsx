@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import classNames from 'classnames';
-// import Link from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
@@ -35,9 +34,6 @@ const useStyles = makeStyles((theme) => {
       fontFamily: 'Montserrat',
       fontWeight: 400,
       marginRight: 20,
-      // '&:hover': {
-      //   textDecoration: 'underline',
-      // },
     },
     logos: {
       alignItems: 'center',

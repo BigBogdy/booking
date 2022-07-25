@@ -1,6 +1,5 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
-
 import '../../../components/main/datePickerStyles/datepicker.scss';
 import { Box, Typography } from '@material-ui/core';
 

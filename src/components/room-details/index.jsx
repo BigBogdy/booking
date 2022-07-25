@@ -1,14 +1,12 @@
 import { Box, Container, Divider, Hidden } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import FakeData from '../room-details/detailsData';
 import { makeStyles } from '@material-ui/core/styles';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
 import InfoRoom from './InfoRoom';
 import RateRoom from './RateRoom';
 import ReceiptCard from './ReceiptCard';

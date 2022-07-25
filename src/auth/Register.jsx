@@ -17,7 +17,6 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import { auth } from '../firebase';
 const useStyles = makeStyles((theme) => {
   return {
     container: {
@@ -350,7 +349,7 @@ const Register = () => {
                       required: 'Email is required',
                       pattern: {
                         value:
-                          /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)\b/,
+                          /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+[^<>()\.,;:\s@\"]{2,})$/,
                         message: 'This is not valid email',
                       },
                     })}

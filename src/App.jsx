@@ -144,11 +144,10 @@ function App() {
   function bathrooms(bathroomsCount, itemProperty) {
     return bathroomsCount ? bathroomsCount === itemProperty : true;
   }
-
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
-      fetch('https://6284b002a48bd3c40b73d00d.mockapi.io/rooms')
+      fetch(`https://${process.env.REACT_APP_API_KEY}.mockapi.io/rooms`)
         .then((response) => {
           return response.json();
         })
@@ -163,7 +162,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
-      fetch('https://6284b002a48bd3c40b73d00d.mockapi.io/details')
+      fetch(`https://${process.env.REACT_APP_API_KEY}.io/details`)
         .then((response) => {
           return response.json();
         })

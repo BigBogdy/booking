@@ -1,6 +1,5 @@
-import { Typography } from '@material-ui/core';
 import React from 'react';
-import { PieChart, Pie, Sector, Cell, Tooltip, Label } from 'recharts';
+import { PieChart, Pie, Cell, Label } from 'recharts';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => {

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link, useHistory } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { UserAuth } from '../context/AuthContext';
 import {
   Box,
@@ -224,7 +223,17 @@ const Login = () => {
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <Typography className={styles.errText}>{errorEmail}</Typography>
+                {errorEmail === 'Firebase: Error (auth/invalid-email).' ? (
+                  <div className={styles.errText}>This is not valid email</div>
+                ) : 'Firebase: Error (auth/user-not-found).' ? (
+                  <div className={styles.errText}>User is not found</div>
+                ) : 'Firebase: Error (auth/user-disabled).' ? (
+                  <div className={styles.errText}>User is disabled</div>
+                ) : (
+                  <Typography className={styles.errText}>
+                    {errorEmail}
+                  </Typography>
+                )}
                 <TextField
                   inputProps={{
                     style: {

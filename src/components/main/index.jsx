@@ -50,21 +50,6 @@ const useStyles = makeStyles((theme) => {
         fontSize: 16,
       },
     },
-    slogan: {
-      color: 'rgba(31, 32, 65, 0.75)',
-      fontFamily: 'Montserrat',
-      fontSize: 14,
-      margin: '834px 134px 0px 0px',
-      textAlign: 'right',
-      [theme.breakpoints.down('sm')]: {
-        fontSize: 10,
-        display: 'flex',
-        marginRight: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-    },
-
     select: {
       border: '1px solid rgba(31, 32, 65, 0.5)',
       borderRadius: 4,
@@ -189,10 +174,6 @@ const Main = ({
             )}
           </Card>
         </Container>
-        {/* <div className={styles.slogan}>
-          The best rooms for your work,
-          <br /> leisure and just inspiration
-        </div> */}
       </Box>
     </>
   );

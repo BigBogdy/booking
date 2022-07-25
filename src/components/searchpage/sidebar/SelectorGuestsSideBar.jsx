@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
-
 import { Box, Card, IconButton, Typography } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
