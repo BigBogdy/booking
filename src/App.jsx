@@ -162,7 +162,7 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
-      fetch(`https://${process.env.REACT_APP_API_KEY}.io/details`)
+      fetch(`https://${process.env.REACT_APP_API_KEY}.mockapi.io/details`)
         .then((response) => {
           return response.json();
         })
