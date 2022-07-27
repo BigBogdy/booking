@@ -196,7 +196,7 @@ function App() {
               <Route path="/documentation">
                 <Documentation />
               </Route>
-              <Route exact path="/">
+              <Route exact path="/booking">
                 <Main
                   startDate={startDate}
                   setStart={setStart}
