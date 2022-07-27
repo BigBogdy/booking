@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/booking/static/css/main.49e6717b.css",
-    "main.js": "/booking/static/js/main.635b4669.js",
-    "index.html": "/booking/index.html",
-    "main.49e6717b.css.map": "/booking/static/css/main.49e6717b.css.map",
-    "main.635b4669.js.map": "/booking/static/js/main.635b4669.js.map"
+    "main.css": "https://BigBogdy.github.io/booking/static/css/main.49e6717b.css",
+    "main.js": "https://BigBogdy.github.io/booking/static/js/main.d47c287a.js",
+    "index.html": "https://BigBogdy.github.io/booking/index.html",
+    "main.49e6717b.css.map": "https://BigBogdy.github.io/booking/static/css/main.49e6717b.css.map",
+    "main.d47c287a.js.map": "https://BigBogdy.github.io/booking/static/js/main.d47c287a.js.map"
   },
   "entrypoints": [
     "static/css/main.49e6717b.css",
-    "static/js/main.635b4669.js"
+    "static/js/main.d47c287a.js"
   ]
 }
