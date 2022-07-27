@@ -182,7 +182,7 @@ const Login = () => {
     setPasswordError('');
     try {
       await signIn(email, password);
-      history.push('/');
+      history.push('/booking');
     } catch (err) {
       switch (err.code) {
         case 'auth/invalid-email':

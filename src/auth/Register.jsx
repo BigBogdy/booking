@@ -190,7 +190,7 @@ const Register = () => {
     try {
       setUserInfo(data);
       await createUser(email, password);
-      history.push('/');
+      history.push('/booking');
     } catch (err) {
       console.log(err);
     }

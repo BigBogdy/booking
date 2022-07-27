@@ -160,7 +160,7 @@ const Header = () => {
       >
         <Container>
           <Toolbar disableGutters style={{ justifyContent: 'center' }}>
-            <Link to="/" className={styles.logos}>
+            <Link to="/booking" className={styles.logos}>
               <img
                 style={{ marginRight: 12.5 }}
                 src="../img/Logo.svg"

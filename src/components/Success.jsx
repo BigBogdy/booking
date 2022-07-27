@@ -110,7 +110,7 @@ const Success = () => {
             karabimba@example.com
           </a>
         </Typography>
-        <Link style={{ textDecoration: 'none' }} to="/">
+        <Link style={{ textDecoration: 'none' }} to="/booking">
           <Button className={styles.btn}>Continue</Button>
         </Link>
       </Container>
