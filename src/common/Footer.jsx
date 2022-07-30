@@ -175,11 +175,11 @@ const Footer = () => {
             <Box className={styles.sloganBox}>
               <Typography className={styles.logos}>
                 <img
-                  src="../img/Logo.svg"
+                  src="https://i.ibb.co/0ndS9tn/1.png"
                   alt="Logo"
                   style={{ marginRight: 12.5 }}
                 />
-                <img src="../img/TOXIN.svg" alt="toxin" />
+                <img src="https://i.ibb.co/vqqyNTs/2.png" alt="toxin" />
               </Typography>
               <Typography
                 style={{

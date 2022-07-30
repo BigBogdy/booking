@@ -113,7 +113,6 @@ const Rooms = ({
 }) => {
   const styles = useStyles();
   const [open, setOpen] = useState(false);
-  console.log(checkedSmoking);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -135,7 +134,6 @@ const Rooms = ({
               width: 100,
               margin: '0 auto',
               display: 'flex',
-
               cursor: 'pointer',
             }}
           >

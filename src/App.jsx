@@ -16,6 +16,7 @@ import Vacancies from './components/Vacancies';
 import News from './components/News';
 import Success from './components/Success';
 import useLocalStorage from './hooks/useLocalStorage';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
   let datePlus = new Date();
@@ -178,118 +179,117 @@ function App() {
     <>
       <div className="wrapper">
         <AuthContextProvider>
-          <Router>
-            <Header />
-            <Switch>
-              <Route path="/about">
-                <AboutUs />
-              </Route>
-              <Route path="/services">
-                <Services />
-              </Route>
-              <Route path="/vacancies">
-                <Vacancies />
-              </Route>
-              <Route path="/news">
-                <News />
-              </Route>
-              <Route path="/documentation">
-                <Documentation />
-              </Route>
-              <Route exact path="/booking">
-                <Main
-                  startDate={startDate}
-                  setStart={setStart}
-                  endDate={endDate}
-                  setEnd={setEnd}
-                  adultsCount={adultsCount}
-                  setAdultsCount={setAdultsCount}
-                  setKidsCount={setKidsCount}
-                  setInfantsCount={setInfantsCount}
-                  kidsCount={kidsCount}
-                  infantsCount={infantsCount}
-                  numberOfGuests={numberOfGuests}
-                />
-              </Route>
-              <Route exact path="/search">
-                <SearchPage
-                  startDate={startDate}
-                  setStart={setStart}
-                  endDate={endDate}
-                  setEnd={setEnd}
-                  adultsCount={adultsCount}
-                  setAdultsCount={setAdultsCount}
-                  setKidsCount={setKidsCount}
-                  setInfantsCount={setInfantsCount}
-                  kidsCount={kidsCount}
-                  infantsCount={infantsCount}
-                  rooms={rooms}
-                  updatedRooms={updatedRooms}
-                  isLoading={isLoading}
-                  selectedPrice={selectedPrice}
-                  handleSliderChange={handleSliderChange}
-                  checkedSmoking={checkedSmoking}
-                  setCheckedSmoking={setCheckedSmoking}
-                  checkedPets={checkedPets}
-                  setCheckedPets={setCheckedPets}
-                  checkedGuests={checkedGuests}
-                  setCheckedGuests={setCheckedGuests}
-                  checkedWideCorridor={checkedWideCorridor}
-                  setCheckedWideCorridor={setCheckedWideCorridor}
-                  checkedAssistant={checkedAssistant}
-                  setCheckedAssistant={setCheckedAssistant}
-                  checkedBreakfast={checkedBreakfast}
-                  setCheckedBreakfast={setCheckedBreakfast}
-                  checkedDesk={checkedDesk}
-                  setCheckedDesk={setCheckedDesk}
-                  checkedWorktable={checkedWorktable}
-                  setCheckedWorktable={setCheckedWorktable}
-                  checkedCrib={checkedCrib}
-                  setCheckedCrib={setCheckedCrib}
-                  checkedTv={checkedTv}
-                  setCheckedTv={setCheckedTv}
-                  checkedShampoo={checkedShampoo}
-                  setCheckedShampoo={setCheckedShampoo}
-                  bedroomsCount={bedroomsCount}
-                  setBedroomsCount={setBedroomsCount}
-                  bedsCount={bedsCount}
-                  setBedsCount={setBedsCount}
-                  bathroomsCount={bathroomsCount}
-                  setBathroomsCount={setBathroomsCount}
-                />
-              </Route>
-              <Route exact path="/details/:id">
-                <RoomDetails
-                  setStart={setStart}
-                  setEnd={setEnd}
-                  startDate={startDate}
-                  endDate={endDate}
-                  adultsCount={adultsCount}
-                  setAdultsCount={setAdultsCount}
-                  setKidsCount={setKidsCount}
-                  setInfantsCount={setInfantsCount}
-                  kidsCount={kidsCount}
-                  infantsCount={infantsCount}
-                  rooms={rooms}
-                  numberOfGuests={numberOfGuests}
-                  details={details}
-                />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/register">
-                <Register />
-              </Route>
-              <Route exact path="/success">
-                <Success />
-              </Route>
-              <Route exact path="*">
-                <Empty />
-              </Route>
-            </Switch>
-            <Footer />
-          </Router>
+          <ScrollToTop />
+          <Header />
+          <Switch>
+            <Route path="/about">
+              <AboutUs />
+            </Route>
+            <Route path="/services">
+              <Services />
+            </Route>
+            <Route path="/vacancies">
+              <Vacancies />
+            </Route>
+            <Route path="/news">
+              <News />
+            </Route>
+            <Route path="/documentation">
+              <Documentation />
+            </Route>
+            <Route exact path="/">
+              <Main
+                startDate={startDate}
+                setStart={setStart}
+                endDate={endDate}
+                setEnd={setEnd}
+                adultsCount={adultsCount}
+                setAdultsCount={setAdultsCount}
+                setKidsCount={setKidsCount}
+                setInfantsCount={setInfantsCount}
+                kidsCount={kidsCount}
+                infantsCount={infantsCount}
+                numberOfGuests={numberOfGuests}
+              />
+            </Route>
+            <Route path="/search">
+              <SearchPage
+                startDate={startDate}
+                setStart={setStart}
+                endDate={endDate}
+                setEnd={setEnd}
+                adultsCount={adultsCount}
+                setAdultsCount={setAdultsCount}
+                setKidsCount={setKidsCount}
+                setInfantsCount={setInfantsCount}
+                kidsCount={kidsCount}
+                infantsCount={infantsCount}
+                rooms={rooms}
+                updatedRooms={updatedRooms}
+                isLoading={isLoading}
+                selectedPrice={selectedPrice}
+                handleSliderChange={handleSliderChange}
+                checkedSmoking={checkedSmoking}
+                setCheckedSmoking={setCheckedSmoking}
+                checkedPets={checkedPets}
+                setCheckedPets={setCheckedPets}
+                checkedGuests={checkedGuests}
+                setCheckedGuests={setCheckedGuests}
+                checkedWideCorridor={checkedWideCorridor}
+                setCheckedWideCorridor={setCheckedWideCorridor}
+                checkedAssistant={checkedAssistant}
+                setCheckedAssistant={setCheckedAssistant}
+                checkedBreakfast={checkedBreakfast}
+                setCheckedBreakfast={setCheckedBreakfast}
+                checkedDesk={checkedDesk}
+                setCheckedDesk={setCheckedDesk}
+                checkedWorktable={checkedWorktable}
+                setCheckedWorktable={setCheckedWorktable}
+                checkedCrib={checkedCrib}
+                setCheckedCrib={setCheckedCrib}
+                checkedTv={checkedTv}
+                setCheckedTv={setCheckedTv}
+                checkedShampoo={checkedShampoo}
+                setCheckedShampoo={setCheckedShampoo}
+                bedroomsCount={bedroomsCount}
+                setBedroomsCount={setBedroomsCount}
+                bedsCount={bedsCount}
+                setBedsCount={setBedsCount}
+                bathroomsCount={bathroomsCount}
+                setBathroomsCount={setBathroomsCount}
+              />
+            </Route>
+            <Route exact path="/details/:id">
+              <RoomDetails
+                setStart={setStart}
+                setEnd={setEnd}
+                startDate={startDate}
+                endDate={endDate}
+                adultsCount={adultsCount}
+                setAdultsCount={setAdultsCount}
+                setKidsCount={setKidsCount}
+                setInfantsCount={setInfantsCount}
+                kidsCount={kidsCount}
+                infantsCount={infantsCount}
+                rooms={rooms}
+                numberOfGuests={numberOfGuests}
+                details={details}
+              />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/success">
+              <Success />
+            </Route>
+            <Route exact path="*">
+              <Empty />
+            </Route>
+          </Switch>
+          <Footer />
         </AuthContextProvider>
       </div>
     </>

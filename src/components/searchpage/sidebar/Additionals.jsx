@@ -52,7 +52,7 @@ const Additionals = ({
   setCheckedShampoo,
 }) => {
   const styles = useStyles();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
   };
@@ -75,7 +75,7 @@ const Additionals = ({
               display: 'flex',
               alignItems: 'center',
               cursor: 'pointer',
-              marginTop: -15,
+              marginTop: -12,
             }}
           >
             {!open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -83,7 +83,7 @@ const Additionals = ({
         </Box>
         {!open ? (
           <>
-            <Box style={{ display: 'flex' }}>
+            <Box style={{ display: 'flex', marginBottom: 5 }}>
               <label
                 className={styles.checkbox}
                 style={{ userSelect: 'none', display: 'flex' }}
@@ -103,7 +103,7 @@ const Additionals = ({
                 </Typography>
               </label>
             </Box>
-            <Box style={{ display: 'flex' }}>
+            <Box style={{ display: 'flex', marginBottom: 5 }}>
               <label
                 className={styles.checkbox}
                 style={{ userSelect: 'none', display: 'flex' }}
@@ -123,7 +123,7 @@ const Additionals = ({
                 </Typography>
               </label>
             </Box>
-            <Box style={{ display: 'flex' }}>
+            <Box style={{ display: 'flex', marginBottom: 5 }}>
               <label
                 className={styles.checkbox}
                 style={{ userSelect: 'none', display: 'flex' }}
@@ -143,7 +143,7 @@ const Additionals = ({
                 </Typography>
               </label>
             </Box>
-            <Box style={{ display: 'flex' }}>
+            <Box style={{ display: 'flex', marginBottom: 5 }}>
               <label
                 className={styles.checkbox}
                 style={{ userSelect: 'none', display: 'flex' }}
@@ -163,7 +163,7 @@ const Additionals = ({
                 </Typography>
               </label>
             </Box>
-            <Box style={{ display: 'flex' }}>
+            <Box style={{ display: 'flex', marginBottom: 5 }}>
               <label
                 className={styles.checkbox}
                 style={{ userSelect: 'none', display: 'flex' }}
@@ -183,7 +183,7 @@ const Additionals = ({
                 </Typography>
               </label>
             </Box>
-            <Box style={{ display: 'flex' }}>
+            <Box style={{ display: 'flex', marginBottom: 5 }}>
               <label
                 className={styles.checkbox}
                 style={{ userSelect: 'none', display: 'flex' }}

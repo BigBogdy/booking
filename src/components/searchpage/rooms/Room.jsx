@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => {
       },
     },
     img: {
-      filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
       width: 270,
       height: 151,
     },
@@ -84,8 +83,14 @@ const Room = (props) => {
   return (
     <>
       <Card className={styles.card}>
-        <Typography className={styles.img} style={{ marginBottom: 20 }}>
-          <img src={props.imageUrl} alt="1" />
+        <Typography
+          className={styles.img}
+          style={{
+            marginBottom: 20,
+            filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+          }}
+        >
+          <img className={styles.img} src={props.imageUrl} alt="1" />
         </Typography>
         <Box style={{ padding: '0px 18.5px' }}>
           <Box

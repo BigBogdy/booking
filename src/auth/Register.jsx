@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => {
     },
     img: {
       alignItems: 'center',
-      backgroundImage: 'url(img/background2.jpg)',
+      backgroundImage: 'url(https://i.ibb.co/1s3kvkG/background2.jpg)',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
@@ -190,7 +190,7 @@ const Register = () => {
     try {
       setUserInfo(data);
       await createUser(email, password);
-      history.push('/booking/');
+      history.push('/');
     } catch (err) {
       console.log(err);
     }

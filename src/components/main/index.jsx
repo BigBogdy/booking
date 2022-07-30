@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => {
     },
     img: {
       alignItems: 'center',
-      backgroundImage: 'url(img/background.jpg)',
+      backgroundImage: 'url(https://i.ibb.co/gjY7qbg/background.jpg)',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
