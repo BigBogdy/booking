@@ -15,7 +15,6 @@ const theme = createTheme({
     },
   },
 });
-// const history = createBrowserHistory({ basename: '/your-base-name' });
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <BrowserRouter basename="/booking">
