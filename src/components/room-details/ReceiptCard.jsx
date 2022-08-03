@@ -154,20 +154,8 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const ReceiptCard = ({
-  startDate,
-  endDate,
-  setStart,
-  setEnd,
-  adultsCount,
-  setAdultsCount,
-  setKidsCount,
-  setInfantsCount,
-  kidsCount,
-  infantsCount,
-  roomItem,
-  numberOfGuests,
-}) => {
+const ReceiptCard = ({ propDetailsObj, roomItem }) => {
+  const { numberOfGuests, startDate, endDate } = propDetailsObj;
   const ref = useRef();
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -237,22 +225,9 @@ const ReceiptCard = ({
             </Typography>
           </Box>
 
-          <DatesPicker
-            startDate={startDate}
-            endDate={endDate}
-            setEnd={setEnd}
-            setStart={setStart}
-          />
+          <DatesPicker {...propDetailsObj} />
 
-          <Selector
-            adultsCount={adultsCount}
-            setAdultsCount={setAdultsCount}
-            setKidsCount={setKidsCount}
-            setInfantsCount={setInfantsCount}
-            kidsCount={kidsCount}
-            infantsCount={infantsCount}
-            numberOfGuests={numberOfGuests}
-          />
+          <Selector {...propDetailsObj} />
 
           <Box style={{ marginTop: 20 }}>
             <Box className={styles.fees}>

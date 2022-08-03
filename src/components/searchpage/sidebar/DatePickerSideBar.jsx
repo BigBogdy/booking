@@ -33,15 +33,6 @@ const useStyles = makeStyles((theme) => {
 const DatesPickerSideBar = ({ startDate, setStart, endDate, setEnd }) => {
   const styles = useStyles();
 
-  // const [dateRange, setDateRange] = useState([null, null]);
-  // const [startDate, endDate] = dateRange;
-
-  // const selectionRange = {
-  //   startDate: dateRange,
-  //   endDate: dateRange,
-  //   key: 'selection',
-  // };
-
   return (
     <>
       <Box style={{ marginBottom: 19.5 }}>

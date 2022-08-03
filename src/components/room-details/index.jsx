@@ -72,42 +72,29 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-const RoomDetails = ({
-  startDate,
-  setStart,
-  endDate,
-  setEnd,
-  adultsCount,
-  setAdultsCount,
-  setKidsCount,
-  setInfantsCount,
-  kidsCount,
-  infantsCount,
-  numberOfGuests,
-  rooms,
-  details,
-}) => {
+const RoomDetails = ({ propDetailsObj }) => {
   const styles = useStyles();
-
   const { id } = useParams();
   const [item, setItem] = useState(null);
   const [roomItem, setRoomItem] = useState([]);
 
   useEffect(() => {
-    let roomItem = rooms.find(
+    let roomItem = propDetailsObj.rooms.find(
       (roomItem) => roomItem.id === Number.parseInt(id)
     );
     if (roomItem) {
       setRoomItem(roomItem);
     }
-  }, [rooms, id]);
+  }, [propDetailsObj.rooms, id]);
 
   useEffect(() => {
-    let item = details.find((item) => item.id === Number.parseInt(id));
+    let item = propDetailsObj.details.find(
+      (item) => item.id === Number.parseInt(id)
+    );
     if (item) {
       setItem(item);
     }
-  }, [details, id]);
+  }, [propDetailsObj.details, id]);
 
   return (
     <>
@@ -170,18 +157,8 @@ const RoomDetails = ({
                 <Rules />
               </Box>
               <ReceiptCard
-                startDate={startDate}
-                setStart={setStart}
-                endDate={endDate}
-                setEnd={setEnd}
-                adultsCount={adultsCount}
-                setAdultsCount={setAdultsCount}
-                setKidsCount={setKidsCount}
-                setInfantsCount={setInfantsCount}
-                kidsCount={kidsCount}
-                infantsCount={infantsCount}
+                propDetailsObj={propDetailsObj}
                 roomItem={roomItem}
-                numberOfGuests={numberOfGuests}
               />
             </Box>
           </Container>

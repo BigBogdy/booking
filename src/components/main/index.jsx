@@ -77,19 +77,8 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Main = ({
-  startDate,
-  setStart,
-  endDate,
-  setEnd,
-  adultsCount,
-  setAdultsCount,
-  kidsCount,
-  infantsCount,
-  setKidsCount,
-  setInfantsCount,
-  numberOfGuests,
-}) => {
+const Main = ({ propMainObj }) => {
+  const { numberOfGuests } = propMainObj;
   const styles = useStyles();
   const history = useHistory();
   const [open, setOpen] = React.useState(false);
@@ -111,21 +100,8 @@ const Main = ({
             <Typography variant="h1" className={styles.cardTitle}>
               We will find rooms <br /> according to your wishes
             </Typography>
-            <DatesPicker
-              startDate={startDate}
-              setStart={setStart}
-              endDate={endDate}
-              setEnd={setEnd}
-            />
-            <Selector
-              adultsCount={adultsCount}
-              setAdultsCount={setAdultsCount}
-              setKidsCount={setKidsCount}
-              setInfantsCount={setInfantsCount}
-              kidsCount={kidsCount}
-              infantsCount={infantsCount}
-              numberOfGuests={numberOfGuests}
-            />
+            <DatesPicker {...propMainObj} />
+            <Selector {...propMainObj} />
             {!numberOfGuests ? (
               <>
                 <Box

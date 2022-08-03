@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import Main from './components/main';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SearchPage from './components/searchpage';
 import RoomDetails from './components/room-details';
 import Register from './auth/Register';
@@ -199,81 +199,87 @@ function App() {
             </Route>
             <Route exact path="/">
               <Main
-                startDate={startDate}
-                setStart={setStart}
-                endDate={endDate}
-                setEnd={setEnd}
-                adultsCount={adultsCount}
-                setAdultsCount={setAdultsCount}
-                setKidsCount={setKidsCount}
-                setInfantsCount={setInfantsCount}
-                kidsCount={kidsCount}
-                infantsCount={infantsCount}
-                numberOfGuests={numberOfGuests}
+                propMainObj={{
+                  startDate,
+                  setStart,
+                  endDate,
+                  setEnd,
+                  adultsCount,
+                  setAdultsCount,
+                  setKidsCount,
+                  setInfantsCount,
+                  kidsCount,
+                  infantsCount,
+                  numberOfGuests,
+                }}
               />
             </Route>
             <Route path="/search">
               <SearchPage
-                startDate={startDate}
-                setStart={setStart}
-                endDate={endDate}
-                setEnd={setEnd}
-                adultsCount={adultsCount}
-                setAdultsCount={setAdultsCount}
-                setKidsCount={setKidsCount}
-                setInfantsCount={setInfantsCount}
-                kidsCount={kidsCount}
-                infantsCount={infantsCount}
-                rooms={rooms}
-                updatedRooms={updatedRooms}
-                isLoading={isLoading}
-                selectedPrice={selectedPrice}
-                handleSliderChange={handleSliderChange}
-                checkedSmoking={checkedSmoking}
-                setCheckedSmoking={setCheckedSmoking}
-                checkedPets={checkedPets}
-                setCheckedPets={setCheckedPets}
-                checkedGuests={checkedGuests}
-                setCheckedGuests={setCheckedGuests}
-                checkedWideCorridor={checkedWideCorridor}
-                setCheckedWideCorridor={setCheckedWideCorridor}
-                checkedAssistant={checkedAssistant}
-                setCheckedAssistant={setCheckedAssistant}
-                checkedBreakfast={checkedBreakfast}
-                setCheckedBreakfast={setCheckedBreakfast}
-                checkedDesk={checkedDesk}
-                setCheckedDesk={setCheckedDesk}
-                checkedWorktable={checkedWorktable}
-                setCheckedWorktable={setCheckedWorktable}
-                checkedCrib={checkedCrib}
-                setCheckedCrib={setCheckedCrib}
-                checkedTv={checkedTv}
-                setCheckedTv={setCheckedTv}
-                checkedShampoo={checkedShampoo}
-                setCheckedShampoo={setCheckedShampoo}
-                bedroomsCount={bedroomsCount}
-                setBedroomsCount={setBedroomsCount}
-                bedsCount={bedsCount}
-                setBedsCount={setBedsCount}
-                bathroomsCount={bathroomsCount}
-                setBathroomsCount={setBathroomsCount}
+                propSearchObj={{
+                  startDate,
+                  setStart,
+                  endDate,
+                  setEnd,
+                  adultsCount,
+                  setAdultsCount,
+                  kidsCount,
+                  setKidsCount,
+                  infantsCount,
+                  setInfantsCount,
+                  rooms,
+                  updatedRooms,
+                  isLoading,
+                  selectedPrice,
+                  handleSliderChange,
+                  checkedSmoking,
+                  setCheckedSmoking,
+                  checkedPets,
+                  setCheckedPets,
+                  checkedGuests,
+                  setCheckedGuests,
+                  checkedWideCorridor,
+                  setCheckedWideCorridor,
+                  checkedAssistant,
+                  setCheckedAssistant,
+                  checkedBreakfast,
+                  setCheckedBreakfast,
+                  checkedDesk,
+                  setCheckedDesk,
+                  checkedWorktable,
+                  setCheckedWorktable,
+                  checkedCrib,
+                  setCheckedCrib,
+                  checkedTv,
+                  setCheckedTv,
+                  checkedShampoo,
+                  setCheckedShampoo,
+                  bedroomsCount,
+                  setBedroomsCount,
+                  bedsCount,
+                  setBedsCount,
+                  bathroomsCount,
+                  setBathroomsCount,
+                }}
               />
             </Route>
             <Route exact path="/details/:id">
               <RoomDetails
-                setStart={setStart}
-                setEnd={setEnd}
-                startDate={startDate}
-                endDate={endDate}
-                adultsCount={adultsCount}
-                setAdultsCount={setAdultsCount}
-                setKidsCount={setKidsCount}
-                setInfantsCount={setInfantsCount}
-                kidsCount={kidsCount}
-                infantsCount={infantsCount}
-                rooms={rooms}
-                numberOfGuests={numberOfGuests}
-                details={details}
+                propDetailsObj={{
+                  setStart,
+                  setEnd,
+                  startDate,
+                  endDate,
+                  adultsCount,
+                  setAdultsCount,
+                  setKidsCount,
+                  setInfantsCount,
+                  kidsCount,
+                  infantsCount,
+                  rooms,
+                  numberOfGuests,
+                  details,
+                }}
               />
             </Route>
             <Route exact path="/login">
